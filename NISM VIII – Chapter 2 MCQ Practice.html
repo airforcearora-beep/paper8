@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 2 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 2: Understanding the Index</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["An index is best described as ________.",["A statistical indicator measuring changes in the economy or a market segment","A type of mutual fund","A listed company","A tax on securities"],0,"In financial markets, an index is a portfolio of securities representing a market or part of it."],
+["Index values are expressed as a change from a ________.",["Base value","Closing price","Face value","Book value"],0,"So the percentage change matters more than the absolute number."],
+["A stock index is created to show ________.",["Dividend rates","Average share price movement in the market","Company profits","Bond yields only"],1,"It informs participants about average price movement."],
+["Index derivatives are useful mainly to ________.",["Avoid all taxes","Hedge against market risk","Raise capital","List new companies"],1,"Index futures and options are popular hedging tools."],
+["Managed portfolios and mutual funds use a stock index as a ________.",["Tax shield","Benchmark for performance","Source of dividends","Credit rating"],1,"Indices serve as performance benchmarks."],
+["Indices are used as the underlying for ________.",["Only equity shares","Derivative products in OTC and exchange markets","Only bonds","Only IPOs"],1,"Many derivatives are based on indices."],
+["In a market capitalisation weighted index, a stock with higher market cap has ________.",["Lower weight","Higher weight","Equal weight","No weight"],1,"Weight is proportional to market cap."],
+["Market capitalisation equals ________.",["Shares outstanding × current market price","Face value × shares","Book value × price","Profit × shares"],0,"It is the market value of a company."],
+["A company with 5,00,00,000 shares at Rs 120 has a market cap of ________.",["Rs 60 crore","Rs 600 crore","Rs 6,000 crore","Rs 120 crore"],1,"5,00,00,000 × 120 = Rs 600 crore."],
+["Market-cap index value = ________ × Base index value.",["Index mcap ÷ Base mcap","Base mcap ÷ Index mcap","Index mcap × Base mcap","Index mcap − Base mcap"],0,"Current market cap is compared with base market cap."],
+["If market cap rises from Rs 18,800 lakh to Rs 42,500 lakh with base 100, the index is about ________.",["126.06","226.06","188.00","425.00"],1,"42,500 ÷ 18,800 × 100 = 226.06."],
+["In that example, the percentage change in the index is ________.",["226.06%","100%","126.06%","42.5%"],2,"226.06 − 100 = 126.06%."],
+["Sensex and Nifty 50 were earlier designed on the ________ method.",["Price weighted","Equal weighted","Market cap weighted","Capped"],2,"They later moved to free float."],
+["Free float shares are those ________.",["Held by promoters","Readily available for trading","Locked in","Unlisted"],1,"Free float excludes shares not available for trading."],
+["Which Indian indices use the free float basis?",["Only Nifty 50","Sensex, Nifty 50 and SX40","Only Sensex","None"],1,"Most global indices have moved to free float."],
+["In a price-weighted index, each stock influences the index in proportion to its ________.",["Market cap","Price","Volume","Free float"],1,"Higher priced stocks get more weight."],
+["Price index = ________.",["Sum of prices ÷ number of stocks","Sum of market caps ÷ stocks","Average of volumes","Sum of prices × stocks"],0,"It is the simple average of prices."],
+["For prices 150, 300, 450, 100, 250 the price index is ________.",["200","250","300","1250"],1,"1,250 ÷ 5 = 250."],
+["Prices move to 650, 450, 600, 350, 500 (from 250 average). The index rises by ________.",["104%","204%","51%","126%"],0,"Index = 510; (510 − 250) ÷ 250 = 104%."],
+["Dow Jones Industrial Average and Nikkei 225 are ________ indices.",["Market cap weighted","Equal weighted","Price weighted","Capped"],2,"Both are price weighted."],
+["In an equal-weighted index, ________.",["Higher priced stocks dominate","All stocks have the same weight","Largest caps dominate","Only liquid stocks count"],1,"Share quantities are adjusted for equal weights."],
+["To maintain equal weights, a fund manager must ________.",["Buy winners and sell losers","Sell stocks that rose and buy those that fell","Hold all stocks","Sell all stocks"],1,"Rebalancing restores equal weights."],
+["Four stocks start with equal weights; price changes are +50%, −13.33%, +60%, −10%. The index rises by about ________.",["86.67%","21.67%","50%","10%"],1,"Average change = 86.67 ÷ 4 = 21.67%."],
+["A capped index ________.",["Has no constituents","Limits the weight of any single security","Ignores prices","Tracks only dividends"],1,"Caps prevent outsized influence."],
+["A good index should be computed by ________.",["A single broker","An independent third party free from market-participant influence","The company","The investor"],1,"It should also reflect market behaviour and be professionally maintained."],
+["Liquidity means a market where ________.",["Prices never change","Large orders execute without moving prices","Orders cannot be placed","Only small orders trade"],1,"This is the liquidity concept."],
+["The bid-ask spread is the difference between ________.",["Best buy and best sell prices","Open and close","High and low","Spot and futures"],0,"It is the best offer minus best bid."],
+["With best bid Rs 4.00 and best ask Rs 4.50, the bid-ask spread is ________.",["Rs 0.25","Rs 0.50","Rs 4.25","Rs 8.50"],1,"4.50 − 4.00 = 0.50."],
+["Buying 100 shares at Rs 4.50 and selling at Rs 4.00 loses ________.",["Rs 25","Rs 50","Rs 100","Rs 450"],1,"0.50 × 100 = Rs 50."],
+["The ideal price is ________.",["Best bid","Best ask","Average of best bid and best offer","Last traded price"],2,"(4.00 + 4.50) ÷ 2 = 4.25."],
+["Impact cost is the percentage degradation versus the ________.",["Ideal price","Closing price","Face value","Previous close"],0,"It arises when buying or selling above or below the ideal price."],
+["Impact cost ________.",["Is the same for buy and sell","Varies with transaction size","Is paid to the exchange","Is fixed by SEBI"],1,"It also differs between buy and sell sides."],
+["Best bid 9.80, ask 9.90, then 10.00 for 1,500 buy: impact cost is about ________.",["0.84%","0.50%","1.5%","2%"],0,"Actual price 9.9333 vs ideal 9.85 gives 0.84%."],
+["True or False: Impact cost is low when liquidity is poor.",["True","False"],1,"Impact cost is high when liquidity is poor."],
+["Which cost is not paid but arises from lack of liquidity?",["STT","Impact cost","Brokerage","SEBI charges"],1,"It is an implicit cost."],
+["Beta measures ________.",["Dividend yield","A stock’s returns relative to market returns","Liquidity","Spread"],1,"It shows sensitivity to market movement."],
+["A price return index ________.",["Includes dividends","Ignores dividends and interest","Reinvests dividends","Tracks only bonds"],1,"It tracks only capital gains and losses."],
+["A total return index reflects ________.",["Price changes only","Price changes and reinvested dividends","Dividends only","Volume"],1,"Dividends are reinvested in the overall index."],
+["BSE indices are managed by ________.",["NSE Indices Limited","BSE Index Services Private Limited","SEBI","CCIL"],1,"Formerly Asia Index Pvt Ltd."],
+["NSE indices are managed by ________.",["BSE Index Services","NSE Indices Limited","RBI","NSDL"],1,"NSE Indices Limited manages them."],
+["SEBI (Index Providers) Regulations, 2024 aim to foster ________.",["Higher margins","Transparency and accountability in index administration","Lower taxes","More listings"],1,"They create a framework for index providers."],
+["Index maintenance means adjusting for ________.",["Corporate actions like bonus, rights and splits","Daily volumes","Investor moods","Interest rates"],0,"It keeps the index comparable over time."],
+["Index revision refers to ________.",["Changing the index composition","Changing the base value","Recording dividends","Closing the index"],0,"Existing stocks are replaced by new ones."],
+["Inclusion or removal of a stock is decided by the ________.",["Index Committee","Stock broker","Clearing corporation","Depository"],0,"A specialised committee decides."],
+["A good index is a trade-off between ________.",["Diversification and liquidity","Price and volume","Risk and return only","Size and age"],0,"Diversification helps only up to a point."],
+["Nifty IT and BSE Bankex are ________ indices.",["Broad market","Sectoral","Market cap","Thematic"],1,"They isolate specific industries."],
+["India VIX is a ________ index.",["Sectoral","Broad market","Thematic and factor (volatility)","Price weighted"],2,"Volatility indices fall under thematic and factor."],
+["An index fund aims to ________.",["Beat the index","Generate returns equivalent to the index","Avoid index stocks","Hold only cash"],1,"Differences arise from tracking error."],
+["Exchange Traded Funds ________.",["Cannot trade intraday","Trade like stocks on an exchange","Trade only OTC","Hold no securities"],1,"ETFs allow intraday transactions."],
+["Broad market indices are expected to ________.",["Capture the overall behaviour of the equity market","Track a single industry","Include only small caps","Ignore liquidity"],0,"Examples are BSE Sensex and Nifty 50."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

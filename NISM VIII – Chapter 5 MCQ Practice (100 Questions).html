@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 5 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 5: Strategies using Futures &amp; Options (100 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["A long hedge with futures is used to ________.", ["Lock in the price of a planned purchase", "Lock the price of a planned sale", "Speculate", "Earn dividends"], 0, "The hedger goes long futures."],
+["A short hedge with futures is used to ________.", ["Lock in the price of a planned sale", "Lock the price of a planned purchase", "Avoid margins", "Raise capital"], 0, "The hedger goes short futures."],
+["You plan to buy 1,500 ABC shares later; futures bought at Rs 457.30 and sold at Rs 521.20. The futures gain is ________.", ["Rs 95,850", "Rs 99,300", "Rs 63,900", "Rs 7,80,000"], 0, "(521.20 − 457.30) × 1,500."],
+["In that hedge, the share cost Rs 520 and the futures gain Rs 95,850; effective price per share is ________.", ["Rs 456.10", "Rs 457.30", "Rs 520", "Rs 390"], 0, "(7,80,000 − 95,850) ÷ 1,500."],
+["Futures bought at 457.30 and sold at 391.10 (1,500 shares) give a ________.", ["Gain of Rs 99,300", "Loss of Rs 99,300", "Gain of Rs 95,850", "Loss of Rs 66.20"], 1, "(457.30 − 391.10) × 1,500."],
+["To hedge 1,200 PQR shares with a contract size of 600, short ________ contracts.", ["1", "2", "3", "12"], 1, "1,200 ÷ 600."],
+["Portfolio Rs 90 lakh, beta 1.3, futures 17,700, lot 50: the hedge needs about ________ contracts.", ["13.22", "10.17", "20.5", "90"], 0, "(1.3 × 90,00,000) ÷ (17,700 × 50)."],
+["A diversified portfolio’s systematic risk is hedged by ________ index futures.", ["Buying", "Shorting", "Ignoring", "Rolling long"], 1, "Losses on the portfolio are offset by gains on the short."],
+["An investor bullish on a stock should ________ stock futures.", ["Go long", "Go short", "Avoid", "Write calls only"], 0, "A bearish view calls for short futures."],
+["Contract value Rs 11,05,000 and 20% margin give a margin of ________.", ["Rs 1,10,500", "Rs 2,21,000", "Rs 5,52,500", "Rs 11,05,000"], 1, "20% of the value."],
+["Futures give higher return on investment than buying shares because of ________.", ["Leverage", "Dividends", "Taxes", "Lower volatility"], 0, "The outlay is only the margin."],
+["RSB Bank short futures: 550 × Rs 1,602 = Rs 8,81,100; 20% margin is ________.", ["Rs 1,76,220", "Rs 88,110", "Rs 2,20,275", "Rs 4,40,550"], 0, "20% × 8,81,100."],
+["Short 550 RSB futures at 1,602 and cover at 1,527: gain is ________.", ["Rs 41,250", "Rs 38,500", "Rs 75", "Rs 1,76,220"], 0, "(1,602 − 1,527) × 550."],
+["If futures trade above the fair price, the arbitrageur does ________.", ["Cash and carry", "Reverse cash and carry", "Calendar spread only", "Nothing"], 0, "Buy spot, sell futures."],
+["If futures trade below the fair price, the arbitrageur does ________.", ["Cash and carry", "Reverse cash and carry", "Long straddle", "Nothing"], 1, "Buy futures, sell spot."],
+["Stock A: spot 1,500, 3-month futures 1,550, fair price 1,534.13. The futures are ________.", ["Overvalued", "Undervalued", "Fairly valued", "Unquoted"], 0, "Cash and carry is profitable."],
+["Stock A arbitrage profit for 100 shares is ________.", ["Rs 1,587", "Rs 5,000", "Rs 3,413", "Rs 8,000"], 0, "(1,550 − 1,534.13) × 100."],
+["In cash and carry arbitrage the locked profit ________ the expiry price.", ["Depends on", "Is independent of", "Doubles with", "Is lost at"], 1, "The same net gain arises in all price cases."],
+["A calendar spread in futures is ________.", ["Arbitrage between futures of different expiries", "Two strikes of options", "A long hedge", "A put-call strategy"], 0, "The spread is compared with the fair spread."],
+["Calendar spreads are typically ________.", ["Low risk, low return", "High risk, high return", "Zero return", "Unlimited risk"], 0, "Offsetting positions reduce risk."],
+["Option spreads combine options on the same ________.", ["Underlying and type", "Expiry only", "Strike only", "Premium"], 0, "Call/call or put/put."],
+["A vertical spread uses options with ________.", ["Same expiry, different strikes", "Same strike, different expiry", "Different expiry and strike", "Different underlyings"], 0, "Horizontal is same strike, different expiry."],
+["A horizontal spread is also called a ________ spread.", ["Time/calendar", "Bull", "Bear", "Diagonal"], 0, "Same strike, different expiries."],
+["A diagonal spread has ________.", ["Different expiries and different strikes", "Same strike", "Same expiry", "One option"], 0, "A combination of the two."],
+["A bull call spread = ________.", ["Long lower strike call + short higher strike call", "Short lower call + long higher call", "Long call + long put", "Short call + short put"], 0, "It reduces the cost of a bullish position."],
+["Bull call spread: long 17,500 call at 185, short 17,800 call at 61. Net premium paid is ________.", ["Rs 124", "Rs 246", "Rs 61", "Rs 185"], 0, "185 − 61."],
+["The maximum profit on that spread is ________.", ["Rs 124", "Rs 176", "Rs 300", "Unlimited"], 1, "300 − 124."],
+["The breakeven on that spread is ________.", ["17,500", "17,624", "17,676", "17,800"], 1, "17,500 + 124."],
+["A bull put spread has ________.", ["Short higher strike put + long lower strike put", "Long higher put + short lower put", "Two long puts", "Two long calls"], 0, "It earns a net credit."],
+["Bull put spread: short 17,500 put at 125, long 17,000 put at 34. Max profit and loss ________.", ["91 and 409", "409 and 91", "125 and 34", "500 and 91"], 0, "Net credit 91; width 500 − 91 = 409."],
+["Breakeven of that bull put spread is ________.", ["17,409", "17,591", "17,500", "17,000"], 0, "17,500 − 91."],
+["A bear call spread gives ________.", ["A net credit with limited profit and loss", "A net debit with unlimited profit", "Unlimited loss", "No risk"], 0, "Short lower strike call, long higher strike call."],
+["Bear put spread: long 17,500 put, short 17,000 put. The net position is ________.", ["A debit with max profit 409", "A credit", "Zero cost", "Unlimited profit"], 0, "Max profit 409, max loss 91 in the example."],
+["A straddle uses ________.", ["Call and put at the same strike and expiry", "Call and put at different strikes", "Two calls", "Two puts"], 0, "Long straddle buys both."],
+["A long straddle profits from ________.", ["A large move in either direction", "No movement", "Rising interest rates", "Dividends"], 0, "The trader has a view on volatility."],
+["Long straddle premiums 257 + 136: maximum loss is ________.", ["Rs 393", "Rs 121", "Rs 257", "Unlimited"], 0, "Sum of the premiums."],
+["A long straddle’s breakevens are ________.", ["Strike ± total premium", "Strike only", "Strike + premium only", "Spot ± strike"], 0, "There are two breakeven points."],
+["A short straddle expects ________.", ["Low volatility", "High volatility", "A crash", "A rally"], 0, "It earns total premium with unlimited loss potential."],
+["A strangle uses ________.", ["OTM call and OTM put at different strikes", "ATM call and put", "ITM options", "Futures"], 0, "It is cheaper than a straddle."],
+["Long strangle: max loss 285; BEPs 5,715 and 6,485. Its profit potential is ________.", ["Unlimited both ways", "Limited", "Only upward", "Zero"], 0, "It gains on large moves."],
+["A short strangle’s maximum profit ________.", ["Is the premium received", "Is unlimited", "Is zero", "Is the strike"], 0, "Losses are unlimited either way."],
+["A covered call is ________.", ["Long underlying plus short call", "Short underlying plus long call", "Long call plus long put", "Short put"], 0, "It is a neutral to mildly bullish strategy."],
+["A covered call is a synthetic ________.", ["Short put", "Long call", "Long put", "Short call"], 0, "The payoff resembles a short put."],
+["A covered call ________.", ["Limits upside, with premium cushioning downside", "Has unlimited upside", "Eliminates risk", "Needs no stock"], 0, "Strike selection matters."],
+["A collar is ________.", ["Covered call plus a long OTM put", "Straddle plus call", "Two spreads", "Short strangle"], 0, "The put provides a floor."],
+["A collar ________ the maximum profit of a covered call.", ["Reduces", "Increases", "Doubles", "Does not affect"], 0, "The put premium is a cost."],
+["A long call butterfly is a ________ strategy.", ["Neutral, low volatility", "Bullish", "Bearish", "High volatility"], 0, "Profit when the price stays near the middle strike."],
+["A long call butterfly is built with ________.", ["Long 1 low, short 2 middle, long 1 high call", "Long 2, short 1", "Two puts", "One call"], 0, "Equal wings."],
+["Butterfly cost −230 +150 −100 +150 = −30. Breakevens are ________.", ["6,030 and 6,170", "6,000 and 6,200", "6,100 only", "5,970 and 6,230"], 0, "6,000 + 30 and 6,200 − 30."],
+["The maximum profit of that butterfly is ________.", ["Rs 70", "Rs 30", "Rs 100", "Rs 130"], 0, "100 − 30 at 6,100."],
+["A protective put is ________.", ["Long stock plus long put", "Short stock plus short put", "Long call plus short call", "Short strangle"], 0, "It insures the stock."],
+["A protective put is a synthetic ________.", ["Long call", "Short call", "Short put", "Long straddle"], 0, "The payoff resembles a long call."],
+["Put-call parity applies to ________ options.", ["European", "American", "Asian", "Exotic"], 0, "Any deviation gives arbitrage."],
+["Delta of a futures contract is about ________.", ["1", "0.5", "0", "−1"], 0, "Futures move one-for-one."],
+["Short 10 calls (lot 50) with delta 0.50: hedge by buying ________ shares.", ["250", "500", "50", "25"], 0, "0.50 × 50 × 10."],
+["Delta hedges need rebalancing because ________.", ["Delta changes with the underlying (gamma)", "Strikes change", "Lot size changes", "Margins fall"], 0, "Delta is not constant."],
+["Futures price rising with open interest rising signals ________.", ["A bullish trend", "Short covering", "A bearish trend", "Weakness"], 0, "New longs are being added."],
+["Futures price rising but open interest falling indicates ________.", ["Short covering", "Fresh buying", "Bearish build-up", "No change"], 0, "Shorts are exiting."],
+["Futures price falling with open interest rising indicates ________.", ["Bearish build-up", "Short covering", "Bullishness", "Roll over"], 0, "Short positions are building."],
+["Put OI 8,000 and call OI 12,000 give PCR of ________.", ["0.67", "1.5", "0.8", "1.2"], 0, "8,000 ÷ 12,000."],
+["As per the workbook, a PCR above 1 is read as ________.", ["Bullish", "Bearish", "Neutral", "Invalid"], 0, "Option sellers do not expect a fall."],
+["PCR is often used as a ________ indicator.", ["Contrarian", "Lagging", "Price", "Dividend"], 0, "A very high PCR may signal an oversold market."],
+["Under the new OI formulation, a long call of 500 with delta 0.5 counts as ________.", ["250", "500", "1,000", "0.5"], 0, "500 × 0.5 FutEq OI."],
+["A long hedge: futures bought at Rs 1385; at purchase time spot is Rs 1420 and futures Rs 1422. Effective purchase price per share is ________.", ["Rs 1,457", "Rs 1,385", "Rs 1,383", "Rs 1,420"], 2, "Effective price = spot − futures gain."],
+["A short hedge: futures sold at Rs 1065; at sale time spot is Rs 1145 and futures Rs 1147. Effective selling price per share is ________.", ["Rs 1,065", "Rs 1,227", "Rs 1,145", "Rs 1,063"], 3, "Effective price = spot + futures gain."],
+["Portfolio Rs 7,500,000, beta 1.2, index futures 24500, lot 75. Contracts to short ≈ ________.", ["2.45", "9.80", "4.90", "4.08"], 2, "Vp × β ÷ (futures × lot)."],
+["Long futures at Rs 550 (lot 250), margin 10%. Price rises Rs 30. Return on margin is ________.", ["5.45%", "54.55%", "27.27%", "109.10%"], 1, "Profit ÷ margin."],
+["Bull call spread: buy 20700 call at Rs 190, sell 21000 call at Rs 95. The maximum profit (per unit) is ________.", ["395", "20,905", "300", "205"], 3, "Net debit d; max profit = width − d; BEP = K1 + d."],
+["Long straddle at strike 15100 with call premium Rs 185 and put premium Rs 185. The maximum loss is ________.", ["14,915", "370", "15,285", "185"], 1, "Loss = total premium; BEPs = K ± total premium."],
+["Put open interest is 19,000 and call open interest is 11,500. The PCR is ________.", ["3.30", "2.15", "0.61", "1.65"], 3, "PCR = put OI ÷ call OI."],
+["Long call butterfly: strikes 8500, 8600, 8700, net debit Rs 25. Maximum profit per unit is ________.", ["100", "75", "25", "125"], 1, "Max profit = wing width − net debit."],
+["A long hedge: futures bought at Rs 205; at purchase time spot is Rs 160 and futures Rs 163. Effective purchase price per share is ________.", ["Rs 205", "Rs 118", "Rs 202", "Rs 160"], 2, "Effective price = spot − futures gain."],
+["A short hedge: futures sold at Rs 220; at sale time spot is Rs 165 and futures Rs 166. Effective selling price per share is ________.", ["Rs 165", "Rs 111", "Rs 220", "Rs 219"], 3, "Effective price = spot + futures gain."],
+["Portfolio Rs 9,000,000, beta 1.5, index futures 18000, lot 75. Contracts to short ≈ ________.", ["20.00", "5.00", "6.67", "10.00"], 3, "Vp × β ÷ (futures × lot)."],
+["Long futures at Rs 1500 (lot 250), margin 20%. Price rises Rs 40. Return on margin is ________.", ["26.66%", "13.33%", "6.67%", "2.67%"], 1, "Profit ÷ margin."],
+["Bull call spread: buy 17600 call at Rs 295, sell 18000 call at Rs 205. The breakeven (per unit) is ________.", ["17,690", "17,910", "490", "400"], 0, "Net debit d; max profit = width − d; BEP = K1 + d."],
+["Long straddle at strike 23800 with call premium Rs 280 and put premium Rs 90. The maximum loss is ________.", ["280", "24,080", "370", "23,710"], 2, "Loss = total premium; BEPs = K ± total premium."],
+["Put open interest is 14,500 and call open interest is 13,000. The PCR is ________.", ["2.24", "0.90", "1.62", "1.12"], 3, "PCR = put OI ÷ call OI."],
+["Long call butterfly: strikes 22200, 22500, 22800, net debit Rs 55. Maximum profit per unit is ________.", ["55", "355", "300", "245"], 3, "Max profit = wing width − net debit."],
+["A long hedge: futures bought at Rs 1135; at purchase time spot is Rs 1195 and futures Rs 1196. Effective purchase price per share is ________.", ["Rs 1,195", "Rs 1,135", "Rs 1,134", "Rs 1,256"], 2, "Effective price = spot − futures gain."],
+["A short hedge: futures sold at Rs 1170; at sale time spot is Rs 1195 and futures Rs 1196. Effective selling price per share is ________.", ["Rs 1,195", "Rs 1,170", "Rs 1,169", "Rs 1,221"], 2, "Effective price = spot + futures gain."],
+["Portfolio Rs 5,000,000, beta 1.5, index futures 22000, lot 65. Contracts to short ≈ ________.", ["2.62", "10.48", "3.50", "5.24"], 3, "Vp × β ÷ (futures × lot)."],
+["Long futures at Rs 650 (lot 250), margin 10%. Price rises Rs 80. Return on margin is ________.", ["123.08%", "61.54%", "12.31%", "246.16%"], 0, "Profit ÷ margin."],
+["Bull call spread: buy 20100 call at Rs 255, sell 20300 call at Rs 165. The maximum loss (per unit) is ________.", ["20,210", "290", "200", "90"], 3, "Net debit d; max profit = width − d; BEP = K1 + d."],
+["Long straddle at strike 19300 with call premium Rs 215 and put premium Rs 120. The lower breakeven is ________.", ["19,180", "215", "18,965", "19,515"], 2, "Loss = total premium; BEPs = K ± total premium."],
+["Put open interest is 5,000 and call open interest is 5,500. The PCR is ________.", ["1.41", "0.91", "1.82", "1.10"], 1, "PCR = put OI ÷ call OI."],
+["Long call butterfly: strikes 8000, 8300, 8600, net debit Rs 20. Maximum profit per unit is ________.", ["300", "20", "320", "280"], 3, "Max profit = wing width − net debit."],
+["A long hedge: futures bought at Rs 1350; at purchase time spot is Rs 1335 and futures Rs 1337. Effective purchase price per share is ________.", ["Rs 1,335", "Rs 1,348", "Rs 1,322", "Rs 1,350"], 1, "Effective price = spot − futures gain."],
+["A short hedge: futures sold at Rs 1105; at sale time spot is Rs 1115 and futures Rs 1116. Effective selling price per share is ________.", ["Rs 1,104", "Rs 1,115", "Rs 1,105", "Rs 1,126"], 0, "Effective price = spot + futures gain."],
+["Portfolio Rs 5,000,000, beta 0.8, index futures 22000, lot 25. Contracts to short ≈ ________.", ["3.63", "14.54", "9.09", "7.27"], 3, "Vp × β ÷ (futures × lot)."],
+["Long futures at Rs 700 (lot 850), margin 20%. Price rises Rs 45. Return on margin is ________.", ["32.14%", "6.43%", "64.28%", "16.07%"], 0, "Profit ÷ margin."],
+["Bull call spread: buy 21400 call at Rs 135, sell 21600 call at Rs 75. The breakeven (per unit) is ________.", ["21,540", "260", "21,460", "200"], 2, "Net debit d; max profit = width − d; BEP = K1 + d."],
+["Long straddle at strike 9100 with call premium Rs 170 and put premium Rs 80. The maximum loss is ________.", ["250", "9,270", "9,020", "170"], 0, "Loss = total premium; BEPs = K ± total premium."],
+["Put open interest is 14,000 and call open interest is 13,500. The PCR is ________.", ["0.96", "1.54", "1.04", "2.08"], 2, "PCR = put OI ÷ call OI."],
+["Long call butterfly: strikes 19000, 19200, 19400, net debit Rs 55. Maximum profit per unit is ________.", ["200", "145", "255", "55"], 1, "Max profit = wing width − net debit."],
+["A long hedge: futures bought at Rs 270; at purchase time spot is Rs 325 and futures Rs 328. Effective purchase price per share is ________.", ["Rs 325", "Rs 267", "Rs 383", "Rs 270"], 1, "Effective price = spot − futures gain."],
+["A short hedge: futures sold at Rs 965; at sale time spot is Rs 905 and futures Rs 908. Effective selling price per share is ________.", ["Rs 848", "Rs 962", "Rs 965", "Rs 905"], 1, "Effective price = spot + futures gain."],
+["Portfolio Rs 4,000,000, beta 0.8, index futures 24500, lot 75. Contracts to short ≈ ________.", ["3.48", "0.87", "2.18", "1.74"], 3, "Vp × β ÷ (futures × lot)."],
+["Long futures at Rs 1550 (lot 250), margin 15%. Price rises Rs 55. Return on margin is ________.", ["11.83%", "3.55%", "23.66%", "47.32%"], 2, "Profit ÷ margin."],
+["Bull call spread: buy 23300 call at Rs 130, sell 23600 call at Rs 45. The breakeven (per unit) is ________.", ["300", "23,515", "385", "23,385"], 3, "Net debit d; max profit = width − d; BEP = K1 + d."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

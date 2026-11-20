@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 1 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 1: Basics of Derivatives</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["An index option is a ________.",["Debt instrument","Derivative product","Cash market product","Money market instrument"],1,"Index options derive their value from an underlying index, so they are derivatives."],
+["A derivative’s value is derived from the value of ________.",["The issuer’s profits","Its own demand and supply","The underlying asset","The exchange’s turnover"],2,"A derivative is a contract whose value comes from an underlying asset."],
+["Which of these is NOT one of the three criteria for a financial derivative under Ind AS 109?",["Value linked to the underlying","Settled on a future date","No full cash outlay on trade date","It must be traded on an exchange"],3,"The criteria are: linked value, future settlement, and no full cash outlay. OTC derivatives also qualify."],
+["The price of a derivative is primarily determined by ________.",["Demand and supply for the derivative","The price of the underlying","The clearing corporation","The broker’s quote"],1,"The underlying is the raw material; the derivative price follows it regardless of derivative demand-supply."],
+["If the underlying settles on T+2, the derivative on it must settle ________.",["On T+2","Before T+2","Later than T+2","On T+1"],2,"Derivative settlement must be later than that of the underlying."],
+["“Leverage” in derivatives means the ability to ________.",["Borrow from the exchange","Buy the underlying without paying fully upfront","Avoid all risk","Settle only in cash"],1,"No full cash outlay on trade date provides leverage."],
+["The first “exchange traded” derivative contract in the US, listed by CBOT in 1865, was called ________.",["Options","Swaps","Futures contracts","Forward rate agreements"],2,"CBOT listed futures contracts in 1865."],
+["The first marketplace for trading listed options (1973) was ________.",["CME","CBOE","CBOT","Kansas City Board of Trade"],1,"The Chicago Board Options Exchange began listed options trading in 1973."],
+["The first stock index futures were launched in 1982 by ________.",["CBOE","CME","Kansas City Board of Trade","Dojima Exchange"],2,"Kansas City Board of Trade launched the first stock index futures."],
+["The “Tulip Mania” speculative boom (1634–37) happened in ________.",["England","Japan","Holland","USA"],2,"Tulip futures boomed and burst in Holland."],
+["A futures market in rice developed in the late 17th century at Dojima, near Osaka, in ________.",["China","Japan","India","Holland"],1,"It protected rice producers from bad weather and warfare."],
+["Currency futures were introduced in 1972 through the ________ of the Chicago Mercantile Exchange.",["International Monetary Market","Eurodollar market","Treasury market","Options market"],0,"CME introduced the International Monetary Market (IMM) in 1972."],
+["Which of the following did NOT drive the growth of derivatives globally?",["Increased price fluctuations","Global integration of markets","Better communication technology lowering costs","Decreased fluctuations in asset prices"],3,"Increased, not decreased, fluctuations drove the need for risk management tools."],
+["SEBI set up the L. C. Gupta Committee in November 1996 to ________.",["Fix margin rates","Develop a regulatory framework for derivatives trading","Regulate mutual funds","Ban forward trading"],1,"It recommended derivatives be declared ‘securities’ so the securities regulatory framework applies."],
+["The J. R. Varma Committee (1998) recommended measures on ________.",["Taxation of derivatives","Risk containment, including margining","Listing of companies","Foreign investment"],1,"It worked out margining, net-worth, deposit and real-time monitoring requirements."],
+["Derivatives were brought into the definition of ‘securities’ by amending the SCRA in ________.",["1956","1992","1999","2013"],2,"The Securities Laws (Amendment) Act, 1999 included derivatives in ‘securities’."],
+["Section 18A of SCRA deals with ________.",["Penalties for insider trading","Legal validity of derivative contracts","Registration of brokers","Listing norms"],1,"It makes derivative contracts legal and valid if traded and settled on a recognised exchange, etc."],
+["Exchange traded derivatives started in India in June 2000 with ________.",["Stock options","Stock futures","Index futures on Nifty 50 and Sensex","Index options"],2,"Index futures commenced in June 2000."],
+["Index options in India commenced trading in ________.",["June 2000","June 2001","July 2001","November 2001"],1,"Index options began in June 2001."],
+["Options on individual stocks commenced in India in ________.",["June 2000","June 2001","July 2001","November 2001"],2,"Stock options began in July 2001."],
+["Futures on individual stocks commenced in India in ________.",["June 2000","June 2001","July 2001","November 2001"],3,"Single stock futures started in November 2001."],
+["Metropolitan Stock Exchange of India (MSEI) started derivatives trading in ________.",["June 2000","February 2013","July 2001","January 2010"],1,"MSEI started derivative products in February 2013."],
+["A forward contract is ________.",["Standardised and exchange traded","A customised OTC contract between two parties","A right but not an obligation","An exchange of cash flows only"],1,"Forwards are negotiated, customised OTC contracts."],
+["Futures are best described as ________.",["Customised OTC contracts","Exchange traded forward contracts","Options with no premium","Swaps of interest"],1,"Futures are standardised forwards traded on an exchange."],
+["In an option contract, the seller (writer) ________.",["Pays the premium","Receives the premium and has an obligation if exercised","Has only rights","Has no obligation"],1,"The writer receives the premium and must perform if the buyer exercises."],
+["A swap is broadly a ________.",["Single spot trade","Series of forward contracts","Right to buy only","Exchange traded future"],1,"Swaps exchange cash flows per a prearranged formula, like a series of forwards."],
+["Which generic derivative is mainly OTC?",["Futures","Swap","Stock futures","Index futures"],1,"Swaps are mainly OTC."],
+["Participants who use derivatives to reduce their price risk are ________.",["Speculators","Arbitrageurs","Hedgers","Jobbers"],2,"Hedgers face price risk and use derivatives to reduce it."],
+["Speculators prefer derivatives over the underlying because they offer ________.",["Leverage, lower cost and faster execution in size","Guaranteed profit","No risk","Physical delivery"],0,"Derivatives are leveraged, cheaper to transact and faster to execute."],
+["The purchase in one market and simultaneous sale in another to benefit from price differences is ________.",["Mortgage","Arbitrage","Hedging","Speculation"],1,"This is arbitrage."],
+["Which is a feature of OTC derivatives compared to exchange traded ones?",["Standardised contracts","Counterparty risk managed by a clearing corporation","Tailor-made contracts","Centralised position limits"],2,"OTC contracts are tailor made; risk management is decentralised."],
+["In exchange traded derivatives, performance of contracts is guaranteed by ________.",["The broker","The counterparty","A clearing corporation","The investor"],2,"A clearing corporation guarantees settlement."],
+["A limitation of exchange traded derivatives is that ________.",["There is high counterparty risk","Standardisation may lead to an imperfect hedge","Prices are not transparent","Costs are very high"],1,"Amounts and dates cannot be customised."],
+["In India, CCP services for OTC currency and interest rate derivatives are offered by ________.",["NSE Clearing","ICCL","CCIL","NSDL"],2,"Clearing Corporation of India Ltd (CCIL) provides these."],
+["Using derivative prices to gauge expected future spot prices is called ________.",["Hedging","Price discovery","Arbitrage","Margining"],1,"Futures and forwards help in price discovery."],
+["Financial derivatives provide the facility for ________.",["Trading","Hedging","Arbitraging","All of the above"],3,"Derivatives serve all these functions."],
+["The risk of default by the other party is called ________.",["Price risk","Liquidity risk","Counterparty risk","Operational risk"],2,"Counterparty (credit) risk is default by the counterparty."],
+["Inability to exit from a position is ________.",["Liquidity risk","Legal risk","Price risk","Counterparty risk"],0,"That is liquidity risk."],
+["Risk relating to enforceability of contracts is ________.",["Legal or regulatory risk","Price risk","Liquidity risk","Operational risk"],0,"Legal/regulatory risk concerns enforceability."],
+["Operational risk includes losses due to ________.",["Fraud, inadequate documentation or improper execution","Adverse price moves","Counterparty default","Lack of buyers"],0,"These are operational failures."],
+["The Model Risk Disclosure Document is given to clients by the ________ at the time of signing the agreement.",["Exchange","SEBI","Broker","Clearing corporation"],2,"Brokers provide it to clients."],
+["Crude oil, coal and natural gas are examples of ________ underlyings.",["Metal","Agri","Energy","Financial"],2,"Energy resources include oil, coal, electricity and natural gas."],
+["Which of the following is a financial asset used as an underlying?",["Wheat","Foreign exchange","Copper","Cotton"],1,"Shares, bonds and foreign exchange are financial assets."],
+["Wheat, sugar, coffee and cotton are ________ underlyings.",["Energy","Metal","Financial","Agri commodity"],3,"These are agricultural commodities."],
+["The underlying is to a derivative as ________.",["A finished product is to raw material","Raw material is to a finished product","A buyer is to a seller","A broker is to a client"],1,"The underlying is the raw material; the derivative is the finished product."],
+["In the 12th century, European trade fair sellers signed contracts promising ________.",["Immediate delivery","Future delivery of items sold","Cash refunds","Currency exchange"],1,"These were early forward-type contracts."],
+["In the 13th century, English Cistercian Monasteries sold ________ up to 20 years in advance.",["Rice","Tulips","Wool","Butter"],2,"They sold wool in advance to foreign merchants."],
+["In 1848, the Chicago Board of Trade facilitated trading in ________.",["Options","Forward contracts on commodities","Currency futures","Index futures"],1,"Exchange-traded futures followed in 1865."],
+["The Chicago Butter and Egg Board was later renamed ________.",["CBOE","CBOT","Chicago Mercantile Exchange (CME)","Kansas City Board of Trade"],2,"It was reorganised in 1919 to allow futures trading and became CME."],
+["The first successful pure interest rate futures, introduced by CBOT in 1975, was the ________.",["Eurodollar future","T-bill future","T-bond future","Currency future"],1,"Treasury bill futures came in 1975; T-bond futures in 1977."],
+["The Eurodollar futures contract was introduced in 1982 by ________.",["CBOT","CBOE","CME","NSE"],2,"CME introduced Eurodollar futures."],
+["In 1983, CBOE introduced options on stock indices such as ________.",["Nifty 50 and Sensex","S&P 100 and S&P 500","Nikkei and Hang Seng","FTSE and DAX"],1,"OEX (S&P 100) and SPX (S&P 500) options were introduced."],
+["Which is a factor behind growth of the derivatives market?",["Rising transaction costs","Isolated national markets","Latest communication technology reducing transaction costs","Stable asset prices"],2,"Technology reduced costs; other drivers include volatility and integration."],
+["The L. C. Gupta Committee submitted its report on ________.",["November 18, 1996","March 17, 1998","June 1998","October 1998"],1,"The report was submitted on March 17, 1998."],
+["The L. C. Gupta Committee had how many members?",["12","18","24","30"],2,"It was a 24-member committee."],
+["The group set up in June 1998 to recommend risk containment measures was chaired by ________.",["Dr. L. C. Gupta","Prof. J. R. Varma","Dr. Aparna Bhat","Mr. Sunil Gawde"],1,"Prof. J. R. Varma chaired it; the report came in October 1998."],
+["In March 2000 the government repealed a three-decade-old notification that prohibited ________.",["Forward trading in securities","Foreign investment","Stock lending","Short selling of commodities"],0,"This cleared the way for derivatives trading."],
+["The definition of ‘derivative’ in the SCRA, 1956 includes ________.",["Only index futures","Only options","Commodity derivatives","Only swaps"],2,"Commodity derivatives are expressly included."],
+["Under Section 18A of SCRA, derivative contracts are legal and valid if ________.",["Traded on a recognised stock exchange and settled via its clearing house","Agreed privately by any two parties","Settled only in physical delivery","Approved by the broker"],0,"They must be traded on a recognised exchange and settled per its rules and bye-laws."],
+["SEBI permitted which exchanges to start the equity derivatives segment in June 2000?",["BSE and NSE","MSEI and BSE","NSE and MSEI","Only NSE"],0,"BSE and NSE were permitted."],
+["Index futures launched in India in June 2000 were based on ________.",["Nifty Bank and Nifty IT","Nifty 50 and Sensex","Sensex and Nifty Next 50","Nifty Midcap only"],1,"Nifty 50 and Sensex futures started first."],
+["In a forward contract, both parties are obliged to honour the deal ________.",["Only if the price rises","Irrespective of the underlying price at delivery","Only if the exchange approves","Only with margin"],1,"Forwards are binding commitments."],
+["Futures contracts are standardised in terms of ________.",["Price and premium","Lot size and maturity date","Buyer and seller","Margin only"],1,"Standardisation lets them trade on exchanges."],
+["The buyer of an option ________.",["Receives the premium","Has an obligation to deliver","Pays the premium and buys the right","Must exercise"],2,"The buyer pays the premium for a right, not an obligation."],
+["Swaps help manage risks associated with ________.",["Volatile interest rates, exchange rates and commodity prices","Only equity prices","Only credit ratings","Only taxation"],0,"They exchange cash flows to manage such risks."],
+["Options are traded in the ________ market.",["OTC only","Exchange only","Both OTC and exchange","Neither"],2,"Options trade on both."],
+["Futures are traded in the ________ market.",["OTC","Exchange","Both equally","Private"],1,"Futures are exchange traded."],
+["The three broad types of derivatives market participants are ________.",["Hedgers, speculators and arbitrageurs","Brokers, dealers and clients","Buyers, sellers and jobbers","Banks, funds and insurers"],0,"An individual can play different roles in different circumstances."],
+["Participants who take positions based on a view of future price movement are ________.",["Hedgers","Speculators","Arbitrageurs","Clearing members"],1,"Speculators (traders) predict price moves."],
+["Arbitrage opportunities usually do not last long because ________.",["Exchanges ban them","Arbitrageurs rush in and close the price gap","Prices never differ","Margins rise"],1,"Arbitrage activity removes the price difference."],
+["Which of these use derivatives to hedge exposures?",["Only individuals","Corporations, investing institutions and banks","Only exchanges","Only regulators"],1,"They hedge interest rate, share price, forex and commodity exposures."],
+["Prices in exchange traded derivatives are determined through ________.",["Private negotiation","An anonymous auction platform of buyers and sellers","Broker quotes","Government notification"],1,"Exchange prices come from the interaction of buyers and sellers."],
+["The OTC market is ________.",["A physical marketplace","A collection of broker-dealers linked by phone or electronic media","Run by one clearing house","Open only to retail investors"],1,"It is more a way of doing business than a place."],
+["Typical OTC derivative participants include ________.",["Banks, financial institutions, hedge funds and corporations","Only retail investors","Only exchanges","Only SEBI"],0,"They are sophisticated counterparties."],
+["OTC derivatives are less regulated because ________.",["They are illegal","Transactions are among qualified counterparties able to look after themselves","They are small","They are guaranteed"],1,"Participants are assumed to be capable."],
+["In OTC markets, there are ________.",["Centralised position limits","No formal centralised limits on positions, leverage or margining","Mandatory daily margins","A central guarantee fund"],1,"Risk management is decentralised."],
+["Disclosure of OTC transactions to the market is ________.",["Full and immediate","Little or none","Mandatory daily","Done by exchanges"],1,"OTC transactions are private."],
+["Which is an advantage of exchange traded derivatives?",["Customisation","Transparency and elimination of counterparty risk","No margin","Private deals"],1,"Clearing corporation guarantee removes counterparty risk."],
+["Cash settlement in ETD may not suit ________.",["Speculators","Arbitrageurs","Actual hedgers needing the asset","Brokers"],2,"Hedgers who need physical delivery may find it limiting."],
+["Daily MTM and margin requirements in ETD may cause ________.",["Operational issues for participants","Counterparty default","Higher OTC volumes","Price manipulation"],0,"They are listed as limitations."],
+["Exchanges abroad offer customised contracts through ________.",["RFQ and EFP","CCP and CSD","SPAN and VaR","MTM and RBI"],0,"Request-for-quote and Exchange-for-Physical facilities."],
+["In OTC markets, standardised products are called ________ and customised ones ________.",["Exotic; vanilla","Vanilla; exotic","Basic; complex","Spot; forward"],1,"Vanilla = standard; exotic = customised."],
+["Electronic platforms in OTC markets performing exchange-like price discovery are called ________.",["E-trading platforms","Clearing houses","Depositories","Settlement banks"],0,"They help in price discovery and execution."],
+["OTC markets have adopted which exchange feature?",["Lot-size standardisation","Margining and mark-to-market","Anonymous auction","Circuit filters"],1,"These processes proved useful, so OTC markets use them too."],
+["Hedging with derivatives works because ________.",["Profits on the derivative can offset losses in the underlying","Derivatives never lose value","Prices are fixed","Margins are refunded"],0,"The derivative moves opposite to the asset held."],
+["Derivatives improve market efficiency because ________.",["They replicate asset payoffs, keeping prices in equilibrium","They ban arbitrage","They reduce volumes","They fix prices"],0,"Arbitrage keeps underlying and derivative prices aligned."],
+["Interest rate swaps can give a company ________.",["Equity ownership","A more favourable rate than direct borrowing","Tax exemption","Free credit"],1,"This is an example of access to otherwise unavailable markets."],
+["RBI intervenes in the forex market through derivatives for ________.",["Taxation","INR stability","Equity listing","Margin rules"],1,"Central banks use derivatives for price stability."],
+["With derivatives, the underlying market typically sees ________.",["Lower volumes","Higher trading volumes","No change","Closure"],1,"More players participate once risk transfer is possible."],
+["About speculation, the workbook says it is ________.",["The only use of derivatives","Not the only use, and probably not the most important","Prohibited","The main purpose"],1,"Hedging and price discovery are also key."],
+["Derivatives help shift speculative trades from the ________.",["Organised to unorganised market","Unorganised to organised market","Cash to OTC market","Foreign to domestic market"],1,"Surveillance and risk management in organised space aid stability."],
+["Loss on a position because of a price move is called ________.",["Price risk","Legal risk","Liquidity risk","Operational risk"],0,"That is price risk."],
+["Because derivatives are leveraged, they ________.",["Suit everyone","May not suit those with limited resources, experience or risk tolerance","Are risk free","Need no margin"],1,"Suitability should be considered carefully."],
+["The Model Risk Disclosure Document should be read before trading in ________.",["Only F&O","Only cash segment","Cash or F&O segments of exchanges","Only OTC"],2,"It covers equities and F&O segments."],
+["Derivatives can cause financial destruction when ________.",["Used properly","Not used properly","Exchange traded","Hedged"],1,"Misuse of leveraged instruments is dangerous."],
+["Forwards differ from futures in that forwards are ________.",["Standardised","Customised and OTC","Exchange guaranteed","Margined daily"],1,"Futures are the standardised exchange versions."],
+["A swap’s key feature is to ________.",["Exchange returns from one asset for returns from another or cash over a period","Give a right to buy","Fix a price on one date","Pay a premium upfront"],0,"Swaps are mainly OTC."],
+["The Dojima rice futures market was developed to protect producers from ________.",["Taxes","Bad weather or warfare","Currency swings","Inflation"],1,"It protected rice producers."],
+["Which instrument gives a right but not an obligation?",["Forward","Future","Option","Swap"],2,"Only the option buyer has a right without obligation."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

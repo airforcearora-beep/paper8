@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 6 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 6: Trading Mechanism (100 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["Futures and options trading in India is ________.", ["Open outcry", "Electronic, screen based", "Over the phone only", "Floor based"], 1, "Bids and offers appear on terminals."],
+["Open outcry trading takes place in a ________.", ["Pit", "Terminal", "Depository", "Bank"], 0, "Members shout or use hand signals."],
+["Indian derivative trading systems support ________.", ["An order driven market", "A quote driven market only", "Dealer markets", "Auction only"], 0, "Complete transparency of operations."],
+["Currently equity derivatives trade on ________.", ["BSE, NSE and MSEI", "Only NSE", "Only BSE", "NSE and MCX"], 0, "Three exchanges."],
+["Membership of each exchange segment is ________.", ["Separate", "Common", "Automatic", "Free"], 0, "A member needs equity derivatives segment membership."],
+["The trading member ID is ________.", ["Common to all users of that member", "Unique per user", "Same for all members", "Issued by SEBI"], 0, "Users have unique user IDs."],
+["An ‘only trading member’ ________.", ["Cannot clear and settle; uses a TCM or PCM", "Can clear for others", "Is a bank", "Is a custodian"], 0, "It has no clearing rights."],
+["A trading cum clearing member can clear ________.", ["Own, clients’ and other TMs’ trades", "Only own trades", "Only clients’ trades", "No trades"], 0, "It is both TM and CM."],
+["A professional clearing member ________.", ["Is not a trading member", "Is a trading member", "Cannot clear", "Is a client"], 0, "Typically a bank or custodian."],
+["A self clearing member can clear ________.", ["Own and own clients’ trades only", "Other TMs’ trades", "Custodians’ trades", "Nothing"], 0, "It cannot clear other TMs’ trades."],
+["A CP code lets an institution ________.", ["Trade with multiple brokers but settle via one clearing member", "Skip margins", "Clear for others", "Avoid STT"], 0, "Custodian participant."],
+["An Authorised Person is ________.", ["An agent of the stock broker, not an exchange member", "An exchange member", "A clearing member", "A regulator"], 0, "The trading member is responsible for the AP’s acts."],
+["SEBI permits exchanges to set derivatives trading hours between ________.", ["9:00 AM and 11:55 PM", "9:15 AM and 3:30 PM", "8:00 AM and 5:00 PM", "10:00 AM and 4:00 PM"], 0, "If risk systems are commensurate."],
+["The pre-open session for derivatives lasts ________.", ["15 minutes, 9:00–9:15", "30 minutes", "5 minutes", "1 hour"], 0, "Call auction mechanism."],
+["In pre-open, from 9:05 to 9:10 order entry is allowed for ________.", ["Limit orders only", "Market orders only", "Both", "None"], 0, "Market orders cannot be modified in this period."],
+["Pre-open applies to ________ futures contracts.", ["Current month", "All months", "Options", "Far month"], 0, "Extended to next month in the last five trading days."],
+["Regular trading session is from ________.", ["9:15 to 15:40", "9:00 to 15:30", "9:30 to 16:00", "10:00 to 15:00"], 0, "Monday to Friday."],
+["The highest user level at a trading member is the ________.", ["Corporate Manager", "Branch Manager", "Dealer", "Clerk"], 0, "Order: Corporate Manager, Branch Manager, Dealer."],
+["Only the ________ can define exposure limits for branches.", ["Corporate Manager", "Branch Manager", "Dealer", "Exchange"], 0, "A facility available only to him."],
+["A dealer can view ________.", ["Only his own orders and trades", "All dealers’ orders", "Branch orders", "Firm reports"], 0, "He has no access to others."],
+["A day order ________.", ["Is valid only for the day it is entered", "Is valid for a week", "Never expires", "Is a market order"], 0, "It is cancelled at the end of the day."],
+["An IOC order ________.", ["Cancels unmatched quantity immediately; partial match possible", "Waits for the day", "Must be fully matched", "Is a stop-loss"], 0, "Immediate or cancel."],
+["A buy limit order executes at ________.", ["The limit price or lower", "The limit price or higher", "Any price", "Market price only"], 0, "A sell limit executes at the limit or higher."],
+["A market order executes at ________.", ["The best available price", "A specified price", "The previous close", "The trigger price"], 0, "Price is not specified."],
+["A stop-loss order is activated when ________.", ["The trigger price is reached or crossed", "The day starts", "Volume rises", "Margin is paid"], 0, "It then enters as market or limit order."],
+["For a stop-loss sell limit order, the limit price must be ________ the trigger price.", ["Lower than or equal to", "Higher than", "Unrelated to", "Double"], 0, "E.g., trigger 95, limit 92."],
+["You bought 100 XYZ at Rs 780 and want max loss of Rs 1,000. Place ________.", ["A stop-loss sell with trigger and limit Rs 770", "A limit buy at 790", "A limit sell at 770", "A limit buy at 770"], 0, "Loss 10 × 100 = Rs 1,000."],
+["Proprietary (pro) account orders are normally allowed from ________ location(s).", ["One", "Any", "Two", "None"], 0, "Others need an exchange undertaking."],
+["A broker must disclose ________ at the time of KYC.", ["Whether it also does proprietary trading", "Its profits", "Other clients", "Margins of others"], 0, "For transparency."],
+["Continuous order matching is based on ________ priority.", ["Price-time", "Quantity", "Client", "Random"], 0, "Best price first, then earliest time."],
+["The best buy order is the one with the ________ price.", ["Highest", "Lowest", "Earliest", "Largest"], 0, "Best sell is the lowest price."],
+["Passive orders are ________.", ["Orders lying unmatched in the system", "Orders entering and matching immediately", "Cancelled orders", "Stop orders"], 0, "Active orders enter and match."],
+["Orders are matched at the ________ order price.", ["Passive", "Active", "Average", "Closing"], 0, "The resting order sets the price."],
+["Quantity is ________ in order matching priority.", ["Not a factor", "The first factor", "Equal to time", "The only factor"], 0, "Priority is price then time."],
+["The call auction equilibrium price is the one that ________.", ["Maximises quantity matched", "Minimises trades", "Equals last close", "Is chosen by exchange"], 0, "All orders execute at one price."],
+["In a tie on matched quantity, equilibrium price has ________.", ["Minimum unmatched quantity, then closest to reference price", "Highest price", "Lowest price", "Random"], 0, "Reference is e.g. previous close."],
+["Unmatched pre-open orders are ________.", ["Carried to the normal market with original time stamp", "Cancelled", "Priced at close", "Doubled"], 0, "Time priority is retained."],
+["The operating price range for futures is ________ of base price.", ["10%", "5%", "20%", "2%"], 0, "For index and stock futures."],
+["There is no ________ for futures, but a range prevents erroneous orders.", ["Daily operating price range", "Lot size", "Margin", "Expiry"], 0, "It is kept at a percentage of base price."],
+["Option contract price ranges are based on ________.", ["Delta, volatility and previous close", "Face value", "Lot size", "Beta"], 0, "Subject to a minimum range."],
+["The band flexes to 15% when ________ trades occur at or above 9.90%.", ["50 trades, 10 UCCs, 3 brokerages each side", "10 trades", "100 trades from one client", "5 trades"], 0, "Per the SEBI circular."],
+["The band flexes to 20% after trades at or above ________.", ["14.90%", "9.90%", "19.90%", "4.90%"], 0, "At the 15% band."],
+["Brokers must keep evidence of client orders such as ________.", ["Telephone recordings, emails and logs", "Nothing", "Only signatures", "Social media"], 0, "Records are kept for at least three years."],
+["Client code modification is allowed only to ________.", ["Rectify a genuine error", "Move profits", "Hide trades", "Change segments"], 0, "Penalty may apply."],
+["Proprietary trades ________ be modified to client trades.", ["May not", "May freely", "May on request", "May after 1 day"], 0, "And vice versa."],
+["A trade annulment request must be made within ________ of the trade.", ["30 minutes", "5 minutes", "2 hours", "1 day"], 0, "Up to 60 minutes in exceptional cases."],
+["The trade annulment fee is ________ of the trade value.", ["5%, min Rs 1 lakh, max Rs 10 lakh", "1%", "0.5%", "10%"], 0, "Credited to the Investor Protection Fund."],
+["A stock must be among the top ________ by market cap and traded value for F&O.", ["500", "100", "200", "1,000"], 0, "On a rolling six-month basis."],
+["The median quarter-sigma order size must be at least ________.", ["Rs 75 lakh", "Rs 5 lakh", "Rs 1 crore", "Rs 15 lakh"], 0, "MQSOS criterion."],
+["MWPL of a stock must be at least ________.", ["Rs 1,500 crore", "Rs 500 crore", "Rs 5,000 crore", "Rs 100 crore"], 0, "Market wide position limit."],
+["Average daily delivery value must be at least ________.", ["Rs 35 crore", "Rs 5 crore", "Rs 100 crore", "Rs 1 crore"], 0, "In the previous six months."],
+["A stock exits F&O if it fails criteria for ________ continuously.", ["Three months", "One month", "Six months", "One year"], 0, "Per the SEBI circular."],
+["An excluded stock must meet criteria for ________ to be reintroduced.", ["Six consecutive months", "One month", "Three months", "One year"], 0, "Subject to SEBI approval."],
+["Index derivatives need ________ weight in eligible stocks.", ["At least 80%", "At least 50%", "100%", "At least 20%"], 0, "No ineligible stock above 5%."],
+["A non-benchmark index needs at least ________ constituents.", ["14", "30", "50", "10"], 0, "Top weight ≤ 20%, top three ≤ 45%."],
+["Index Product Success Framework needs average daily turnover of ________.", ["Rs 10 crore", "Rs 75 crore", "Rs 1 crore", "Rs 500 crore"], 0, "And daily open interest of Rs 4 crore."],
+["A surrogate index requires correlation of at least ________.", ["0.90", "0.50", "0.70", "0.99"], 0, "Over the previous six months."],
+["Corporate action adjustments keep ________ unchanged.", ["The value of positions", "Strike prices", "Lot size", "Contract months"], 0, "So moneyness status is retained."],
+["Adjustments may change ________.", ["Strike price, position and market lot", "Only premium", "Expiry only", "Margin only"], 0, "Depending on the corporate action."],
+["Adjustments are made on the ________.", ["Last cum day after close", "Ex-date morning", "Record date", "Expiry"], 0, "On all open positions."],
+["Dividends below ________ of market value are ordinary.", ["2%", "5%", "10%", "1%"], 0, "No strike adjustment for them."],
+["On merger, unexpired contracts are settled at ________.", ["The last closing price on the last cum-date", "Zero", "The ex-date price", "Average price"], 0, "Compulsory settlement."],
+["Trading costs include ________.", ["User charges, statutory charges and impact cost", "Only brokerage", "Only STT", "Only taxes"], 0, "As per the workbook."],
+["STT on equity futures is ________ payable by the ________.", ["0.05%; seller", "0.1%; buyer", "0.15%; seller", "0.05%; buyer"], 0, "On the traded price."],
+["STT on option premium is ________ payable by the ________.", ["0.15%; seller", "0.05%; buyer", "0.1%; seller", "0.15%; buyer"], 0, "Exercised options: 0.15% on intrinsic value by buyer."],
+["A technical glitch is a malfunction lasting at least ________.", ["5 minutes contiguous", "1 minute", "1 hour", "1 day"], 0, "Brokers inform exchanges and clients within 2 hours."],
+["The Root Cause Analysis report is due within ________.", ["14 days", "1 day", "30 days", "7 days"], 0, "Preliminary report by T+1."],
+["NSE acts as the alternative trading venue for ________ and vice versa.", ["BSE", "MSEI", "MCX", "CDSL"], 0, "For business continuity."],
+["STT on selling one futures lot (lot 100) at Rs 1250 at 0.05% is ________.", ["Rs 62.5", "Rs 125", "Rs 625", "Rs 187.5"], 0, "STT = 0.05% × price × lot."],
+["STT on selling an option lot (25) at premium Rs 390 at 0.15% is ________.", ["Rs 146.25", "Rs 9.75", "Rs 4.88", "Rs 14.62"], 3, "STT = 0.15% × premium × lot."],
+["A call (strike 24000, lot 50) is exercised at settlement 24190. STT at 0.15% on intrinsic value is ________.", ["Rs 14.25", "Rs 1,814.25", "Rs 4.75", "Rs 142.5"], 0, "STT on exercise is on intrinsic value."],
+["Bonus 2:5. Old strike Rs 950. The new strike is ________.", ["Rs 678.57", "Rs 950", "Rs 2,375", "Rs 1,330"], 0, "New strike = old strike ÷ (A+B)/B."],
+["Base price of a futures contract is Rs 175. The lower 10% operating range limit is ________.", ["Rs 192.5", "Rs 166.25", "Rs 140", "Rs 157.5"], 3, "Base × (1 ± 10%)."],
+["Rights issue: 3 existing shares, 1 rights entitlement, cum price Rs 540, issue price Rs 445. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.9560", "0.0440", "0.8241", "0.9660"], 0, "E = (P − S)/(A + B); factor = (P − E)/P."],
+["STT on selling one futures lot (lot 250) at Rs 1750 at 0.05% is ________.", ["Rs 437.5", "Rs 656.25", "Rs 218.75", "Rs 2,187.5"], 2, "STT = 0.05% × price × lot."],
+["STT on selling an option lot (25) at premium Rs 80 at 0.15% is ________.", ["Rs 2", "Rs 3", "Rs 30", "Rs 1"], 1, "STT = 0.15% × premium × lot."],
+["A call (strike 20300, lot 75) is exercised at settlement 20780. STT at 0.15% on intrinsic value is ________.", ["Rs 54", "Rs 540", "Rs 2,337.75", "Rs 18"], 0, "STT on exercise is on intrinsic value."],
+["Bonus 3:2. Old strike Rs 2200. The new strike is ________.", ["Rs 5,500", "Rs 880", "Rs 1,466.67", "Rs 2,200"], 1, "New strike = old strike ÷ (A+B)/B."],
+["Base price of a futures contract is Rs 1820. The lower 10% operating range limit is ________.", ["Rs 1,729", "Rs 1,456", "Rs 2,002", "Rs 1,638"], 3, "Base × (1 ± 10%)."],
+["Rights issue: 4 existing shares, 2 rights entitlement, cum price Rs 890, issue price Rs 855. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.9934", "1.0034", "0.9607", "0.0066"], 0, "E = (P − S)/(A + B); factor = (P − E)/P."],
+["STT on selling one futures lot (lot 25) at Rs 1400 at 0.05% is ________.", ["Rs 175", "Rs 35", "Rs 52.5", "Rs 17.5"], 3, "STT = 0.05% × price × lot."],
+["STT on selling an option lot (65) at premium Rs 75 at 0.15% is ________.", ["Rs 4.88", "Rs 73.12", "Rs 2.44", "Rs 7.31"], 3, "STT = 0.15% × premium × lot."],
+["A call (strike 17200, lot 75) is exercised at settlement 17430. STT at 0.15% on intrinsic value is ________.", ["Rs 1,960.88", "Rs 8.62", "Rs 25.88", "Rs 258.75"], 2, "STT on exercise is on intrinsic value."],
+["Bonus 3:5. Old strike Rs 2900. The new strike is ________.", ["Rs 1,812.5", "Rs 4,640", "Rs 4,833.33", "Rs 2,900"], 0, "New strike = old strike ÷ (A+B)/B."],
+["Base price of a futures contract is Rs 2920. The lower 10% operating range limit is ________.", ["Rs 3,212", "Rs 2,628", "Rs 2,336", "Rs 2,774"], 1, "Base × (1 ± 10%)."],
+["Rights issue: 2 existing shares, 2 rights entitlement, cum price Rs 200, issue price Rs 170. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.0375", "0.9725", "0.8500", "0.9625"], 3, "E = (P − S)/(A + B); factor = (P − E)/P."],
+["STT on selling one futures lot (lot 75) at Rs 1125 at 0.05% is ________.", ["Rs 42.19", "Rs 126.56", "Rs 421.88", "Rs 84.38"], 0, "STT = 0.05% × price × lot."],
+["STT on selling an option lot (250) at premium Rs 115 at 0.15% is ________.", ["Rs 431.25", "Rs 28.75", "Rs 14.38", "Rs 43.12"], 3, "STT = 0.15% × premium × lot."],
+["A call (strike 21600, lot 75) is exercised at settlement 21730. STT at 0.15% on intrinsic value is ________.", ["Rs 14.62", "Rs 4.88", "Rs 2,444.62", "Rs 146.25"], 0, "STT on exercise is on intrinsic value."],
+["Bonus 3:5. Old strike Rs 2650. The new strike is ________.", ["Rs 2,650", "Rs 4,240", "Rs 4,416.67", "Rs 1,656.25"], 3, "New strike = old strike ÷ (A+B)/B."],
+["Base price of a futures contract is Rs 2305. The lower 10% operating range limit is ________.", ["Rs 2,074.5", "Rs 2,189.75", "Rs 1,844", "Rs 2,535.5"], 0, "Base × (1 ± 10%)."],
+["Rights issue: 3 existing shares, 3 rights entitlement, cum price Rs 580, issue price Rs 510. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.9899", "0.8793", "0.0201", "0.9799"], 3, "E = (P − S)/(A + B); factor = (P − E)/P."],
+["STT on selling one futures lot (lot 75) at Rs 550 at 0.05% is ________.", ["Rs 41.25", "Rs 206.25", "Rs 20.62", "Rs 61.88"], 2, "STT = 0.05% × price × lot."],
+["STT on selling an option lot (65) at premium Rs 315 at 0.15% is ________.", ["Rs 30.71", "Rs 10.24", "Rs 307.12", "Rs 20.48"], 0, "STT = 0.15% × premium × lot."],
+["A call (strike 23200, lot 100) is exercised at settlement 23260. STT at 0.15% on intrinsic value is ________.", ["Rs 3,489", "Rs 90", "Rs 3", "Rs 9"], 3, "STT on exercise is on intrinsic value."],
+["Bonus 2:2. Old strike Rs 2500. The new strike is ________.", ["Rs 1,250", "Rs 5,000", "Rs 1,375", "Rs 2,500"], 0, "New strike = old strike ÷ (A+B)/B."],
+["Base price of a futures contract is Rs 1005. The upper 10% operating range limit is ________.", ["Rs 1,105.5", "Rs 1,206", "Rs 904.5", "Rs 1,055.25"], 0, "Base × (1 ± 10%)."],
+["Rights issue: 3 existing shares, 2 rights entitlement, cum price Rs 330, issue price Rs 310. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.9394", "0.9879", "0.9979", "0.0121"], 1, "E = (P − S)/(A + B); factor = (P − E)/P."],
+["STT on selling one futures lot (lot 65) at Rs 2575 at 0.05% is ________.", ["Rs 167.38", "Rs 83.69", "Rs 836.88", "Rs 251.06"], 1, "STT = 0.05% × price × lot."],
+["STT on selling an option lot (250) at premium Rs 295 at 0.15% is ________.", ["Rs 73.75", "Rs 36.88", "Rs 1,106.25", "Rs 110.62"], 3, "STT = 0.15% × premium × lot."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

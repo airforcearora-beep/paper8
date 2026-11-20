@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NISM Series VIII - Study Portal</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: #e2e8f0;
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
+        }
+
+        /* Special Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .res-btn {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 18px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-align: center;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .res-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+        }
+
+        .res-btn.exam {
+            background-color: var(--accent);
+        }
+
+        .res-btn.exam:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .res-btn span.sub {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Chapters Grid */
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .chap-btn {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 20px 16px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            text-align: center;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chap-btn:hover {
+            background-color: var(--card-hover);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .chap-num {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 6px;
+        }
+
+        .chap-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>NISM Series VIII: Equity Derivatives</h1>
+        <p>Study Materials, Revision Notes & Chapter-wise MCQ Practice</p>
+    </header>
+
+    <!-- Study Materials & Mock Exam Section -->
+    <h2>Study Materials & Mock Test</h2>
+    <div class="resources-grid">
+        <!-- UPDATE THE PDF FILENAME BELOW TO MATCH YOUR EXACT FILE -->
+        <a href="NISM-Series-VIII Equity Derivatives Certification Examination.pdf" target="_blank" class="res-btn">
+            📄 PDF Notes
+            <span class="sub">Official Workbook / PDF</span>
+        </a>
+
+        <a href="NISM VIII – Mock Exam (100 Questions).html" class="res-btn exam">
+            ⏱️ Mock Exam
+            <span class="sub">100 Questions Full Test</span>
+        </a>
+
+        <a href="NISM VIII – Quick Revision Sheet.html" class="res-btn">
+            ⚡ Revision Sheet
+            <span class="sub">Quick Formula & Key Points</span>
+        </a>
+
+        <a href="NISM VIII – Audio Notes.html" class="res-btn">
+            🎧 Audio Notes
+            <span class="sub">Listen & Revise</span>
+        </a>
+    </div>
+
+    <!-- Chapters Navigation Section -->
+    <h2>Chapter-wise MCQ Practice</h2>
+    <div class="chapters-grid">
+        <a href="NISM VIII – Chapter 1 MCQ Practice.html" class="chap-btn">
+            <span class="chap-num">Chapter 1</span>
+            <span class="chap-info">MCQ Practice</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 2 MCQ Practice.html" class="chap-btn">
+            <span class="chap-num">Chapter 2</span>
+            <span class="chap-info">MCQ Practice</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 3 MCQ Practice (200 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 3</span>
+            <span class="chap-info">200 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 4 MCQ Practice (200 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 4</span>
+            <span class="chap-info">200 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 5 MCQ Practice (100 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 5</span>
+            <span class="chap-info">100 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 6 MCQ Practice (100 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 6</span>
+            <span class="chap-info">100 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 7 MCQ Practice (100 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 7</span>
+            <span class="chap-info">100 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 8 MCQ Practice (50 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 8</span>
+            <span class="chap-info">50 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 9 MCQ Practice (50 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 9</span>
+            <span class="chap-info">50 Questions</span>
+        </a>
+
+        <a href="NISM VIII – Chapter 10 MCQ Practice (50 Questions).html" class="chap-btn">
+            <span class="chap-num">Chapter 10</span>
+            <span class="chap-info">50 Questions</span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

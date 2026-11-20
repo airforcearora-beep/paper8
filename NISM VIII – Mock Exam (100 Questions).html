@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Mock Exam Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · NISM VIII Mock Exam (100 Questions · 2 hours)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["STT on selling an option lot (65) at premium Rs 315 at 0.15% is ________.", ["Rs 30.71", "Rs 10.24", "Rs 307.12", "Rs 20.48"], 0, "[Ch 6] STT = 0.15% × premium × lot."],
+["Admission as a trading member considers ________.", ["Only age", "Only education", "Age, capital adequacy, track record, education, experience and fit and proper", "Only capital"], 2, "[Ch 8] Under the Intermediaries Regulations."],
+["In futures, if the MTM amount is not deposited in time, the broker may ________.", ["Pay it", "Waive it", "Close the exchange", "Liquidate the client’s position"], 3, "[Ch 10] The client remains liable for losses."],
+["Nifty 50 and Sensex options can have maximum maturity up to ________.", ["1 year", "3 years", "5 years", "10 years"], 2, "[Ch 4] With weekly, monthly, quarterly and half-yearly expiries."],
+["During an exchange outage, trading ________.", ["Moves to OTC", "Continues in unaffected segments and other exchanges", "Stops everywhere", "Is cancelled"], 1, "[Ch 8] The affected exchange activates its DR site."],
+["Spot is 22,200 and futures is 22,105. The basis (spot − futures) is ________.", ["+105", "−95", "+190", "+95"], 3, "[Ch 3] Basis = spot − futures."],
+["You bought a put (strike 23500) at premium Rs 275, lot 100. The index closes at 23350 on expiry. Net profit or loss is ________.", ["+15,000", "−12,000", "−12,500", "+12,500"], 2, "[Ch 4] (Payoff 150 vs premium 275) × 100, sign by position."],
+["A put option has strike Rs 2,355 and spot Rs 2,320. Its intrinsic value is ________.", ["Rs 70", "Rs 40", "Rs 35", "Rs 4,675"], 2, "[Ch 4] Call: S − X; put: X − S; minimum zero."],
+["Index derivatives must have a contract value of at least ________ at introduction.", ["Rs 5 lakh", "Rs 10 lakh", "Rs 15 lakh", "Rs 20 lakh"], 2, "[Ch 3] SEBI’s minimum for index derivatives is Rs 15 lakh."],
+["Futures are attractive to speculators because ________.", ["Creating a position is cheaper than trading the underlying", "They carry no risk", "Profits are guaranteed", "They need no margin"], 0, "[Ch 3] Leverage gives greater potential returns."],
+["5 contracts at Rs 1900, lot 100, initial margin 6%. Margin required is ________.", ["Rs 114,000", "Rs 57,000", "Rs 28,500", "Rs 950,000"], 1, "[Ch 7] Margin = price × lot × contracts × %."],
+["Futures have two settlements: daily MTM and ________.", ["Final settlement", "Weekly settlement", "None", "Annual"], 0, "[Ch 7] On the last trading day."],
+["A call option has strike Rs 725 and spot Rs 765. Its intrinsic value is ________.", ["Rs 1,490", "Rs 80", "Rs 40", "Rs 45"], 2, "[Ch 4] Call: S − X; put: X − S; minimum zero."],
+["In an equal-weighted index, ________.", ["Higher priced stocks dominate", "All stocks have the same weight", "Largest caps dominate", "Only liquid stocks count"], 1, "[Ch 2] Share quantities are adjusted for equal weights."],
+["A call option has strike Rs 245 and spot Rs 215. Its intrinsic value is ________.", ["Rs 460", "Rs 30", "Rs 0", "Rs 60"], 2, "[Ch 4] Call: S − X; put: X − S; minimum zero."],
+["Rights issue: 3 existing shares, 1 rights entitlement, cum price Rs 540, issue price Rs 445. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.9560", "0.0440", "0.8241", "0.9660"], 0, "[Ch 6] E = (P − S)/(A + B); factor = (P − E)/P."],
+["The original Black-Scholes model assumes ________.", ["European options, constant volatility, no dividends", "American options", "Changing volatility", "Dividends included"], 0, "[Ch 4] Adjustments can be made for dividends."],
+["Currently equity derivatives trade on ________.", ["BSE, NSE and MSEI", "Only NSE", "Only BSE", "NSE and MCX"], 0, "[Ch 6] Three exchanges."],
+["Through novation, the clearing corporation becomes ________.", ["Buyer to every seller and seller to every buyer", "Only the buyer", "Only the seller", "A broker"], 0, "[Ch 7] It is the central counterparty."],
+["A long hedge: futures bought at Rs 270; at purchase time spot is Rs 325 and futures Rs 328. Effective purchase price per share is ________.", ["Rs 325", "Rs 267", "Rs 383", "Rs 270"], 1, "[Ch 5] Effective price = spot − futures gain."],
+["STT on sale of futures is ________ paid by the seller.", ["0.05%", "1%", "0.15%", "0.1%"], 0, "[Ch 9] On the traded price."],
+["The first stock index futures were launched in 1982 by ________.", ["CBOE", "CME", "Kansas City Board of Trade", "Dojima Exchange"], 2, "[Ch 1] Kansas City Board of Trade launched the first stock index futures."],
+["Rights issue: 3 existing shares, 3 rights entitlement, cum price Rs 580, issue price Rs 510. Adjustment factor (P−E)/P with E = (P−S)/(A+B) is ________.", ["0.9899", "0.8793", "0.0201", "0.9799"], 3, "[Ch 6] E = (P − S)/(A + B); factor = (P − E)/P."],
+["Long 1 contract (size 50) bought/sold at 2900; settlement price 2885. Day’s MTM is ________.", ["−15", "+750", "−1,500", "−750"], 3, "[Ch 7] MTM = (settlement − trade price) × size, sign by position."],
+["A put has strike Rs 2010, spot Rs 1960 and premium Rs 55. Its time value is ________.", ["Rs 55", "Rs 105", "Rs 50", "Rs 5"], 3, "[Ch 4] Time value = premium − intrinsic value."],
+["Fit and proper criteria include ________.", ["Integrity, absence of convictions, competence and not being a wilful defaulter", "Only age", "Only wealth", "Only experience"], 0, "[Ch 8] Per Schedule II, SEBI (Intermediaries) Regulations, 2008."],
+["Only the ________ can define exposure limits for branches.", ["Corporate Manager", "Branch Manager", "Dealer", "Exchange"], 0, "[Ch 6] A facility available only to him."],
+["The first “exchange traded” derivative contract in the US, listed by CBOT in 1865, was called ________.", ["Options", "Swaps", "Futures contracts", "Forward rate agreements"], 2, "[Ch 1] CBOT listed futures contracts in 1865."],
+["Suspicious Transaction Reports are sent to ________.", ["The exchange only", "RBI", "The client", "FIU-IND"], 3, "[Ch 10] The Financial Intelligence Unit – India."],
+["Clearing corporation contribution to Core SGF is at least ________ of MRC.", ["50%", "5%", "25%", "100%"], 0, "[Ch 7] Stock exchange also contributes."],
+["An arbitrage is practical only if it gives ________.", ["Net cash inflow after transaction costs", "Any gross profit", "A margin refund", "A long position"], 0, "[Ch 3] Costs, brokerage and margins must be considered."],
+["In futures, long positions at expiry are assigned to shorts ________.", ["On a random basis", "By time", "By size", "By client"], 0, "[Ch 7] Same series."],
+["The option writer ________.", ["Pays the premium", "Receives the premium and is obliged to perform if exercised", "Has only rights", "Pays no margin"], 1, "[Ch 4] The writer has an obligation."],
+["Systematic risk ________.", ["Can be eliminated by diversification", "Is non-diversifiable and hedged with index derivatives", "Is specific to a company", "Is zero for index funds"], 1, "[Ch 3] It is market-wide risk."],
+["You bought one futures contract (lot 50) at Rs 275 and sold at Rs 265. Profit or loss?", ["−10", "+500", "−500", "+750"], 2, "[Ch 3] (265 − 275) × 50."],
+["NSE index and stock futures expire on the ________ of the month.", ["Last Thursday", "Last Tuesday", "First Tuesday", "Last Friday"], 1, "[Ch 3] Previous day if it is a holiday."],
+["A call has strike Rs 2205, spot Rs 2255 and premium Rs 125. Its time value is ________.", ["Rs 125", "Rs 50", "Rs 75", "Rs 175"], 2, "[Ch 4] Time value = premium − intrinsic value."],
+["You bought a call (strike 19500) at premium Rs 120, lot 75. The index closes at 19650 on expiry. Net profit or loss is ________.", ["+2,625", "+11,250", "+2,250", "−2,250"], 2, "[Ch 4] (Payoff 150 vs premium 120) × 75, sign by position."],
+["A futures contract has value Rs 59,375 and initial margin is 5%. The margin to pay is ________.", ["Rs 2,968.75", "Rs 5,937.5", "Rs 59,375", "Rs 1,484.38"], 0, "[Ch 3] 59,375 × 5%."],
+["Metropolitan Stock Exchange of India (MSEI) started derivatives trading in ________.", ["June 2000", "February 2013", "July 2001", "January 2010"], 1, "[Ch 1] MSEI started derivative products in February 2013."],
+["A put option has strike Rs 2,705 and spot Rs 2,750. Its intrinsic value is ________.", ["Rs 5,455", "Rs 45", "Rs 90", "Rs 0"], 3, "[Ch 4] Call: S − X; put: X − S; minimum zero."],
+["Option buyers must pay ________ upfront.", ["Option premium", "Nothing", "10% of strike", "STT"], 0, "[Ch 7] Applicable from February 1, 2025."],
+["Impact cost is the percentage degradation versus the ________.", ["Ideal price", "Closing price", "Face value", "Previous close"], 0, "[Ch 2] It arises when buying or selling above or below the ideal price."],
+["The three types of hedge accounting are fair value, cash flow and ________.", ["Credit hedge", "Index hedge", "Net investment in a foreign operation", "Margin hedge"], 2, "[Ch 9] As per the Guidance Note and Ind AS 109."],
+["A call has delta 0.4 and gamma 0.002. If the underlying rises by -10 points, the new delta is ________.", ["0.380", "0.420", "0.402", "-0.020"], 0, "[Ch 4] New delta = delta + gamma × move."],
+["The OTM call (premium Rs 124.50) has time value of ________.", ["Nil", "Rs 84.90", "Rs 124.50", "Rs 177.60"], 2, "[Ch 4] Entire premium is time value."],
+["Which of the following is a financial asset used as an underlying?", ["Wheat", "Foreign exchange", "Copper", "Cotton"], 1, "[Ch 1] Shares, bonds and foreign exchange are financial assets."],
+["Futures price is Rs 2,800 and lot size is 100. The contract value is ________.", ["Rs 2,800,000", "Rs 280,000", "Rs 28,000", "Rs 2,900"], 1, "[Ch 3] Contract value = price × lot size."],
+["Index futures and options are ________ settled.", ["Cash", "Physically", "In kind", "By barter"], 0, "[Ch 7] At the closing index value."],
+["If the revised lot size is higher, it is effective for ________.", ["All contracts", "Only new contracts", "Only expiring contracts", "No contracts"], 1, "[Ch 3] Existing contracts keep the old lot size."],
+["A total return index reflects ________.", ["Price changes only", "Price changes and reinvested dividends", "Dividends only", "Volume"], 1, "[Ch 2] Dividends are reinvested in the overall index."],
+["Price swings are more common in ________ contracts.", ["Thinly traded", "Expired", "Index", "Highly liquid"], 0, "[Ch 10] Orders may be partially executed."],
+["Non-speculative derivative losses can be set off against any income except ________.", ["House property", "Business", "Salary", "Capital gains"], 2, "[Ch 9] If not set off, carried forward."],
+["Using the exponential form for that example gives ________.", ["Rs 17,835.26", "Rs 17,848.63", "Rs 17,900", "Rs 17,500"], 1, "[Ch 3] 17,500 × e^(0.08 × 90/365)."],
+["Premium received on sale of options is ________ in turnover.", ["Excluded", "Halved", "Included", "Doubled"], 2, "[Ch 9] Unless already included in net profit."],
+["Dow Jones Industrial Average and Nikkei 225 are ________ indices.", ["Market cap weighted", "Equal weighted", "Price weighted", "Capped"], 2, "[Ch 2] Both are price weighted."],
+["Adjustments are made on the ________.", ["Last cum day after close", "Ex-date morning", "Record date", "Expiry"], 0, "[Ch 6] On all open positions."],
+["Risk relating to enforceability of contracts is ________.", ["Legal or regulatory risk", "Price risk", "Liquidity risk", "Operational risk"], 0, "[Ch 1] Legal/regulatory risk concerns enforceability."],
+["For assets that generate inflows, fair futures price = ________.", ["Spot + carry − inflows", "Spot + carry + inflows", "Spot − carry", "Spot × inflows"], 0, "[Ch 3] Dividends reduce the fair price."],
+["A synthetic futures position is created by ________.", ["Buying the stock in cash and carrying it to the future date", "Selling an option", "Buying a bond", "Shorting the index"], 0, "[Ch 3] Spot price plus cost of carry."],
+["To hedge 1,200 PQR shares with a contract size of 600, short ________ contracts.", ["1", "2", "3", "12"], 1, "[Ch 5] 1,200 ÷ 600."],
+["OTC markets have adopted which exchange feature?", ["Lot-size standardisation", "Margining and mark-to-market", "Anonymous auction", "Circuit filters"], 1, "[Ch 1] These processes proved useful, so OTC markets use them too."],
+["A long hedge with futures is used to ________.", ["Lock in the price of a planned purchase", "Lock the price of a planned sale", "Speculate", "Earn dividends"], 0, "[Ch 5] The hedger goes long futures."],
+["Leverage ________ the risks of derivatives.", ["Reduces", "Heightens", "Doesn’t affect", "Eliminates"], 1, "[Ch 10] Small margins support large positions."],
+["Higher interest rates ________ call premiums and ________ put premiums.", ["Raise; lower", "Lower; raise", "Raise; raise", "Lower; lower"], 0, "[Ch 4] Per the factor table."],
+["Long futures at Rs 650 (lot 250), margin 10%. Price rises Rs 80. Return on margin is ________.", ["123.08%", "61.54%", "12.31%", "246.16%"], 0, "[Ch 5] Profit ÷ margin."],
+["Passive orders are ________.", ["Orders lying unmatched in the system", "Orders entering and matching immediately", "Cancelled orders", "Stop orders"], 0, "[Ch 6] Active orders enter and match."],
+["Currency futures were introduced in 1972 through the ________ of the Chicago Mercantile Exchange.", ["International Monetary Market", "Eurodollar market", "Treasury market", "Options market"], 0, "[Ch 1] CME introduced the International Monetary Market (IMM) in 1972."],
+["The exchange informs participants ________ before resuming trading after an outage.", ["1 hour", "5 minutes", "1 day", "At least 15 minutes"], 3, "[Ch 8] A pre-open session precedes resumption."],
+["You sold a put (strike 24100) at premium Rs 195, lot 65. The index closes at 24175 on expiry. Net profit or loss is ________.", ["−12,350", "+12,675", "−12,675", "0"], 1, "[Ch 4] (Payoff 0 vs premium 195) × 65, sign by position."],
+["If futures trade below the fair price, the arbitrage is ________.", ["Cash and carry", "Reverse cash and carry", "Calendar spread", "None"], 1, "[Ch 3] Buy futures, sell spot."],
+["A TM’s default ________ lead to the CM’s default.", ["Only for PCM", "Always", "Need not necessarily", "Never"], 2, "[Ch 8] If the CM continues to meet obligations."],
+["The daily settlement price of a futures contract is based on ________.", ["Last 30 minutes VWAP", "Opening price", "Previous close", "High price"], 0, "[Ch 3] Weighted average price of the last half hour."],
+["Clearing member contribution to Core SGF is at most ________ of MRC.", ["25%", "50%", "75%", "10%"], 0, "[Ch 7] No exposure on this contribution."],
+["A short option position’s maximum profit is ________.", ["Unlimited", "The premium received", "Strike price", "Nil"], 1, "[Ch 4] The seller keeps the premium."],
+["Participants who take positions based on a view of future price movement are ________.", ["Hedgers", "Speculators", "Arbitrageurs", "Clearing members"], 1, "[Ch 1] Speculators (traders) predict price moves."],
+["Bonus 3:2. Old strike Rs 2200. The new strike is ________.", ["Rs 5,500", "Rs 880", "Rs 1,466.67", "Rs 2,200"], 1, "[Ch 6] New strike = old strike ÷ (A+B)/B."],
+["The maximum profit of that butterfly is ________.", ["Rs 70", "Rs 30", "Rs 100", "Rs 130"], 0, "[Ch 5] 100 − 30 at 6,100."],
+["To continue a long position beyond expiry, one must ________.", ["Do nothing", "Sell the expiring contract and buy the next", "Buy the expiring contract", "Close the account"], 1, "[Ch 3] Both legs of the roll over should be executed together."],
+["You sold a call (strike 17500) at premium Rs 320, lot 50. The index closes at 17375 on expiry. Net profit or loss is ________.", ["−16,000", "0", "−15,750", "+16,000"], 3, "[Ch 4] (Payoff 0 vs premium 320) × 50, sign by position."],
+["A market order executes at ________.", ["The best available price", "A specified price", "The previous close", "The trigger price"], 0, "[Ch 6] Price is not specified."],
+["Open interest is ________.", ["Total contracts outstanding, counting one side only", "Contracts traded in a day", "Total margin", "Number of clients"], 0, "[Ch 3] Longs equal shorts."],
+["As expiry nears, an option’s time value ________.", ["Decays", "Rises", "Stays constant", "Doubles"], 0, "[Ch 4] This is time decay."],
+["Leverage in futures is a ________.", ["One-way benefit", "Double-edged sword", "Tax benefit", "Free service"], 1, "[Ch 3] Losses can be large too."],
+["You plan to buy 1,500 ABC shares later; futures bought at Rs 457.30 and sold at Rs 521.20. The futures gain is ________.", ["Rs 95,850", "Rs 99,300", "Rs 63,900", "Rs 7,80,000"], 0, "[Ch 5] (521.20 − 457.30) × 1,500."],
+["Since the Finance Act 2005, exchange traded derivative gains are ________.", ["Non-speculative business income", "Speculative income", "Exempt", "Capital gains"], 0, "[Ch 9] Even without delivery."],
+["Which of these is NOT one of the three criteria for a financial derivative under Ind AS 109?", ["Value linked to the underlying", "Settled on a future date", "No full cash outlay on trade date", "It must be traded on an exchange"], 3, "[Ch 1] The criteria are: linked value, future settlement, and no full cash outlay. OTC derivatives also qualify."],
+["A put option has strike Rs 590 and spot Rs 610. Its intrinsic value is ________.", ["Rs 40", "Rs 0", "Rs 1,200", "Rs 20"], 1, "[Ch 4] Call: S − X; put: X − S; minimum zero."],
+["Essential features of a forward include ________.", ["A bilateral contract with all terms fixed on day one", "Clearing corporation guarantee", "Standard lot sizes", "Daily MTM"], 0, "[Ch 3] Forwards are bilateral OTC contracts."],
+["Bull call spread: buy 21400 call at Rs 135, sell 21600 call at Rs 75. The breakeven (per unit) is ________.", ["21,540", "260", "21,460", "200"], 2, "[Ch 5] Net debit d; max profit = width − d; BEP = K1 + d."],
+["Loss on a position because of a price move is called ________.", ["Price risk", "Legal risk", "Liquidity risk", "Operational risk"], 0, "[Ch 1] That is price risk."],
+["The band flexes to 15% when ________ trades occur at or above 9.90%.", ["50 trades, 10 UCCs, 3 brokerages each side", "10 trades", "100 trades from one client", "5 trades"], 0, "[Ch 6] Per the SEBI circular."],
+["A short strangle’s maximum profit ________.", ["Is the premium received", "Is unlimited", "Is zero", "Is the strike"], 0, "[Ch 5] Losses are unlimited either way."],
+["A call option has strike Rs 1,155 and spot Rs 1,130. Its intrinsic value is ________.", ["Rs 25", "Rs 50", "Rs 0", "Rs 2,285"], 2, "[Ch 4] Call: S − X; put: X − S; minimum zero."],
+["The Prevention of Money Laundering Act was enacted in ________.", ["1992", "2015", "2002", "2008"], 2, "[Ch 10] It provides for confiscation of proceeds of crime."],
+["A calendar spread in futures is ________.", ["Arbitrage between futures of different expiries", "Two strikes of options", "A long hedge", "A put-call strategy"], 0, "[Ch 5] The spread is compared with the fair spread."],
+["Long 7 lots on one exchange and short 3 lots of the same contract on another. The net position is ________.", ["short 4", "long 10", "long 4", "long 7"], 2, "[Ch 7] Interoperability nets positions."],
+["In that example, the percentage change in the index is ________.", ["226.06%", "100%", "126.06%", "42.5%"], 2, "[Ch 2] 226.06 − 100 = 126.06%."],
+["Portfolio value Rs 9,000,000, beta 1.5, index futures contract value Rs 1,200,000. Contracts to short for a hedge: ________.", ["7.50", "11.25", "22.50", "5.62"], 1, "[Ch 3] Vp × βp ÷ Vi."],
+["A short hedge with futures is used to ________.", ["Lock in the price of a planned sale", "Lock the price of a planned purchase", "Avoid margins", "Raise capital"], 0, "[Ch 5] The hedger goes short futures."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;window.__n=n;rt();document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!window.__to&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;clearInterval(window.__iv);
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+let left=7200;function rt(){const m=Math.floor(left/60),x=left%60;document.getElementById("st").textContent=`Answered ${window.__n||0}/${Q.length} · ⏱ ${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}:${String(x).padStart(2,"0")}`}
+window.__iv=setInterval(()=>{left--;rt();if(left<=0){clearInterval(window.__iv);window.__to=1;document.getElementById("fin").click()}},1000);
+upd();
+</script></body></html>

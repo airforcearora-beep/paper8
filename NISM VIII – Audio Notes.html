@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Audio Notes</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#7aa2f5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 14px}
+.in{max-width:860px;margin:auto;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+main{max-width:860px;margin:auto;padding:14px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin-bottom:16px}
+.h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+h2{font-size:1.05rem;margin:0;color:var(--ac)}
+.b{display:flex;gap:6px}
+button{background:transparent;color:var(--ac);border:1px solid var(--ac);border-radius:8px;padding:6px 12px;font:inherit;font-size:.9rem;cursor:pointer}
+button.p{background:var(--ac);color:#fff}
+p{margin:0 0 8px}
+.n{color:var(--mu);font-size:.85rem;max-width:860px;margin:0 auto;padding:0 14px}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Audio Notes</h1><div class="b"><button class="p" id="all">Copy all</button><button id="stop">Stop audio</button></div></div></header>
+<div class="n" style="padding-top:10px">Copy any chapter or everything, paste it into a text-to-speech tool. “Listen” uses your browser’s voice.</div>
+<main id="m"></main>
+<script>
+const C=[
+["Chapter one. Basics of derivatives.",[
+"A derivative gets its value from an underlying asset.",
+"Three tests: value linked to underlying, settled on a future date, no full payment upfront.",
+"Forward contracts are customised, traded over the counter, and carry counterparty risk.",
+"Futures are standardised, exchange traded, and guaranteed by the clearing corporation.",
+"An option buyer has a right. The seller has an obligation. The buyer pays a premium.",
+"A swap exchanges cash flows and is mostly over the counter.",
+"Participants are hedgers, speculators and arbitrageurs.",
+"Risks are market, liquidity, counterparty, operational and legal.",
+"Chicago Board of Trade listed futures in 1865. CBOE listed options in 1973. Currency futures started in 1972. Kansas City Board of Trade started stock index futures in 1982.",
+"Index futures started in India in June 2000. Index options in June 2001. Stock options in July 2001. Stock futures in November 2001.",
+"The L C Gupta committee gave the regulatory framework. The J R Varma committee covered risk containment and margins.",
+"Derivatives were brought under securities law in 1999. Section 18A makes exchange traded derivatives legal.",
+"MSEI started derivatives in February 2013."]],
+["Chapter two. Understanding index.",[
+"Market cap weighted index: weight is proportional to market capitalisation.",
+"Free float counts only shares available for trading. Sensex and Nifty use free float.",
+"Price weighted index: higher priced stocks have more influence. Dow Jones and Nikkei 225 are examples.",
+"Equal weighted index: every stock has the same weight and needs rebalancing.",
+"Market cap equals shares outstanding times price.",
+"Index value equals current market cap divided by base market cap, times base index value.",
+"Price index equals sum of prices divided by number of stocks.",
+"Ideal price is the average of best bid and best ask. Bid ask spread is best ask minus best bid.",
+"Impact cost is the percentage cost compared with ideal price. It is high when liquidity is poor.",
+"Beta measures sensitivity to the index. Beta above one is aggressive. Beta below one is conservative.",
+"Total return index includes reinvested dividends. Price return index ignores dividends.",
+"BSE Index Services manages BSE indices. NSE Indices Limited manages NSE indices. SEBI Index Providers Regulations came in 2024.",
+"Index types are broad market, sectoral, market cap and thematic. India VIX measures volatility."]],
+["Chapter three. Forwards and futures.",[
+"Long means buyer. Short means seller.",
+"Index futures contract value is 15 to 20 lakh rupees. Stock futures is 5 to 10 lakh rupees. Lot size is reviewed every six months with two weeks notice.",
+"Maximum maturity is 12 months with a three month cycle.",
+"NSE expiry is the last Tuesday. BSE expiry is the last Thursday. If a holiday, the previous trading day.",
+"Daily settlement price is the volume weighted average of the last 30 minutes. Final settlement price is the closing price of the underlying on expiry.",
+"Basis equals spot minus futures. Contango means futures above spot. Backwardation means futures below spot. Basis is zero at expiry.",
+"Fair futures price equals spot plus cost of carry. For equities, cost of carry is interest minus dividend.",
+"Discrete formula: futures equals spot times one plus r, to the power T. Continuous formula: spot times e to the power r T. With known dividends, subtract their present value from spot first.",
+"If futures are overpriced, do cash and carry: buy spot, sell futures. If underpriced, do reverse cash and carry.",
+"Contract value equals price times lot size. Long profit equals exit minus entry, times lot. Mark to market equals settlement price minus previous price, times lot.",
+"Index futures hedge systematic risk. Stock futures hedge specific risk.",
+"Portfolio beta equals sum of weight times beta.",
+"Number of contracts equals portfolio value times beta, divided by index futures contract value.",
+"Long hedge locks a purchase price. Short hedge locks a sale price. Cross hedge uses a related asset.",
+"Choose the hedge contract that expires just after the unwind date.",
+"Open interest counts one side only.",
+"Pre open is 9:00 to 9:15. Normal trading is 9:15 to 3:40."]],
+["Chapter four. Options.",[
+"A call gives the right to buy. A put gives the right to sell.",
+"Indian options are European: exercise only at expiry.",
+"Call is in the money when spot is above strike. Put is in the money when spot is below strike.",
+"At the money and out of the money options have only time value.",
+"Call intrinsic value equals spot minus strike, minimum zero. Put intrinsic value equals strike minus spot, minimum zero.",
+"Time value equals premium minus intrinsic value. It is zero at expiry.",
+"Option buyer loss is limited to the premium. Option writer has limited profit and large or unlimited loss.",
+"Long call profit equals payoff minus premium. Breakeven for call is strike plus premium. Breakeven for put is strike minus premium.",
+"Delta is premium change per unit move in the underlying. Gamma is change in delta. Theta is time decay. Vega is volatility sensitivity. Rho is interest rate sensitivity.",
+"New delta equals delta plus gamma times the move.",
+"Black Scholes was published in 1973. The binomial model was developed by William Sharpe in 1978.",
+"Higher spot raises call and lowers put. Higher strike lowers call and raises put.",
+"Higher volatility raises both premiums.",
+"Higher interest rate raises call and lowers put. Higher dividend lowers call and raises put.",
+"Put call parity: call plus present value of strike equals put plus spot.",
+"Implied volatility is derived from the option price.",
+"Sensex options: lot 20, strike interval 100, minimum 101 strikes. Index options maturity up to five years.",
+"Options have no daily mark to market settlement. Option buyers pay no margin."]],
+["Chapter five. Strategies.",[
+"Bull call spread: buy lower strike call, sell higher strike call. Maximum loss is net debit. Maximum profit is strike gap minus debit. Breakeven is lower strike plus debit.",
+"Bull put spread: sell higher put, buy lower put. Net credit.",
+"Bear call spread: sell lower call, buy higher call. Bear put spread: buy higher put, sell lower put.",
+"Vertical spread: same expiry, different strikes. Calendar spread: same strike, different expiries. Diagonal: both differ.",
+"Long straddle: buy call and put at the same strike. Maximum loss is total premium. Breakevens are strike plus and minus total premium.",
+"Short straddle expects low volatility and has unlimited loss.",
+"Strangle uses out of the money call and put. It is cheaper than a straddle.",
+"Covered call: long stock, short call. It equals a synthetic short put.",
+"Protective put: long stock, long put. It equals a synthetic long call.",
+"Collar: covered call plus long out of the money put.",
+"Long call butterfly: buy one low call, sell two middle calls, buy one high call. Maximum profit is wing width minus net debit.",
+"Long hedge price equals spot minus futures gain. Short hedge price equals spot plus futures gain.",
+"Return on margin equals profit divided by margin.",
+"Put call ratio equals put open interest divided by call open interest. Above one is read as bullish.",
+"Price up with open interest up is bullish. Price up with open interest down is short covering. Price down with open interest up is bearish.",
+"Futures delta is about one. Delta hedging needs rebalancing because delta changes."]],
+["Chapter six. Trading mechanism.",[
+"Normal trading hours are 9:15 to 3:40. Pre open is 9:00 to 9:15 using a call auction.",
+"In pre open, 9:00 to 9:05 allows limit and market orders. 9:05 to 9:10 allows limit orders only.",
+"Order matching is by price, then time. Orders match at the resting order price.",
+"Futures price range is 10 percent of base price. Flexing moves it to 15 percent after trades at 9.9 percent, then 20 percent after 14.9 percent.",
+"Stop loss sell limit price must be at or below the trigger price.",
+"Trade annulment request must be within 30 minutes. Fee is 5 percent of trade value, minimum one lakh, maximum ten lakh rupees.",
+"Stock eligibility: top 500 by market cap and traded value. Median quarter sigma order size at least 75 lakh rupees. Market wide position limit at least 1,500 crore rupees. Average daily delivery value at least 35 crore rupees.",
+"A stock exits after three months of failing criteria. It returns after six consecutive months of meeting them.",
+"Index eligibility: at least 80 percent weight in eligible stocks. Non benchmark index: at least 14 stocks.",
+"Adjustments are made on the last cum day. Position value stays unchanged.",
+"Dividend below 2 percent is ordinary: no adjustment.",
+"Bonus factor equals A plus B divided by B. New strike equals old strike divided by factor. New lot equals old lot times factor.",
+"Rights: E equals P minus S, divided by A plus B. Factor equals P minus E, divided by P.",
+"Merger: settled at last closing price on last cum date.",
+"Securities Transaction Tax on futures is 0.05 percent of sale value, paid by seller. On options it is 0.15 percent of premium, paid by seller. Check the latest rule for exercised options.",
+"A technical glitch is five minutes or more contiguous. Alternate venue is intimated within 75 minutes."]],
+["Chapter seven. Clearing, settlement and risk management.",[
+"Novation makes the clearing corporation the counterparty to both sides.",
+"Interoperability nets positions across clearing corporations.",
+"Futures settle daily by mark to market and finally at expiry.",
+"Stock futures and options expire with physical delivery. Index contracts are cash settled.",
+"Physical settlement is on T plus one after expiry.",
+"SPAN is the scenario based initial margin.",
+"Extreme loss margin is 2 percent for index and 3.5 percent for stock futures.",
+"Delivery margin is collected 20, 40, 60 and 80 percent over four days before expiry. Early pay in is exempt.",
+"Calendar spread charge is 1.75 percent for index and 2.2 percent for stock, on far month value.",
+"Option buyers pay premium upfront.",
+"Peak margin uses four intraday snapshots.",
+"Position limits are client level, trading member level and market wide.",
+"Core settlement guarantee fund: clearing corporation contributes at least 50 percent of minimum required corpus. Members contribute at most 25 percent.",
+"Mark to market equals settlement price minus trade price, times quantity.",
+"Initial margin equals contract value times margin percent.",
+"Net position equals long minus short across exchanges.",
+"Physical settlement value equals strike times lot.",
+"Daily settlement price is the weighted average of the last 30 minutes. Positions reset to it each day."]],
+["Chapter eight. Legal and regulatory environment.",[
+"Securities Contracts Regulation Act 1956 governs securities contracts.",
+"Section 2 h defines securities. Section 4 is exchange recognition. Section 18A makes derivatives legal on a recognised exchange.",
+"SEBI Act 1992 created SEBI. Prevention of Money Laundering Act is 2002.",
+"Insider trading regulations are 2015. Takeover regulations are 2011.",
+"Governing council: trading or clearing members at most 40 percent.",
+"Derivatives exchange needs at least 50 members.",
+"Base net worth: trading member 1 crore rupees. Self clearing 5 crore. Clearing member 15 crore. Professional clearing member 50 crore.",
+"Variable net worth is 10 percent of average client cash balance. Required net worth is the higher of base and variable.",
+"Clearing members need liquid net worth of at least 50 lakh rupees.",
+"Net worth equals capital plus free reserves minus non allowable assets.",
+"On exchange outage, inform participants 15 minutes before resumption. Extend trading by 1.5 hours if not restored one hour before close.",
+"On broker default, investors claim from the Investor Protection Fund."]],
+["Chapter nine. Accounting and taxation.",[
+"Derivatives are recognised on the balance sheet at fair value. Fair value is the exit price.",
+"Default is fair value through profit and loss. Hedge accounting is optional.",
+"Fair value hedge covers recognised items. Cash flow hedge puts the effective portion in equity. Net investment hedge covers foreign operations.",
+"Ind AS 109 is based on IFRS 9 and replaced AS 30.",
+"Initial margin goes to a margin account. It is not an expense.",
+"Mark to market debit balance at year end needs a provision for anticipated loss. Credit balance is ignored.",
+"Gains and losses are business income. Exchange traded derivatives are non speculative since Finance Act 2005.",
+"Speculative loss can be set off only against speculative gain. Losses carry forward eight assessment years if the return is filed on time.",
+"Individuals pay tax at slab rates. Foreign portfolio investors pay capital gains tax, usually short term.",
+"Turnover equals total favourable and unfavourable differences, plus premium on options sold.",
+"Tax audit: turnover above 10 crore rupees, always. Between 3 and 10 crore, not applicable. Up to 3 crore, no audit if profit is at least 6 percent.",
+"Securities Transaction Tax is levied on purchase and sale; the exchange collects it."]],
+["Chapter ten. Sales practices and investor protection.",[
+"Advice must suit the client risk profile. Unsuitable advice is a violation.",
+"Churning means excessive trading to earn commission.",
+"Sales calls are allowed only between 9 am and 8 pm.",
+"The risk disclosure document is signed at account opening.",
+"Option buyers can lose the entire premium. Option sellers face unlimited risk.",
+"Counterparty risk is low in exchange traded derivatives.",
+"SEBI study: 9 out of 10 individual traders lost money. Average loss was about 50,000 rupees. Extra transaction cost was 28 percent of losses.",
+"Brokers keep client profit and loss data for five years.",
+"Anti money laundering process: client acceptance, identification and monitoring.",
+"Suspicious transaction report goes to FIU India within 7 days. Cash transaction report by the 15th of next month.",
+"KYC is uploaded to the KRA within 3 working days.",
+"Complaint goes to the entity first. If not resolved in 21 calendar days, use SCORES or the exchange.",
+"SCORES 2.0 has two level review and auto routing. SMARTODR uses conciliation, then arbitration."]]
+];
+const m=document.getElementById("m");
+const txt=c=>c[0]+"\n"+c[1].join("\n");
+function cp(t,b){const d=b.textContent;const ok=()=>{b.textContent="Copied";setTimeout(()=>b.textContent=d,1200)};
+try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
+function fb(){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){}a.remove()}}
+C.forEach(c=>{const s=document.createElement("section");
+s.innerHTML=`<div class="h"><h2>${c[0]}</h2><div class="b"><button class="l">Listen</button><button class="c">Copy</button></div></div>`+c[1].map(x=>`<p>${x}</p>`).join("");
+s.querySelector(".c").onclick=e=>cp(txt(c),e.target);
+s.querySelector(".l").onclick=()=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt(c));u.rate=.95;speechSynthesis.speak(u)}catch(e){}};
+m.appendChild(s)});
+document.getElementById("all").onclick=e=>cp(C.map(txt).join("\n\n"),e.target);
+document.getElementById("stop").onclick=()=>{try{speechSynthesis.cancel()}catch(e){}};
+</script></body></html>

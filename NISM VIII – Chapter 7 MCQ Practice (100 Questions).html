@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 7 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 7: Clearing, Settlement &amp; Risk Management (100 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["Through novation, the clearing corporation becomes ________.", ["Buyer to every seller and seller to every buyer", "Only the buyer", "Only the seller", "A broker"], 0, "It is the central counterparty."],
+["The clearing corporation ________ settlement of trades.", ["Guarantees", "Delays", "Avoids", "Prices"], 0, "Even if a party defaults."],
+["The three main activities are clearing, settlement and ________.", ["Risk management", "Listing", "Trading", "Taxation"], 0, "Done with clearing members and clearing banks."],
+["Funds settlement takes place through ________.", ["Clearing banks", "Depositories", "Brokers", "Exchanges"], 0, "Each CM opens a separate settlement account."],
+["Securities delivery in physical settlement is via ________.", ["Depositories (NSDL, CDSL)", "Banks", "RBI", "SEBI"], 0, "Pool accounts are used."],
+["Both TCM and PCM must bring additional security deposits for ________.", ["Every trading member whose trades they clear", "Every client", "Only own trades", "The exchange"], 0, "As per the clearing mechanism."],
+["A clearing member performs clearing, settlement and ________.", ["Risk management", "Listing", "Order entry", "Taxation"], 0, "Sets position limits based on deposits."],
+["A TM’s open position is derived from ________.", ["Proprietary net position plus clients’ net positions", "Gross positions only", "Only clients", "Only pro"], 0, "Pro positions net; clients are summed individually."],
+["The CM’s open position aggregates positions of ________.", ["All TMs and CPs clearing through him", "Only his own", "Only clients", "Only the exchange"], 0, "Sum of long and short positions."],
+["Interoperability among clearing corporations was implemented in ________.", ["2019", "2010", "2005", "2022"], 0, "The framework was proposed in 2018."],
+["Interoperability allows trades on any exchange to be cleared by ________.", ["Any clearing corporation chosen by the broker", "Only that exchange’s CC", "Only NSE", "Only SEBI"], 0, "One CC for all trades."],
+["A main advantage of interoperability is ________.", ["Margins and collateral with a single CC", "Higher margins", "More CCs needed", "No netting"], 0, "Better use of capital."],
+["Long 10 lots on NSE and short 6 lots of the same contract on BSE give a net ________.", ["Long 4", "Long 16", "Short 4", "Zero"], 0, "Net position is margined."],
+["A CM may be active with ________ CC per segment at a time.", ["One", "Two", "Three", "Any"], 0, "It may hold membership with more than one."],
+["Since October 2019, open positions in single stock F&O at expiry are settled by ________.", ["Physical delivery", "Cash", "Rollover", "Netting only"], 0, "Index F&O remain cash settled."],
+["Index futures and options are ________ settled.", ["Cash", "Physically", "In kind", "By barter"], 0, "At the closing index value."],
+["Futures have two settlements: daily MTM and ________.", ["Final settlement", "Weekly settlement", "None", "Annual"], 0, "On the last trading day."],
+["Daily MTM pay-in and pay-out is done ________.", ["Before the next day’s market opens", "After a week", "At month-end", "Intraday"], 0, "By debit/credit of clearing accounts."],
+["After daily settlement, open positions are reset to ________.", ["Daily settlement price", "Trade price", "Opening price", "Zero"], 0, "They become next day’s open positions."],
+["Daily settlement price is the VWAP of the ________.", ["Last 30 minutes", "First hour", "Whole day", "Last 5 minutes"], 0, "Else the theoretical price."],
+["If a futures contract did not trade in the last 30 minutes, daily settlement price uses ________.", ["Theoretical price F = S e^rt", "Opening price", "Zero", "Last year’s price"], 0, "r may be MIBOR."],
+["Final settlement price of index futures is the ________.", ["Closing index value on expiry day", "Previous day’s futures close", "Average of week", "Opening price"], 0, "Based on constituents’ closing prices."],
+["Physically settled stock futures settle on ________.", ["T+1 after expiry", "T+0", "T+5", "T+30"], 0, "The delivering CM transfers to the depository pool."],
+["Positions opened on expiry day are cash settled at ________.", ["Trade price minus final settlement price", "Zero", "Closing futures price", "Spot"], 0, "For cash settled contracts."],
+["In futures, long positions at expiry are assigned to shorts ________.", ["On a random basis", "By time", "By size", "By client"], 0, "Same series."],
+["MTM on options positions is ________.", ["Not settled in cash", "Settled daily in cash", "Settled monthly", "Charged as tax"], 0, "It adjusts the Liquid Net Worth."],
+["Net Option Value is added to ________.", ["Liquid net worth of the CM", "Premium", "Position limit", "STT"], 0, "Long option value is added; short deducted."],
+["In-the-money stock options at expiry are ________.", ["Exercised automatically", "Lapsed", "Rolled", "Cancelled"], 0, "Settled by delivery."],
+["Under net settlement, a put holder who buys shares on expiry day ________.", ["Receives only the net amount (strike − settlement)", "Pays full price", "Pays strike", "Gets nothing"], 0, "Net pay-out replaces full delivery."],
+["Initial margin is computed using ________.", ["SPAN", "Black-Scholes", "Basis", "PCR"], 0, "Standard Portfolio Analysis of Risk."],
+["SPAN uses a ________ approach.", ["Scenario-based", "Fixed percentage", "Random", "Historical only"], 0, "The highest loss scenario sets the margin."],
+["Margins are computed up to the ________ level.", ["Client", "Exchange", "Broker only", "Bank"], 0, "Using SPAN."],
+["Extreme loss margin covers ________.", ["Tail risk beyond scanning risk", "Brokerage", "Dividends", "Delivery"], 0, "Paid upfront."],
+["ELM on single stock futures is ________ of gross open notional.", ["3.5%", "2%", "5%", "1%"], 0, "Index futures attract 2%."],
+["Deep OTM single stock options (more than 30% OTM) attract ELM of ________.", ["5.25%", "3%", "2%", "3.5%"], 0, "Index options deep OTM (>10%) attract 3%."],
+["On options expiry day, additional ELM of ________ applies to short index options.", ["2%", "1%", "5%", "0.5%"], 0, "Tail risk coverage."],
+["Calendar spread charge for index derivatives is ________ of far month contract.", ["1.75%", "2.2%", "5%", "0.5%"], 0, "For single stock derivatives it is 2.2%."],
+["Calendar spread benefit is ________ on the expiry day for contracts expiring that day.", ["Not available", "Doubled", "Always available", "Halved"], 0, "Basis risk is high."],
+["Delivery margins are levied from ________ prior to expiry.", ["Four days", "One month", "Expiry day only", "Ten days"], 0, "Expiry − 4 EOD."],
+["Delivery margin collection is staggered as ________.", ["20%, 40%, 60%, 80%", "25% each day", "100% at once", "10% each"], 0, "Over Expiry−4 to Expiry−1."],
+["Early pay-in of securities or funds is ________ delivery margins.", ["Exempt from", "Subject to double", "Charged", "Taxed under"], 0, "Positions with early pay-in are exempt."],
+["Highly volatile stocks (over 10% move for 3 or more days in a month) attract ________.", ["Additional margins", "Lower margins", "Bans", "Nothing"], 0, "Minimum total margin equals max intraday move."],
+["Cross margining applies to ________.", ["Cash and equity derivatives offsetting positions", "Only options", "Only cash", "Only futures"], 0, "Spread margin applies."],
+["Cross margin spread margin for same-expiry offsetting positions is ________ of margin.", ["25%", "50%", "10%", "75%"], 0, "30% for correlated index pairs."],
+["Highly correlated indices need correlation above ________.", ["0.90", "0.50", "0.70", "0.99"], 0, "And 80% constituent overlap."],
+["Spread margin for correlated indices with different expiry is ________.", ["40%", "25%", "30%", "35%"], 0, "35% for index vs constituents with different expiry."],
+["Clients’ securities as margin are accepted only by ________.", ["Margin pledge", "Power of attorney", "Cash only", "Transfer"], 0, "Through a Client Securities Margin Pledge Account."],
+["Option buyers must pay ________ upfront.", ["Option premium", "Nothing", "10% of strike", "STT"], 0, "Applicable from February 1, 2025."],
+["Initial margin, ELM and net option premium are collected ________.", ["Upfront, before trade", "On T+5", "At month-end", "After expiry"], 0, "Delivery margins by T+1."],
+["Short or non-collection of margins is reported to the exchange by ________.", ["T+5", "T+1", "T+30", "T+0"], 0, "Penalties apply."],
+["Clearing corporations send at least ________ intraday snapshots of client margin.", ["4", "1", "2", "10"], 0, "For peak margin purposes."],
+["Margin verification now uses ________ parameters.", ["Beginning of day", "End of day", "Peak", "Random"], 0, "Peak penalty no longer charged since August 2022."],
+["Position limits are of ________ types.", ["Client-level, TM-wise and market-wide", "One", "Two", "Five"], 0, "MWPL is the market-wide limit."],
+["Position limits are needed to prevent ________.", ["Concentration and manipulation", "Dividends", "Trading", "Margins"], 0, "Across derivatives."],
+["Risk reduction mode applies when margin utilisation exceeds ________.", ["90%", "50%", "20%", "100%"], 0, "Or other applicable limit."],
+["Core SGF guarantees settlement ________.", ["For each segment", "Only for cash", "Only for options", "For clients"], 0, "Used for defaults by members."],
+["Clearing corporation contribution to Core SGF is at least ________ of MRC.", ["50%", "5%", "25%", "100%"], 0, "Stock exchange also contributes."],
+["Clearing member contribution to Core SGF is at most ________ of MRC.", ["25%", "50%", "75%", "10%"], 0, "No exposure on this contribution."],
+["Penalties levied by the clearing corporation are credited to ________.", ["Core SGF", "Exchange profits", "SEBI", "Brokers"], 0, "Interest accrues to Core SGF too."],
+["Margin on consolidated crystallised obligation is collected by ________.", ["T+1", "T+5", "Upfront", "Monthly"], 0, "At the client level."],
+["Clearing members pay MTM losses which are passed to ________.", ["Members with MTM profits", "SEBI", "The bank", "The exchange"], 0, "Via the clearing corporation."],
+["Trader A sells 20 Aug contracts at 4,500 (lot 50), margin 6%: margin is ________.", ["Rs 2,70,000", "Rs 2,32,050", "Rs 5,02,050", "Rs 4,50,000"], 0, "20 × 50 × 4,500 × 6%."],
+["Trader B sells 17 Sep contracts at 4,550 (lot 50), margin 6%: margin is ________.", ["Rs 2,32,050", "Rs 2,70,000", "Rs 5,02,050", "Rs 4,55,000"], 0, "17 × 50 × 4,550 × 6%."],
+["A physically settled call (strike 475, lot 1,500) is exercised. Settlement value is ________.", ["Rs 7,12,500", "Rs 1,500", "Rs 475", "Rs 5,10,000"], 0, "475 × 1,500."],
+["A trade on the exchange is a contract between ________ before novation.", ["Buyer and seller", "Buyer and CC", "Seller and CC", "Broker and bank"], 0, "After novation it is with the CC."],
+["The clearing corporation monitors members and can ________.", ["Penalise or revoke membership", "Only advise", "Trade for them", "Ignore"], 0, "Member oversight and discipline."],
+["Long 1 contract (size 200) bought/sold at 1525; settlement price 1530. Day’s MTM is ________.", ["+2,000", "+1,000", "−1,000", "+5"], 1, "MTM = (settlement − trade price) × size, sign by position."],
+["5 contracts at Rs 3500, lot 100, initial margin 12%. Margin required is ________.", ["Rs 105,000", "Rs 420,000", "Rs 210,000", "Rs 1,750,000"], 2, "Margin = price × lot × contracts × %."],
+["Gross open position of 4 futures lots at Rs 2850 (lot 100). ELM at 2% is ________.", ["Rs 11,400", "Rs 45,600", "Rs 22,800", "Rs 1,140,000"], 2, "ELM = % × notional value."],
+["A CM clears TMs with net long positions 1000, 4000 (TM 1) and 4000, 5500 (TM 2). The CM’s total long position is ________.", ["5,000", "13,500", "14,500", "15,000"], 2, "Add the long positions of all TMs."],
+["Long 22 lots on one exchange and short 17 lots of the same contract on another. The net position is ________.", ["long 22", "long 39", "short 5", "long 5"], 3, "Interoperability nets positions."],
+["Total delivery margin is Rs 100,000. At Expiry − 3 EOD, the amount collected is ________.", ["Rs 100,000", "Rs 60,000", "Rs 20,000", "Rs 40,000"], 3, "Collected 20%, 40%, 60%, 80% on Expiry−4 to Expiry−1."],
+["Far month index contract value is Rs 550,000. The calendar spread charge is ________.", ["Rs 9,625", "Rs 11,000", "Rs 12,100", "Rs 19,250"], 0, "1.75% for index; 2.2% for single stock."],
+["Long 1 contract (size 200) bought/sold at 1475; settlement price 1440. Day’s MTM is ________.", ["−14,000", "−35", "−7,000", "+7,000"], 2, "MTM = (settlement − trade price) × size, sign by position."],
+["2 contracts at Rs 1800, lot 200, initial margin 5%. Margin required is ________.", ["Rs 36,000", "Rs 720,000", "Rs 72,000", "Rs 18,000"], 0, "Margin = price × lot × contracts × %."],
+["Gross open position of 2 futures lots at Rs 1750 (lot 65). ELM at 3.5% is ________.", ["Rs 7,962.5", "Rs 3,981.25", "Rs 227,500", "Rs 15,925"], 0, "ELM = % × notional value."],
+["A CM clears TMs with net long positions 5000, 4000 (TM 1) and 3500, 4500 (TM 2). The CM’s total long position is ________.", ["8,500", "17,000", "12,000", "17,500"], 1, "Add the long positions of all TMs."],
+["Long 7 lots on one exchange and short 3 lots of the same contract on another. The net position is ________.", ["short 4", "long 10", "long 4", "long 7"], 2, "Interoperability nets positions."],
+["Far month index contract value is Rs 300,000. The calendar spread charge is ________.", ["Rs 5,250", "Rs 6,000", "Rs 6,600", "Rs 10,500"], 0, "1.75% for index; 2.2% for single stock."],
+["Long 1 contract (size 50) bought/sold at 2900; settlement price 2885. Day’s MTM is ________.", ["−15", "+750", "−1,500", "−750"], 3, "MTM = (settlement − trade price) × size, sign by position."],
+["2 contracts at Rs 2850, lot 50, initial margin 12%. Margin required is ________.", ["Rs 68,400", "Rs 34,200", "Rs 17,100", "Rs 285,000"], 1, "Margin = price × lot × contracts × %."],
+["Gross open position of 4 futures lots at Rs 4250 (lot 25). ELM at 3.5% is ________.", ["Rs 425,000", "Rs 14,875", "Rs 29,750", "Rs 7,437.5"], 1, "ELM = % × notional value."],
+["A CM clears TMs with net long positions 2500, 2000 (TM 1) and 5000, 1500 (TM 2). The CM’s total long position is ________.", ["11,000", "7,500", "8,500", "11,500"], 0, "Add the long positions of all TMs."],
+["Long 6 lots on one exchange and short 4 lots of the same contract on another. The net position is ________.", ["long 6", "short 2", "long 10", "long 2"], 3, "Interoperability nets positions."],
+["Total delivery margin is Rs 100,000. At Expiry − 1 EOD, the amount collected is ________.", ["Rs 20,000", "Rs 40,000", "Rs 80,000", "Rs 100,000"], 2, "Collected 20%, 40%, 60%, 80% on Expiry−4 to Expiry−1."],
+["Far month index contract value is Rs 410,000. The calendar spread charge is ________.", ["Rs 14,350", "Rs 8,200", "Rs 7,175", "Rs 9,020"], 2, "1.75% for index; 2.2% for single stock."],
+["Short 1 contract (size 50) bought/sold at 1150; settlement price 1130. Day’s MTM is ________.", ["−1,000", "−20", "+1,000", "−2,000"], 2, "MTM = (settlement − trade price) × size, sign by position."],
+["10 contracts at Rs 2800, lot 50, initial margin 12%. Margin required is ________.", ["Rs 168,000", "Rs 336,000", "Rs 1,400,000", "Rs 84,000"], 0, "Margin = price × lot × contracts × %."],
+["Gross open position of 8 futures lots at Rs 2450 (lot 50). ELM at 3.5% is ________.", ["Rs 17,150", "Rs 34,300", "Rs 68,600", "Rs 980,000"], 1, "ELM = % × notional value."],
+["A CM clears TMs with net long positions 4000, 2000 (TM 1) and 1000, 3000 (TM 2). The CM’s total long position is ________.", ["6,000", "10,000", "10,500", "5,000"], 1, "Add the long positions of all TMs."],
+["Long 23 lots on one exchange and short 15 lots of the same contract on another. The net position is ________.", ["long 8", "long 38", "long 23", "short 8"], 0, "Interoperability nets positions."],
+["Total delivery margin is Rs 250,000. At Expiry − 3 EOD, the amount collected is ________.", ["Rs 150,000", "Rs 50,000", "Rs 100,000", "Rs 250,000"], 2, "Collected 20%, 40%, 60%, 80% on Expiry−4 to Expiry−1."],
+["Far month index contract value is Rs 210,000. The calendar spread charge is ________.", ["Rs 4,620", "Rs 7,350", "Rs 3,675", "Rs 4,200"], 2, "1.75% for index; 2.2% for single stock."],
+["Long 1 contract (size 65) bought/sold at 1375; settlement price 1415. Day’s MTM is ________.", ["+2,600", "+5,200", "−2,600", "+40"], 0, "MTM = (settlement − trade price) × size, sign by position."],
+["5 contracts at Rs 1900, lot 100, initial margin 6%. Margin required is ________.", ["Rs 114,000", "Rs 57,000", "Rs 28,500", "Rs 950,000"], 1, "Margin = price × lot × contracts × %."],
+["Gross open position of 8 futures lots at Rs 4000 (lot 25). ELM at 2% is ________.", ["Rs 8,000", "Rs 32,000", "Rs 800,000", "Rs 16,000"], 3, "ELM = % × notional value."],
+["A CM clears TMs with net long positions 1500, 4000 (TM 1) and 5500, 2000 (TM 2). The CM’s total long position is ________.", ["13,000", "7,000", "13,500", "11,500"], 0, "Add the long positions of all TMs."],
+["Long 28 lots on one exchange and short 3 lots of the same contract on another. The net position is ________.", ["short 25", "long 25", "long 28", "long 31"], 1, "Interoperability nets positions."],
+["Total delivery margin is Rs 500,000. At Expiry − 2 EOD, the amount collected is ________.", ["Rs 500,000", "Rs 300,000", "Rs 400,000", "Rs 150,000"], 1, "Collected 20%, 40%, 60%, 80% on Expiry−4 to Expiry−1."],
+["Far month single stock contract value is Rs 115,000. The calendar spread charge is ________.", ["Rs 2,530", "Rs 2,012.5", "Rs 2,300", "Rs 4,025"], 0, "1.75% for index; 2.2% for single stock."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

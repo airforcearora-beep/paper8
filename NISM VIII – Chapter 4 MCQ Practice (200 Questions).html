@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 4 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 4: Introduction to Options (200 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["A call option gives the buyer ________.", ["The right to buy the underlying", "The right to sell the underlying", "An obligation to buy", "An obligation to sell"], 0, "A put gives the right to sell."],
+["A put option gives the buyer ________.", ["The right to buy", "The right to sell the underlying", "An obligation to sell", "Dividend rights"], 1, "The buyer has a right but no obligation."],
+["The option buyer pays ________ to the writer.", ["Margin", "Premium", "Strike", "Brokerage only"], 1, "Premium is the price of the option."],
+["The option writer ________.", ["Pays the premium", "Receives the premium and is obliged to perform if exercised", "Has only rights", "Pays no margin"], 1, "The writer has an obligation."],
+["An American option can be exercised ________.", ["Only at expiry", "Any time on or before expiry", "Only on the first day", "Never"], 1, "European options can be exercised only at expiry."],
+["In India, index and stock options are ________ style.", ["American", "European", "Asian", "Bermudan"], 1, "Exercise only on the expiry date."],
+["The strike price is ________.", ["The price at which the underlying can be bought or sold on exercise", "The premium", "The spot price", "The margin"], 0, "It is also called the exercise price."],
+["A call option is in-the-money when ________.", ["Spot > strike", "Spot < strike", "Spot = strike", "Premium is high"], 0, "Immediate exercise gives positive cash flow."],
+["A put option is in-the-money when ________.", ["Spot > strike", "Spot < strike", "Spot = strike", "Volatility is low"], 1, "Strike above spot."],
+["A call option is out-of-the-money when ________.", ["Spot > strike", "Spot < strike", "Spot = strike", "Always"], 1, "Exercise would give a negative cash flow."],
+["Index at 18,415 with strikes 18,350, 18,400, 18,450: the ATM option has strike ________.", ["18,350", "18,400", "18,450", "None"], 1, "The strike closest to spot is ATM."],
+["The intrinsic value of an option can ________.", ["Be negative", "Never be negative", "Be above premium", "Be negative for puts"], 1, "A holder is not bound to exercise."],
+["ATM and OTM options have ________.", ["Only time value", "Only intrinsic value", "Both values", "No value"], 0, "Intrinsic value is zero."],
+["Spot 18,315.10, put strike 18,400: intrinsic value is ________.", ["Rs 84.90", "Rs 92.70", "Rs 177.60", "Nil"], 0, "18,400 − 18,315.10."],
+["That put has premium Rs 177.60; its time value is ________.", ["Rs 84.90", "Rs 92.70", "Rs 124.50", "Rs 262.50"], 1, "177.60 − 84.90."],
+["The OTM call (premium Rs 124.50) has time value of ________.", ["Nil", "Rs 84.90", "Rs 124.50", "Rs 177.60"], 2, "Entire premium is time value."],
+["Nifty lot 65, call premium Rs 124.50: total premium is ________.", ["Rs 8,092.50", "Rs 11,544", "Rs 124.50", "Rs 65,000"], 0, "124.50 × 65."],
+["A long option holder’s potential loss is ________.", ["Unlimited", "Limited to the premium paid", "Equal to strike", "Nil"], 1, "Loss is at most the premium."],
+["A short option position’s maximum profit is ________.", ["Unlimited", "The premium received", "Strike price", "Nil"], 1, "The seller keeps the premium."],
+["The breakeven point of a call option is ________.", ["Strike + premium", "Strike − premium", "Strike", "Spot"], 0, "BEP = X + P."],
+["Long call strike 17,500, premium 95: BEP is ________.", ["17,405", "17,500", "17,595", "17,690"], 2, "17,500 + 95."],
+["Same call, index closes at 18,000: net profit per unit is ________.", ["Rs 95", "Rs 405", "Rs 500", "Rs 595"], 1, "500 − 95."],
+["A call option buyer ________ margin.", ["Pays initial margin", "Need not pay margin", "Pays ELM only", "Pays double"], 1, "The buyer’s liability is limited to the premium."],
+["The potential loss of a short call is ________.", ["Limited to the premium", "Theoretically unlimited", "Zero", "Equal to strike"], 1, "Writers pay margins."],
+["In-the-money index options are ________ at expiry.", ["Physically delivered", "Cash-settled", "Rolled", "Ignored"], 1, "Settled against the closing index value."],
+["Daily mark-to-market settlement for options ________.", ["Exists like futures", "Does not exist", "Is hourly", "Is optional"], 1, "There is no daily settlement of options."],
+["Nifty 50 and Sensex options can have maximum maturity up to ________.", ["1 year", "3 years", "5 years", "10 years"], 2, "With weekly, monthly, quarterly and half-yearly expiries."],
+["Sensex options have a minimum of ________ strikes.", ["21", "51", "101", "201"], 2, "50 ITM, 1 ATM, 50 OTM."],
+["Sensex option strike price interval is ________.", ["50 points", "100 points", "200 points", "500 points"], 1, "As per the contract specifications."],
+["The Sensex options contract size is ________.", ["10", "20", "50", "100"], 1, "Tick size Rs 0.05."],
+["Long call has a ________ position on the underlying; long put has a ________ position.", ["Long; short", "Short; long", "Long; long", "Short; short"], 0, "Long/short on option differs from the position on underlying."],
+["A long call is closed by ________.", ["Buying a put", "Selling the same call (strike and expiry)", "Buying another strike", "Doing nothing"], 1, "A closing transaction has the same terms."],
+["Assignment of options means ________.", ["Allocation of exercised options to option sellers", "Giving options to buyers", "Margin collection", "Premium payment"], 0, "Exercised options are assigned to writers."],
+["Delta measures ________.", ["Change in premium per unit change in underlying", "Time decay", "Volatility sensitivity", "Interest sensitivity"], 0, "It is the sensitivity to underlying price."],
+["Delta is positive for ________ and negative for ________.", ["Long call; long put", "Long put; long call", "Short call; long call", "Long put; short put"], 0, "Short call delta is negative."],
+["A delta-neutral portfolio is one where ________.", ["Gains and losses from small underlying moves offset", "Delta is 1", "Premium is zero", "Gamma is zero"], 0, "Delta-hedging uses the delta."],
+["Gamma measures ________.", ["Change in delta per unit change in underlying", "Time decay", "Vega", "Rho"], 0, "It acts like delta’s acceleration."],
+["Theta measures ________.", ["Time decay of the option", "Volatility sensitivity", "Rate sensitivity", "Delta"], 0, "It is generally negative for long options."],
+["Vega is ________ for long calls and long puts.", ["Positive", "Negative", "Zero", "Undefined"], 0, "Higher volatility raises premiums."],
+["Rho is ________ for calls and ________ for puts.", ["Positive; negative", "Negative; positive", "Positive; positive", "Zero; zero"], 0, "Higher interest rates raise calls and lower puts."],
+["The binomial option pricing model was developed by ________.", ["William Sharpe", "Fisher Black", "Myron Scholes", "Harry Markowitz"], 0, "It was developed in 1978."],
+["The Black-Scholes model was published in ________ by Fisher Black and Myron Scholes.", ["1965", "1973", "1978", "1990"], 1, "It does not rely on iteration."],
+["The original Black-Scholes model assumes ________.", ["European options, constant volatility, no dividends", "American options", "Changing volatility", "Dividends included"], 0, "Adjustments can be made for dividends."],
+["Implied volatility is ________.", ["Computed from past prices", "Derived from the option’s market price using a model", "Fixed by the exchange", "Zero for ATM options"], 1, "Historical volatility uses past price changes."],
+["When implied volatility is high, option traders tend to ________.", ["Buy options", "Sell options", "Avoid options", "Buy futures"], 1, "Premiums are rich."],
+["If spot rises, call premiums ________ and put premiums ________.", ["Rise; fall", "Fall; rise", "Rise; rise", "Fall; fall"], 0, "Other factors constant."],
+["A higher strike makes call premiums ________.", ["Higher", "Lower", "Unchanged", "Zero"], 1, "Puts become more valuable."],
+["Higher volatility ________ both call and put premiums.", ["Raises", "Lowers", "Does not affect", "Zeroes"], 0, "Greater chance of large moves."],
+["Higher interest rates ________ call premiums and ________ put premiums.", ["Raise; lower", "Lower; raise", "Raise; raise", "Lower; lower"], 0, "Per the factor table."],
+["Higher expected dividends ________ call premiums and ________ put premiums.", ["Lower; raise", "Raise; lower", "Raise; raise", "Lower; lower"], 0, "Stock price falls on dividend payment."],
+["A buyer pays a ________ premium for an ITM option than an OTM one.", ["Higher", "Lower", "Same", "Zero"], 0, "ITM has intrinsic value."],
+["Spot 17,562, call strike 17,300, premium 327: time value is ________.", ["Rs 262", "Rs 65", "Rs 327", "Rs 130"], 1, "327 − 262."],
+["The buyer of an option cannot lose more than the premium paid.", ["True", "False", "True only for American", "True only for puts"], 0, "Sample question: loss is limited to premium."],
+["At expiry, the time value of an option is ________.", ["Zero", "Equal to premium", "Negative", "Equal to strike"], 0, "Only intrinsic value remains."],
+["As expiry nears, an option’s time value ________.", ["Decays", "Rises", "Stays constant", "Doubles"], 0, "This is time decay."],
+["The maximum loss of a short put is ________ (per unit).", ["Premium received", "Strike price less premium received", "Unlimited", "Zero"], 1, "The underlying can fall to zero."],
+["A call option has strike Rs 1,435 and spot Rs 1,405. Its intrinsic value is ________.", ["Rs 2,840", "Rs 60", "Rs 30", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 335 and spot Rs 365. Its intrinsic value is ________.", ["Rs 60", "Rs 700", "Rs 30", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 1200 while spot is Rs 1300. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 2, "Compare spot with strike by option type."],
+["A call has strike Rs 1575, spot Rs 1635 and premium Rs 120. Its time value is ________.", ["Rs 60", "Rs 180", "Rs 65", "Rs 120"], 0, "Time value = premium − intrinsic value."],
+["You bought a call (strike 19300) at premium Rs 265, lot 25. The index closes at 19125 on expiry. Net profit or loss is ________.", ["−6,625", "−6,500", "0", "+6,625"], 0, "(Payoff 0 vs premium 265) × 25, sign by position."],
+["You sold a call (strike 18600) at premium Rs 100, lot 25. The index closes at 18300 on expiry. Net profit or loss is ________.", ["−2,375", "0", "+2,500", "−2,500"], 2, "(Payoff 0 vs premium 100) × 25, sign by position."],
+["You bought a put (strike 19100) at premium Rs 205, lot 50. The index closes at 19050 on expiry. Net profit or loss is ________.", ["−7,500", "+2,500", "−7,750", "+7,750"], 2, "(Payoff 50 vs premium 205) × 50, sign by position."],
+["You sold a put (strike 21900) at premium Rs 210, lot 65. The index closes at 21600 on expiry. Net profit or loss is ________.", ["+5,850", "+19,500", "−5,850", "+6,175"], 2, "(Payoff 300 vs premium 210) × 65, sign by position."],
+["The breakeven point for a call option with strike 21200 and premium Rs 115 is ________.", ["21,430", "21,085", "21,200", "21,315"], 3, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 40, lot 65, strike 21500) is ________.", ["Rs 2,600", "Rs 1,397,500", "Rs 40", "Rs 5,200"], 0, "Max loss = premium × lot."],
+["A call has delta 0.4 and gamma 0.008. If the underlying rises by 20 points, the new delta is ________.", ["0.408", "0.160", "0.560", "0.240"], 2, "New delta = delta + gamma × move."],
+["A call option has strike Rs 245 and spot Rs 215. Its intrinsic value is ________.", ["Rs 460", "Rs 30", "Rs 0", "Rs 60"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,010 and spot Rs 1,970. Its intrinsic value is ________.", ["Rs 80", "Rs 45", "Rs 3,980", "Rs 40"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2050 while spot is Rs 2050. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 1, "Compare spot with strike by option type."],
+["A call has strike Rs 1635, spot Rs 1625 and premium Rs 30. Its time value is ________.", ["Rs 30", "Rs 0", "Rs 40", "Rs 35"], 0, "Time value = premium − intrinsic value."],
+["You bought a call (strike 22900) at premium Rs 85, lot 65. The index closes at 23050 on expiry. Net profit or loss is ________.", ["+4,550", "−4,225", "+4,225", "+9,750"], 2, "(Payoff 150 vs premium 85) × 65, sign by position."],
+["You sold a call (strike 18100) at premium Rs 150, lot 100. The index closes at 18050 on expiry. Net profit or loss is ________.", ["−14,500", "−15,000", "+15,000", "0"], 2, "(Payoff 0 vs premium 150) × 100, sign by position."],
+["You bought a put (strike 20500) at premium Rs 365, lot 65. The index closes at 20250 on expiry. Net profit or loss is ________.", ["−7,150", "−7,475", "+7,475", "+16,250"], 1, "(Payoff 250 vs premium 365) × 65, sign by position."],
+["You sold a put (strike 18000) at premium Rs 115, lot 65. The index closes at 18275 on expiry. Net profit or loss is ________.", ["−7,475", "0", "+7,475", "−7,150"], 2, "(Payoff 0 vs premium 115) × 65, sign by position."],
+["The breakeven point for a call option with strike 24600 and premium Rs 190 is ________.", ["24,410", "24,600", "24,790", "24,980"], 2, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 255, lot 100, strike 21400) is ________.", ["Rs 25,500", "Rs 2,140,000", "Rs 255", "Rs 51,000"], 0, "Max loss = premium × lot."],
+["A call has delta 0.4 and gamma 0.002. If the underlying rises by 5 points, the new delta is ________.", ["0.402", "0.410", "0.390", "0.010"], 1, "New delta = delta + gamma × move."],
+["A call option has strike Rs 725 and spot Rs 765. Its intrinsic value is ________.", ["Rs 1,490", "Rs 80", "Rs 40", "Rs 45"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,355 and spot Rs 2,320. Its intrinsic value is ________.", ["Rs 70", "Rs 40", "Rs 35", "Rs 4,675"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A call option has strike Rs 1450 while spot is Rs 1550. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 0, "Compare spot with strike by option type."],
+["A put has strike Rs 2345, spot Rs 2335 and premium Rs 50. Its time value is ________.", ["Rs 40", "Rs 60", "Rs 50", "Rs 10"], 0, "Time value = premium − intrinsic value."],
+["You bought a call (strike 20700) at premium Rs 320, lot 50. The index closes at 20700 on expiry. Net profit or loss is ________.", ["0", "−15,750", "+16,000", "−16,000"], 3, "(Payoff 0 vs premium 320) × 50, sign by position."],
+["You sold a call (strike 23300) at premium Rs 235, lot 25. The index closes at 23125 on expiry. Net profit or loss is ________.", ["+5,875", "0", "−5,875", "−5,750"], 0, "(Payoff 0 vs premium 235) × 25, sign by position."],
+["You bought a put (strike 17800) at premium Rs 245, lot 100. The index closes at 18050 on expiry. Net profit or loss is ________.", ["−24,000", "0", "+24,500", "−24,500"], 3, "(Payoff 0 vs premium 245) × 100, sign by position."],
+["You sold a put (strike 24100) at premium Rs 195, lot 65. The index closes at 24175 on expiry. Net profit or loss is ________.", ["−12,350", "+12,675", "−12,675", "0"], 1, "(Payoff 0 vs premium 195) × 65, sign by position."],
+["The breakeven point for a put option with strike 17100 and premium Rs 170 is ________.", ["16,930", "17,440", "17,270", "17,100"], 0, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 165, lot 65, strike 23400) is ________.", ["Rs 10,725", "Rs 21,450", "Rs 1,521,000", "Rs 165"], 0, "Max loss = premium × lot."],
+["A call has delta 0.6 and gamma 0.006. If the underlying rises by 10 points, the new delta is ________.", ["0.660", "0.606", "0.540", "0.060"], 0, "New delta = delta + gamma × move."],
+["A call option has strike Rs 2,715 and spot Rs 2,750. Its intrinsic value is ________.", ["Rs 70", "Rs 40", "Rs 35", "Rs 5,465"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,550 and spot Rs 2,540. Its intrinsic value is ________.", ["Rs 15", "Rs 5,090", "Rs 20", "Rs 10"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A call option has strike Rs 2450 while spot is Rs 2550. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 0, "Compare spot with strike by option type."],
+["A put has strike Rs 2060, spot Rs 2075 and premium Rs 50. Its time value is ________.", ["Rs 0", "Rs 50", "Rs 60", "Rs 55"], 1, "Time value = premium − intrinsic value."],
+["You bought a call (strike 19500) at premium Rs 120, lot 75. The index closes at 19650 on expiry. Net profit or loss is ________.", ["+2,625", "+11,250", "+2,250", "−2,250"], 2, "(Payoff 150 vs premium 120) × 75, sign by position."],
+["You sold a call (strike 17500) at premium Rs 320, lot 50. The index closes at 17375 on expiry. Net profit or loss is ________.", ["−16,000", "0", "−15,750", "+16,000"], 3, "(Payoff 0 vs premium 320) × 50, sign by position."],
+["You bought a put (strike 21000) at premium Rs 135, lot 50. The index closes at 21075 on expiry. Net profit or loss is ________.", ["−6,500", "0", "+6,750", "−6,750"], 3, "(Payoff 0 vs premium 135) × 50, sign by position."],
+["You sold a put (strike 21400) at premium Rs 260, lot 100. The index closes at 21625 on expiry. Net profit or loss is ________.", ["−26,000", "−25,500", "0", "+26,000"], 3, "(Payoff 0 vs premium 260) × 100, sign by position."],
+["The breakeven point for a call option with strike 21700 and premium Rs 20 is ________.", ["21,720", "21,740", "21,680", "21,700"], 0, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 290, lot 75, strike 18400) is ________.", ["Rs 43,500", "Rs 1,380,000", "Rs 290", "Rs 21,750"], 3, "Max loss = premium × lot."],
+["A call has delta 0.3 and gamma 0.006. If the underlying rises by -10 points, the new delta is ________.", ["0.240", "0.360", "-0.060", "0.306"], 0, "New delta = delta + gamma × move."],
+["A call option has strike Rs 1,860 and spot Rs 1,900. Its intrinsic value is ________.", ["Rs 40", "Rs 80", "Rs 3,760", "Rs 45"], 0, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,455 and spot Rs 2,490. Its intrinsic value is ________.", ["Rs 0", "Rs 70", "Rs 4,945", "Rs 35"], 0, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 700 while spot is Rs 700. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 1, "Compare spot with strike by option type."],
+["A put has strike Rs 1940, spot Rs 1895 and premium Rs 50. Its time value is ________.", ["Rs 45", "Rs 50", "Rs 5", "Rs 95"], 2, "Time value = premium − intrinsic value."],
+["You bought a call (strike 24200) at premium Rs 365, lot 65. The index closes at 24000 on expiry. Net profit or loss is ________.", ["−23,725", "0", "+23,725", "−23,400"], 0, "(Payoff 0 vs premium 365) × 65, sign by position."],
+["You sold a call (strike 19800) at premium Rs 335, lot 75. The index closes at 19725 on expiry. Net profit or loss is ________.", ["0", "+25,125", "−25,125", "−24,750"], 1, "(Payoff 0 vs premium 335) × 75, sign by position."],
+["You bought a put (strike 24600) at premium Rs 185, lot 65. The index closes at 24875 on expiry. Net profit or loss is ________.", ["−12,025", "0", "+12,025", "−11,700"], 0, "(Payoff 0 vs premium 185) × 65, sign by position."],
+["You sold a put (strike 17200) at premium Rs 220, lot 75. The index closes at 17125 on expiry. Net profit or loss is ________.", ["−10,500", "−10,875", "+10,875", "+5,625"], 2, "(Payoff 75 vs premium 220) × 75, sign by position."],
+["The breakeven point for a call option with strike 24900 and premium Rs 160 is ________.", ["24,900", "25,060", "25,220", "24,740"], 1, "Call: X + P; put: X − P."],
+["The maximum loss on a long call (premium Rs 270, lot 50, strike 22000) is ________.", ["Rs 13,500", "Rs 1,100,000", "Rs 270", "Rs 27,000"], 0, "Max loss = premium × lot."],
+["A call has delta 0.4 and gamma 0.008. If the underlying rises by 5 points, the new delta is ________.", ["0.440", "0.408", "0.040", "0.360"], 0, "New delta = delta + gamma × move."],
+["A call option has strike Rs 900 and spot Rs 890. Its intrinsic value is ________.", ["Rs 0", "Rs 20", "Rs 10", "Rs 1,790"], 0, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,705 and spot Rs 2,750. Its intrinsic value is ________.", ["Rs 5,455", "Rs 45", "Rs 90", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A call option has strike Rs 2400 while spot is Rs 2350. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 2, "Compare spot with strike by option type."],
+["A put has strike Rs 2890, spot Rs 2870 and premium Rs 25. Its time value is ________.", ["Rs 5", "Rs 20", "Rs 25", "Rs 45"], 0, "Time value = premium − intrinsic value."],
+["You bought a call (strike 24500) at premium Rs 100, lot 25. The index closes at 24225 on expiry. Net profit or loss is ________.", ["−2,500", "+2,500", "−2,375", "0"], 0, "(Payoff 0 vs premium 100) × 25, sign by position."],
+["You sold a call (strike 18300) at premium Rs 365, lot 25. The index closes at 18150 on expiry. Net profit or loss is ________.", ["+9,125", "0", "−9,125", "−9,000"], 0, "(Payoff 0 vs premium 365) × 25, sign by position."],
+["You bought a put (strike 21900) at premium Rs 320, lot 50. The index closes at 21900 on expiry. Net profit or loss is ________.", ["−15,750", "−16,000", "+16,000", "0"], 1, "(Payoff 0 vs premium 320) × 50, sign by position."],
+["You sold a put (strike 20800) at premium Rs 20, lot 75. The index closes at 21050 on expiry. Net profit or loss is ________.", ["+1,500", "−1,500", "−1,125", "0"], 0, "(Payoff 0 vs premium 20) × 75, sign by position."],
+["The breakeven point for a put option with strike 18800 and premium Rs 70 is ________.", ["18,730", "18,870", "18,800", "18,940"], 0, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 125, lot 100, strike 18900) is ________.", ["Rs 1,890,000", "Rs 125", "Rs 25,000", "Rs 12,500"], 3, "Max loss = premium × lot."],
+["A call has delta 0.5 and gamma 0.002. If the underlying rises by 5 points, the new delta is ________.", ["0.010", "0.502", "0.490", "0.510"], 3, "New delta = delta + gamma × move."],
+["A call option has strike Rs 495 and spot Rs 450. Its intrinsic value is ________.", ["Rs 45", "Rs 945", "Rs 0", "Rs 90"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 715 and spot Rs 725. Its intrinsic value is ________.", ["Rs 10", "Rs 20", "Rs 1,440", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2450 while spot is Rs 2350. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 0, "Compare spot with strike by option type."],
+["A call has strike Rs 2525, spot Rs 2560 and premium Rs 70. Its time value is ________.", ["Rs 40", "Rs 105", "Rs 35", "Rs 70"], 2, "Time value = premium − intrinsic value."],
+["You bought a call (strike 17500) at premium Rs 375, lot 75. The index closes at 17275 on expiry. Net profit or loss is ________.", ["0", "−27,750", "+28,125", "−28,125"], 3, "(Payoff 0 vs premium 375) × 75, sign by position."],
+["You sold a call (strike 24300) at premium Rs 385, lot 75. The index closes at 24075 on expiry. Net profit or loss is ________.", ["0", "−28,500", "+28,875", "−28,875"], 2, "(Payoff 0 vs premium 385) × 75, sign by position."],
+["You bought a put (strike 18100) at premium Rs 220, lot 100. The index closes at 18325 on expiry. Net profit or loss is ________.", ["−22,000", "0", "+22,000", "−21,500"], 0, "(Payoff 0 vs premium 220) × 100, sign by position."],
+["You sold a put (strike 21700) at premium Rs 55, lot 65. The index closes at 21500 on expiry. Net profit or loss is ________.", ["−9,425", "+9,750", "+13,000", "+9,425"], 0, "(Payoff 200 vs premium 55) × 65, sign by position."],
+["The breakeven point for a put option with strike 24100 and premium Rs 195 is ________.", ["24,100", "23,905", "24,490", "24,295"], 1, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 195, lot 50, strike 20200) is ________.", ["Rs 195", "Rs 19,500", "Rs 9,750", "Rs 1,010,000"], 2, "Max loss = premium × lot."],
+["A call has delta 0.6 and gamma 0.008. If the underlying rises by 10 points, the new delta is ________.", ["0.080", "0.680", "0.608", "0.520"], 1, "New delta = delta + gamma × move."],
+["A call option has strike Rs 1,790 and spot Rs 1,845. Its intrinsic value is ________.", ["Rs 3,635", "Rs 110", "Rs 60", "Rs 55"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,755 and spot Rs 2,690. Its intrinsic value is ________.", ["Rs 65", "Rs 130", "Rs 70", "Rs 5,445"], 0, "Call: S − X; put: X − S; minimum zero."],
+["A call option has strike Rs 1050 while spot is Rs 1100. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 0, "Compare spot with strike by option type."],
+["A put has strike Rs 1100, spot Rs 1075 and premium Rs 85. Its time value is ________.", ["Rs 85", "Rs 25", "Rs 60", "Rs 110"], 2, "Time value = premium − intrinsic value."],
+["You bought a call (strike 22400) at premium Rs 160, lot 25. The index closes at 22675 on expiry. Net profit or loss is ________.", ["+3,000", "−2,875", "+6,875", "+2,875"], 3, "(Payoff 275 vs premium 160) × 25, sign by position."],
+["You sold a call (strike 19700) at premium Rs 105, lot 100. The index closes at 19950 on expiry. Net profit or loss is ________.", ["+25,000", "−14,500", "+14,500", "+15,000"], 1, "(Payoff 250 vs premium 105) × 100, sign by position."],
+["You bought a put (strike 20700) at premium Rs 230, lot 65. The index closes at 20875 on expiry. Net profit or loss is ________.", ["0", "−14,950", "+14,950", "−14,625"], 1, "(Payoff 0 vs premium 230) × 65, sign by position."],
+["You sold a put (strike 21500) at premium Rs 205, lot 75. The index closes at 21700 on expiry. Net profit or loss is ________.", ["−15,375", "+15,375", "−15,000", "0"], 1, "(Payoff 0 vs premium 205) × 75, sign by position."],
+["The breakeven point for a put option with strike 24300 and premium Rs 85 is ________.", ["24,300", "24,215", "24,470", "24,385"], 1, "Call: X + P; put: X − P."],
+["The maximum loss on a long call (premium Rs 50, lot 25, strike 17400) is ________.", ["Rs 2,500", "Rs 50", "Rs 1,250", "Rs 435,000"], 2, "Max loss = premium × lot."],
+["A call has delta 0.6 and gamma 0.008. If the underlying rises by 15 points, the new delta is ________.", ["0.120", "0.608", "0.480", "0.720"], 3, "New delta = delta + gamma × move."],
+["A call option has strike Rs 1,690 and spot Rs 1,635. Its intrinsic value is ________.", ["Rs 0", "Rs 110", "Rs 55", "Rs 3,325"], 0, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 590 and spot Rs 610. Its intrinsic value is ________.", ["Rs 40", "Rs 0", "Rs 1,200", "Rs 20"], 1, "Call: S − X; put: X − S; minimum zero."],
+["A call option has strike Rs 2950 while spot is Rs 2850. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 2, "Compare spot with strike by option type."],
+["A put has strike Rs 2160, spot Rs 2200 and premium Rs 45. Its time value is ________.", ["Rs 55", "Rs 0", "Rs 45", "Rs 50"], 2, "Time value = premium − intrinsic value."],
+["You bought a call (strike 19000) at premium Rs 200, lot 50. The index closes at 19225 on expiry. Net profit or loss is ________.", ["+11,250", "+1,500", "−1,250", "+1,250"], 3, "(Payoff 225 vs premium 200) × 50, sign by position."],
+["You sold a call (strike 21400) at premium Rs 255, lot 25. The index closes at 21350 on expiry. Net profit or loss is ________.", ["−6,250", "−6,375", "0", "+6,375"], 3, "(Payoff 0 vs premium 255) × 25, sign by position."],
+["You bought a put (strike 23000) at premium Rs 115, lot 65. The index closes at 22775 on expiry. Net profit or loss is ________.", ["+7,475", "+7,150", "−7,150", "+14,625"], 1, "(Payoff 225 vs premium 115) × 65, sign by position."],
+["You sold a put (strike 19000) at premium Rs 40, lot 25. The index closes at 18850 on expiry. Net profit or loss is ________.", ["+2,875", "−2,750", "+3,750", "+2,750"], 1, "(Payoff 150 vs premium 40) × 25, sign by position."],
+["The breakeven point for a put option with strike 21600 and premium Rs 235 is ________.", ["22,070", "21,835", "21,365", "21,600"], 2, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 135, lot 65, strike 17800) is ________.", ["Rs 17,550", "Rs 135", "Rs 8,775", "Rs 1,157,000"], 2, "Max loss = premium × lot."],
+["A call has delta 0.4 and gamma 0.002. If the underlying rises by -10 points, the new delta is ________.", ["0.380", "0.420", "0.402", "-0.020"], 0, "New delta = delta + gamma × move."],
+["A call option has strike Rs 195 and spot Rs 130. Its intrinsic value is ________.", ["Rs 130", "Rs 325", "Rs 65", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 895 and spot Rs 965. Its intrinsic value is ________.", ["Rs 140", "Rs 70", "Rs 1,860", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2300 while spot is Rs 2350. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 2, "Compare spot with strike by option type."],
+["A call has strike Rs 2205, spot Rs 2255 and premium Rs 125. Its time value is ________.", ["Rs 125", "Rs 50", "Rs 75", "Rs 175"], 2, "Time value = premium − intrinsic value."],
+["You bought a call (strike 17600) at premium Rs 335, lot 25. The index closes at 17600 on expiry. Net profit or loss is ________.", ["−8,250", "0", "+8,375", "−8,375"], 3, "(Payoff 0 vs premium 335) × 25, sign by position."],
+["You sold a call (strike 22700) at premium Rs 215, lot 25. The index closes at 22900 on expiry. Net profit or loss is ________.", ["−375", "+5,000", "−250", "+375"], 3, "(Payoff 200 vs premium 215) × 25, sign by position."],
+["You bought a put (strike 23500) at premium Rs 275, lot 100. The index closes at 23350 on expiry. Net profit or loss is ________.", ["+15,000", "−12,000", "−12,500", "+12,500"], 2, "(Payoff 150 vs premium 275) × 100, sign by position."],
+["You sold a put (strike 18300) at premium Rs 75, lot 50. The index closes at 18425 on expiry. Net profit or loss is ________.", ["−3,750", "−3,500", "0", "+3,750"], 3, "(Payoff 0 vs premium 75) × 50, sign by position."],
+["The breakeven point for a put option with strike 22600 and premium Rs 190 is ________.", ["22,410", "22,980", "22,790", "22,600"], 0, "Call: X + P; put: X − P."],
+["The maximum loss on a long call (premium Rs 200, lot 75, strike 23600) is ________.", ["Rs 30,000", "Rs 200", "Rs 1,770,000", "Rs 15,000"], 3, "Max loss = premium × lot."],
+["A call has delta 0.4 and gamma 0.002. If the underlying rises by 10 points, the new delta is ________.", ["0.020", "0.420", "0.380", "0.402"], 1, "New delta = delta + gamma × move."],
+["A call option has strike Rs 1,490 and spot Rs 1,445. Its intrinsic value is ________.", ["Rs 45", "Rs 90", "Rs 0", "Rs 2,935"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2,790 and spot Rs 2,845. Its intrinsic value is ________.", ["Rs 55", "Rs 5,635", "Rs 0", "Rs 110"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 1900 while spot is Rs 1900. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 1, "Compare spot with strike by option type."],
+["A call has strike Rs 2310, spot Rs 2260 and premium Rs 20. Its time value is ________.", ["Rs 0", "Rs 30", "Rs 25", "Rs 20"], 3, "Time value = premium − intrinsic value."],
+["You bought a call (strike 20600) at premium Rs 255, lot 25. The index closes at 20375 on expiry. Net profit or loss is ________.", ["−6,375", "0", "+6,375", "−6,250"], 0, "(Payoff 0 vs premium 255) × 25, sign by position."],
+["You sold a call (strike 24100) at premium Rs 20, lot 50. The index closes at 24025 on expiry. Net profit or loss is ________.", ["0", "−750", "−1,000", "+1,000"], 3, "(Payoff 0 vs premium 20) × 50, sign by position."],
+["You bought a put (strike 17200) at premium Rs 50, lot 75. The index closes at 17450 on expiry. Net profit or loss is ________.", ["−3,375", "+3,750", "−3,750", "0"], 2, "(Payoff 0 vs premium 50) × 75, sign by position."],
+["You sold a put (strike 24100) at premium Rs 100, lot 25. The index closes at 24050 on expiry. Net profit or loss is ________.", ["−1,250", "+1,255", "+1,250", "−1,125"], 2, "(Payoff 50 vs premium 100) × 25, sign by position."],
+["The breakeven point for a call option with strike 21100 and premium Rs 110 is ________.", ["20,990", "21,100", "21,320", "21,210"], 3, "Call: X + P; put: X − P."],
+["The maximum loss on a long call (premium Rs 25, lot 25, strike 17600) is ________.", ["Rs 625", "Rs 1,250", "Rs 440,000", "Rs 25"], 0, "Max loss = premium × lot."],
+["A call has delta 0.7 and gamma 0.002. If the underlying rises by 10 points, the new delta is ________.", ["0.702", "0.680", "0.720", "0.020"], 2, "New delta = delta + gamma × move."],
+["A call option has strike Rs 1,155 and spot Rs 1,130. Its intrinsic value is ________.", ["Rs 25", "Rs 50", "Rs 0", "Rs 2,285"], 2, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 885 and spot Rs 935. Its intrinsic value is ________.", ["Rs 50", "Rs 0", "Rs 100", "Rs 1,820"], 1, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 650 while spot is Rs 550. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 0, "Compare spot with strike by option type."],
+["A put has strike Rs 2115, spot Rs 2110 and premium Rs 15. Its time value is ________.", ["Rs 10", "Rs 20", "Rs 15", "Rs 5"], 0, "Time value = premium − intrinsic value."],
+["You bought a call (strike 19900) at premium Rs 315, lot 75. The index closes at 20075 on expiry. Net profit or loss is ________.", ["+13,125", "−10,500", "−10,125", "+10,500"], 1, "(Payoff 175 vs premium 315) × 75, sign by position."],
+["You sold a call (strike 19000) at premium Rs 360, lot 75. The index closes at 19075 on expiry. Net profit or loss is ________.", ["−21,375", "+5,625", "−21,000", "+21,375"], 3, "(Payoff 75 vs premium 360) × 75, sign by position."],
+["You bought a put (strike 22300) at premium Rs 50, lot 25. The index closes at 22150 on expiry. Net profit or loss is ________.", ["−2,500", "+2,625", "+3,750", "+2,500"], 3, "(Payoff 150 vs premium 50) × 25, sign by position."],
+["You sold a put (strike 23100) at premium Rs 245, lot 75. The index closes at 23100 on expiry. Net profit or loss is ________.", ["0", "−18,000", "+18,375", "−18,375"], 2, "(Payoff 0 vs premium 245) × 75, sign by position."],
+["The breakeven point for a put option with strike 20800 and premium Rs 195 is ________.", ["21,190", "20,995", "20,605", "20,800"], 2, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 130, lot 50, strike 17700) is ________.", ["Rs 130", "Rs 6,500", "Rs 885,000", "Rs 13,000"], 1, "Max loss = premium × lot."],
+["A call has delta 0.4 and gamma 0.004. If the underlying rises by 20 points, the new delta is ________.", ["0.320", "0.404", "0.480", "0.080"], 2, "New delta = delta + gamma × move."],
+["A call option has strike Rs 1,010 and spot Rs 965. Its intrinsic value is ________.", ["Rs 90", "Rs 45", "Rs 1,975", "Rs 0"], 3, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 1,140 and spot Rs 1,120. Its intrinsic value is ________.", ["Rs 20", "Rs 2,260", "Rs 40", "Rs 25"], 0, "Call: S − X; put: X − S; minimum zero."],
+["A put option has strike Rs 2000 while spot is Rs 2050. It is ________.", ["In-the-money", "At-the-money", "Out-of-the-money", "Cannot be determined"], 2, "Compare spot with strike by option type."],
+["A put has strike Rs 2010, spot Rs 1960 and premium Rs 55. Its time value is ________.", ["Rs 55", "Rs 105", "Rs 50", "Rs 5"], 3, "Time value = premium − intrinsic value."],
+["You bought a call (strike 21900) at premium Rs 30, lot 25. The index closes at 21850 on expiry. Net profit or loss is ________.", ["−750", "+750", "−625", "0"], 0, "(Payoff 0 vs premium 30) × 25, sign by position."],
+["You sold a call (strike 23400) at premium Rs 320, lot 75. The index closes at 23525 on expiry. Net profit or loss is ________.", ["−14,625", "+14,625", "+9,375", "−14,250"], 1, "(Payoff 125 vs premium 320) × 75, sign by position."],
+["You bought a put (strike 23800) at premium Rs 110, lot 65. The index closes at 23825 on expiry. Net profit or loss is ________.", ["+7,150", "−6,825", "0", "−7,150"], 3, "(Payoff 0 vs premium 110) × 65, sign by position."],
+["You sold a put (strike 20600) at premium Rs 200, lot 25. The index closes at 20350 on expiry. Net profit or loss is ________.", ["+1,375", "+6,250", "+1,250", "−1,250"], 3, "(Payoff 250 vs premium 200) × 25, sign by position."],
+["The breakeven point for a call option with strike 17100 and premium Rs 105 is ________.", ["17,310", "17,100", "17,205", "16,995"], 2, "Call: X + P; put: X − P."],
+["The maximum loss on a long put (premium Rs 260, lot 25, strike 20800) is ________.", ["Rs 260", "Rs 6,500", "Rs 13,000", "Rs 520,000"], 1, "Max loss = premium × lot."],
+["A call has delta 0.3 and gamma 0.004. If the underlying rises by 15 points, the new delta is ________.", ["0.304", "0.360", "0.240", "0.060"], 1, "New delta = delta + gamma × move."],
+["A call option has strike Rs 2,135 and spot Rs 2,095. Its intrinsic value is ________.", ["Rs 80", "Rs 0", "Rs 4,230", "Rs 40"], 1, "Call: S − X; put: X − S; minimum zero."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

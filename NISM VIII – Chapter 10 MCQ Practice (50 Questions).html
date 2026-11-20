@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 10 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 10: Sales Practices &amp; Investor Protection (50 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["“Customers have the right to get good advice; employees have the ________.”", ["Right to charge more", "Duty to maximise sales", "Right to sell any product", "Duty to give good advice"], 3, "Sales should be customer led."],
+["No investment is ________.", ["Liquid", "Taxable", "Regulated", "Risk-free"], 3, "Returns are related to risk taken."],
+["Advising a senior citizen with low risk tolerance to trade futures and options is ________.", ["Mandatory", "An unsuitable recommendation", "Good practice", "Hedging"], 1, "Suitability matters."],
+["Churning means ________.", ["Rolling futures", "Long-term investing", "Hedging", "Excessive trading to generate commissions"], 3, "Investors should review account statements."],
+["Sales agents may call customers only between ________ unless the customer requests otherwise.", ["6 am and 10 pm", "10 am and 5 pm", "9 am and 8 pm", "8 am and 6 pm"], 2, "At reasonable times."],
+["A sales agent must identify ________ on making contact.", ["The customer’s income", "Only the product", "Himself, the company and the purpose", "Only the price"], 2, "As soon as possible."],
+["A sales agent must end the discussion ________.", ["Immediately at the customer’s request", "Never", "After one hour", "After the pitch"], 0, "Contact must also cease if unwelcome."],
+["Sales agents must not exploit a person’s ________.", ["Inexperience, vulnerability or credulity", "Age only", "Income", "Location"], 0, "They must be courteous and professional."],
+["Members must maintain records including ________.", ["Nothing", "The date of contact with customers", "Only trade values", "Only margins"], 1, "To identify the sales agent in a complaint."],
+["Broker advertisements require ________.", ["Prior approval of the exchange", "No approval", "Bank approval", "SEBI approval only"], 0, "Per the Code for Advertisements."],
+["Unverified market rumours must be ________ by staff.", ["Posted online", "Not circulated", "Sold", "Forwarded freely"], 1, "Market news is approved by the Compliance Officer."],
+["The institutional mechanism for fraud prevention requires ________.", ["Surveillance systems, escalation and a whistle blower policy", "Only brokerage", "Only audits", "None"], 0, "Under Chapter IV of the Stock Brokers Regulations."],
+["In investing, ‘risk’ mainly refers to ________.", ["Only loss of capital", "Inflation", "Taxation", "The chance of not getting the desired return"], 3, "Not just losing capital."],
+["The risk-return trade-off means higher risk requires ________.", ["No return", "Fixed return", "Higher expected return", "Lower return"], 2, "And vice versa."],
+["A risk-averse investor allocates more to ________.", ["Debt and fixed income", "Equity", "Commodities", "Derivatives"], 0, "Security is preferred."],
+["Risk tolerance depends on age, income, dependents, ________ and more.", ["Occupation, liabilities and other wealth", "Only gender", "Only city", "Only age"], 0, "Several parameters."],
+["A longer investment horizon allows ________ risk.", ["No", "More", "Less", "Fixed"], 1, "Stocks can underperform in the short run."],
+["The Risk Disclosure Document is signed by the client ________.", ["After the first loss", "At on-boarding", "Never", "At expiry"], 1, "Brokers must make clients understand the risks."],
+["Options are more complex than futures because ________.", ["They are physical", "Evaluating a fair premium is difficult", "They are cheaper", "They have no margin"], 1, "Particularly option combinations."],
+["Market risk is the risk of ________.", ["No liquidity", "Default", "Taxes", "Prices moving unfavourably"], 3, "Causing losses."],
+["Liquidity risk arises when ________.", ["Prices rise", "A position cannot be closed easily", "Margins fall", "Taxes rise"], 1, "Volumes typically fall near expiry."],
+["Counterparty risk is generally not applicable to exchange-traded equity derivatives because ________.", ["Margins are zero", "There are no clients", "Prices are fixed", "The clearing corporation guarantees settlement"], 3, "Novation removes it."],
+["Leverage ________ the risks of derivatives.", ["Reduces", "Heightens", "Doesn’t affect", "Eliminates"], 1, "Small margins support large positions."],
+["In futures, if the MTM amount is not deposited in time, the broker may ________.", ["Pay it", "Waive it", "Close the exchange", "Liquidate the client’s position"], 3, "The client remains liable for losses."],
+["Options are a ________ asset for buyers.", ["Risk-free", "Tax-free", "Wasting", "Appreciating"], 2, "Time value decays."],
+["An option seller’s risk is ________.", ["Unlimited", "Zero", "Limited to premium", "Limited to margin"], 0, "Buyers’ loss is limited to premium."],
+["Price swings are more common in ________ contracts.", ["Thinly traded", "Expired", "Index", "Highly liquid"], 0, "Orders may be partially executed."],
+["System glitches or communication failures may cause ________.", ["No risk", "Orders to be delayed or not executed", "Lower margins", "Higher profits"], 1, "Clients should be cautioned."],
+["Brokers should avoid recommending F&O unless the client ________.", ["Has a demat account", "Is a student", "Is retired", "Has knowledge and financial ability to bear the risk"], 3, "Reasonable basis for believing."],
+["A broker obtains and verifies the client’s ________.", ["Hobbies", "Address only", "Net worth, income and investment experience", "Politics"], 2, "To assess suitability."],
+["Risk Disclosure facts pop up ________ in a client’s trading account.", ["At every login, requiring acknowledgement", "At account opening only", "At expiry", "Once a year"], 0, "Clients proceed only after acknowledging."],
+["As per SEBI’s study, ________ individual F&O traders incurred net losses.", ["1 out of 10", "9 out of 10", "5 out of 10", "2 out of 10"], 1, "For FY 2021-22."],
+["Loss makers’ average net trading loss was close to ________.", ["Rs 5,000", "Rs 1 lakh", "Rs 5 lakh", "Rs 50,000"], 3, "As per the study."],
+["Loss makers spent an additional ________ of net losses as transaction costs.", ["10%", "28%", "5%", "50%"], 1, "Over and above the losses."],
+["Profit makers spent ________ of profits as transaction costs.", ["Nothing", "60% to 70%", "1% to 2%", "15% to 50%"], 3, "As per the study."],
+["The SEBI study on F&O profits and losses was published in ________.", ["March 2010", "January 2023", "July 2016", "May 2020"], 1, "Based on FY 2021-22."],
+["Brokers must retain clients’ Profit and Loss data for at least ________.", ["Two years", "Five years", "One year", "Ten years"], 1, "On a continuous basis."],
+["The P&L data requirement excludes ________.", ["Proprietary traders, institutions and partnership firms", "HUFs", "Individuals", "NRIs"], 0, "It covers individuals, HUFs and NRIs."],
+["The Prevention of Money Laundering Act was enacted in ________.", ["1992", "2015", "2002", "2008"], 2, "It provides for confiscation of proceeds of crime."],
+["A client due diligence process includes client acceptance, client identification and ________.", ["Transaction monitoring and STR", "Advertising", "Brokerage", "Margin"], 0, "The three parameters."],
+["A beneficial owner is ________.", ["The introducer", "The broker", "The natural person who ultimately owns or controls the client", "The nominee"], 2, "Or the person on whose behalf a transaction is conducted."],
+["Accounts must NOT be opened in ________.", ["Fictitious, benami or anonymous names", "Joint names", "Company names", "Minor’s names"], 0, "Per client acceptance policy."],
+["KRAs were introduced in ________ to avoid duplicate KYC.", ["2000", "2011", "2018", "1995"], 1, "Under SEBI KRA Regulations, 2011."],
+["KYC information must be uploaded to the KRA within ________ of completion of KYC.", ["1 day", "30 days", "3 working days", "7 days"], 2, "By the intermediary."],
+["Suspicious Transaction Reports are sent to ________.", ["The exchange only", "RBI", "The client", "FIU-IND"], 3, "The Financial Intelligence Unit – India."],
+["An STR must be submitted within ________ of concluding a transaction is suspicious.", ["30 days", "1 day", "90 days", "7 days"], 3, "The Principal Officer records the reasons."],
+["The monthly Cash Transaction Report is due by the ________ of the following month.", ["5th", "25th", "30th", "15th"], 3, "Per the FIU-IND schedule."],
+["Before using SCORES or exchanges, an investor must first ________.", ["Write to SEBI chairman", "Complain to the entity concerned and wait 21 calendar days", "File in court", "Sue the broker"], 1, "Complaints are free of charge."],
+["SCORES 2.0 has ________ review levels and complaint timelines of ________.", ["Two; 21 calendar days", "Three; 60 days", "One; 7 days", "Two; 90 days"], 0, "Launched April 1, 2024 with auto-routing."],
+["The SMARTODR portal resolves disputes by ________.", ["Conciliation, then arbitration", "Only arbitration", "Only court", "Only fines"], 0, "Pre-conciliation period is 21 calendar days."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

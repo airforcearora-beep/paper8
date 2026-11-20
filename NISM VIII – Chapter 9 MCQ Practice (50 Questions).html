@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 9 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 9: Accounting &amp; Taxation (50 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["The ICAI Guidance Note on Accounting for Derivative Contracts was revised in ________.", ["2021", "2015", "2005", "1992"], 0, "It applies to entities not following Ind AS."],
+["Banks and NBFCs follow derivative accounting prescribed by ________.", ["Exchanges", "ICAI only", "Their regulators such as RBI", "SEBI"], 2, "Insurers follow IRDAI; housing finance NHB."],
+["Under the Guidance Note, all derivatives are recognised on the balance sheet at ________.", ["Cost", "Fair value", "Nil", "Face value"], 1, "A derivative is a contractual right or obligation."],
+["Without hedge accounting, derivatives are at fair value with changes recognised in ________.", ["Nowhere", "Equity", "Profit and loss", "Reserves"], 2, "Fair value through profit or loss."],
+["Fair value of a derivative represents the ________.", ["Entry price", "Exit price", "Margin", "Face value"], 1, "It reflects credit risk and collateral."],
+["Hedge accounting is ________.", ["Mandatory", "Prohibited", "Permitted but not required", "Only for banks"], 2, "Needs documentation at inception."],
+["The three types of hedge accounting are fair value, cash flow and ________.", ["Credit hedge", "Index hedge", "Net investment in a foreign operation", "Margin hedge"], 2, "As per the Guidance Note and Ind AS 109."],
+["Hedging a fixed rate bond with an interest rate swap is a ________.", ["Net investment hedge", "Speculation", "Cash flow hedge", "Fair value hedge"], 3, "It changes fixed to floating."],
+["In a cash flow hedge, the effective portion of gain or loss is recognised in ________.", ["Revenue", "Nothing", "Equity (cash flow hedge reserve)", "Tax"], 2, "Under Ind AS 109 it goes to OCI."],
+["Derivatives held for trading are shown as ________.", ["Current assets and liabilities", "Non-current only", "Off balance sheet", "Equity"], 0, "Hedges follow the hedged item’s classification."],
+["Derivative assets and liabilities are presented ________.", ["Not at all", "Gross, without netting", "Netted always", "Only net"], 1, "Netting only for basis adjustment in cash flow hedges."],
+["Hedge effectiveness is the degree to which changes in the hedged item are ________.", ["Ignored", "Taxed", "Offset by changes in the hedging instrument", "Increased"], 2, "Methods include critical terms match, dollar offset and regression."],
+["AS 30 defined a derivative as having value change, small or no initial investment and ________.", ["Physical delivery", "Fixed price", "Settlement at a future date", "Exchange listing"], 2, "The three characteristics."],
+["AS 30 was replaced by ________.", ["AS 2", "AS 11", "Ind AS 109", "Ind AS 21"], 2, "For entities under the Ind AS roadmap."],
+["Ind AS 109 is based on ________.", ["IAS 2", "IFRS 9", "IFRS 15", "US GAAP"], 1, "It governs financial instruments."],
+["By default under Ind AS 109, derivatives are measured at ________.", ["FVTPL", "Cost", "FVOCI", "Amortised cost"], 0, "Unless in a hedging relationship."],
+["In India, entities not following Ind AS use the ________ for derivatives.", ["Exchange bye-laws", "Companies Act only", "SEBI circular", "Guidance Note (2021)"], 3, "For derivatives not covered by other standards."],
+["Initial margin on futures is debited to ________.", ["Profit and loss", "Expense", "Capital", "Initial Margin – Equity Index/Stock Futures Account"], 3, "By the client."],
+["At inception of a futures contract, the contract itself ________.", ["Has no accounting entry except for margin", "Is expensed", "Is booked at full value", "Is capitalised"], 0, "No payment is made except margin."],
+["When margin is given as bank guarantee or securities, the client ________.", ["Books income", "Books expense", "Makes a disclosure only", "Passes a journal entry"], 2, "No accounting entry is required."],
+["Daily MTM payments or receipts go to the ________ account.", ["Interest", "Mark-to-Market Margin – Equity Index/Stock Futures", "Sales", "Capital"], 1, "It can be kept index or stock wise."],
+["At the balance sheet date, a debit balance in the MTM margin account requires ________.", ["No action", "A transfer to reserves", "A provision for anticipated loss", "Recognising profit"], 2, "By the prudence principle."],
+["A credit balance in the MTM account is ________.", ["Taxed", "Anticipated profit and ignored", "Taken as income", "Added to capital"], 1, "No credit in the profit and loss account."],
+["MTM provisions are calculated ________.", ["Monthly", "Index-wise or stock-wise", "By broker", "For all together"], 1, "All series of a stock are combined."],
+["The option writer recognises the premium ________.", ["As income", "As a loan", "As expense", "As capital"], 0, "In the profit and loss account."],
+["On squaring off an option, the premium difference is taken to ________.", ["Capital account", "Reserves", "Profit and loss account", "Margin account"], 2, "Same for the writer’s margin release."],
+["The buyer of an exercised delivery-settled call debits ________.", ["Profit and loss", "Margin", "The equity shares account and credits cash or bank", "Cash and credits shares"], 2, "Shares transfer for cash at the strike price."],
+["Gains or losses on exchange traded derivatives are taxed under ________.", ["Salary", "Profits and gains from business or profession", "Other sources", "Capital gains for all"], 1, "For traders and investors."],
+["Since the Finance Act 2005, exchange traded derivative gains are ________.", ["Non-speculative business income", "Speculative income", "Exempt", "Capital gains"], 0, "Even without delivery."],
+["Speculative business losses can be set off only against ________.", ["Any income", "Salary", "Speculative gains", "Capital gains"], 2, "They are carried forward similarly."],
+["Non-speculative derivative losses can be set off against any income except ________.", ["House property", "Business", "Salary", "Capital gains"], 2, "If not set off, carried forward."],
+["Derivative losses can be carried forward for ________.", ["2 years", "Indefinitely", "8 assessment years", "4 years"], 2, "If the return is filed on or before the due date."],
+["Carried forward derivative losses can be set off only against ________.", ["Rent", "Salary", "Non-speculative business income", "Capital gains"], 2, "Of subsequent years."],
+["An individual’s F&O profit is taxed at ________.", ["0%", "A flat 10%", "A flat 15%", "Normal slab rates"], 3, "It is added to other income."],
+["FPIs’ derivative gains are taxed as ________.", ["Salary", "Exempt", "Business income", "Capital gains"], 3, "Usually short-term as held under 12 months."],
+["Turnover for exchange traded derivatives is the total of ________.", ["Favourable and unfavourable differences", "Premiums only", "Margins", "Contract values"], 0, "Per the ICAI Guidance Note on Tax Audit."],
+["Premium received on sale of options is ________ in turnover.", ["Excluded", "Halved", "Included", "Doubled"], 2, "Unless already included in net profit."],
+["Differences on reverse trades ________ part of turnover.", ["Form", "Are doubled", "Do not form", "Are halved"], 0, "They are included."],
+["Trading turnover above Rs 10 crore means tax audit is ________.", ["Never applicable", "Applicable irrespective of profit or loss", "Only for losses", "Optional"], 1, "Under Section 63 of the new Income-tax Act."],
+["For turnover between Rs 3 crore and Rs 10 crore, tax audit is ________.", ["Always applicable", "Only for profits", "Only for losses", "Not applicable irrespective of profit or loss"], 3, "As transactions are digital."],
+["Up to Rs 3 crore turnover with profit at least 6%, tax audit is ________.", ["Optional for losses", "Not applicable under presumptive scheme", "Doubled", "Applicable"], 1, "Section 58."],
+["STT is levied on ________ of listed securities.", ["Purchase and sale", "Only purchase", "Only sale", "Holding"], 0, "The exchange collects it and remits to the Government."],
+["STT on sale of futures is ________ paid by the seller.", ["0.05%", "1%", "0.15%", "0.1%"], 0, "On the traded price."],
+["STT on sale of options is ________ on premium.", ["0.1%", "0.05%", "0.15%", "1%"], 2, "Paid by the seller."],
+["Physically settled derivatives attract STT at the ________ rate.", ["Futures", "Zero", "Delivery-based equity", "Options premium"], 2, "Like equity delivery transactions."],
+["Trade 1 loses Rs 3 per unit and trade 2 gains Rs 2 per unit, each on 50 contracts of size 100. Turnover is ________.", ["Rs 25,000", "Rs 12,500", "Rs 50,000", "Rs 5,000"], 0, "Turnover = sum of absolute favourable and unfavourable differences."],
+["Trade 1 loses Rs 2 per unit and trade 2 gains Rs 2 per unit, each on 10 contracts of size 25. Turnover is ________.", ["Rs 1,000", "Rs 2,000", "Rs 0", "Rs 500"], 0, "Turnover = sum of absolute favourable and unfavourable differences."],
+["Trade 1 loses Rs 1 per unit and trade 2 gains Rs 1 per unit, each on 50 contracts of size 50. Turnover is ________.", ["Rs 2,500", "Rs 10,000", "Rs 5,000", "Rs 0"], 2, "Turnover = sum of absolute favourable and unfavourable differences."],
+["Trade 1 loses Rs 1 per unit and trade 2 gains Rs 2 per unit, each on 25 contracts of size 25. Turnover is ________.", ["Rs 3,750", "Rs 625", "Rs 1,875", "Rs 937"], 2, "Turnover = sum of absolute favourable and unfavourable differences."],
+["Under Ind AS 109, embedded derivatives not closely related to the host contract are ________.", ["Separated and accounted for as standalone derivatives", "Ignored", "Merged into the host", "Always exempt"], 0, "If it cannot be measured reliably, the whole hybrid contract is FVTPL."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>

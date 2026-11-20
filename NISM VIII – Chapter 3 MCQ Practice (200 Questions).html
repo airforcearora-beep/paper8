@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISM VIII – Chapter 3 MCQ Practice</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5d6b7c;--bd:#d9dee5;--ac:#2456c5;--ok:#e3f5e9;--okb:#1f9d55;--no:#fde8e8;--nob:#d23a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#97a3b2;--bd:#2d3846;--ac:#6b97ee;--ok:#16301f;--okb:#3ec275;--no:#3a1c1c;--nob:#ef6b6b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:5}
+header .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0}
+.st{color:var(--mu);font-size:.9rem}
+.bar{height:4px;background:var(--bd);margin-top:8px;border-radius:2px;max-width:760px;margin-inline:auto}
+.bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:2px;transition:width .2s}
+main{max-width:760px;margin:auto;padding:16px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px;font-weight:600}
+.q h3 span{color:var(--mu);margin-right:6px}
+.o{display:block;width:100%;text-align:left;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default}
+.o.c{background:var(--ok);border-color:var(--okb)}
+.o.w{background:var(--no);border-color:var(--nob)}
+.fb{margin-top:10px;font-size:.92rem;display:none}
+.fb.s{display:block}
+.fb b.c{color:var(--okb)}.fb b.w{color:var(--nob)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+#res{display:none;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;text-align:center}
+#res .big{font-size:2.2rem;font-weight:700}
+#res table{margin:12px auto;border-collapse:collapse}
+#res td{padding:4px 14px;border-bottom:1px solid var(--bd);text-align:left}
+.pass{color:var(--okb)}.fail{color:var(--nob)}
+</style></head><body>
+<header><div class="in"><h1>NISM VIII · Chapter 3: Forwards &amp; Futures (200 Questions)</h1><div class="st" id="st"></div></div><div class="bar"><i id="pb"></i></div></header>
+<main><div id="qs"></div>
+<div style="text-align:center;margin:20px 0"><button class="btn" id="fin">Finish &amp; see result</button></div>
+<div id="res"></div></main>
+<script>
+// [question, [options], correctIndex, explanation]  — append more rows here to extend the paper
+const Q=[
+["A forward contract is an agreement between two parties to buy or sell an asset ________.",["On a future date at terms decided today","Only on the exchange","At the spot price on delivery","With no obligation"],0,"All terms are fixed on the day of the contract."],
+["Spot gold is Rs 62,130 and you agree to buy after 1 month at Rs 62,337. You are ________.",["Short forward","Long forward","Hedged on exchange","Not exposed"],1,"The buyer of a forward is long."],
+["In that gold example, the goldsmith is ________.",["Long forward","Short forward","A clearing member","A speculator only"],1,"The seller of a forward is short."],
+["Forward price Rs 62,337; spot after one month Rs 62,700. The long party’s profit per 10 grams is ________.",["Rs 237","Rs 363","Rs 62,337","Nil"],1,"62,700 − 62,337 = Rs 363."],
+["Essential features of a forward include ________.",["A bilateral contract with all terms fixed on day one","Clearing corporation guarantee","Standard lot sizes","Daily MTM"],0,"Forwards are bilateral OTC contracts."],
+["A major limitation of forwards is ________.",["Standardised terms","Illiquidity, since tailor-made contracts are not exchange traded","Daily margin","Limited maturities"],1,"Exiting before maturity is difficult."],
+["The risk of loss from a counterparty failing to perform is also called ________.",["Price risk","Default or credit risk","Basis risk","Rollover risk"],1,"It is counterparty risk."],
+["Futures contracts were created to ________.",["Overcome limitations of forwards","Replace options","Avoid margins","Create customised terms"],0,"They bring contracts to a centralised exchange."],
+["Settlement of futures trades is guaranteed by the ________.",["Broker","Clearing corporation","Counterparty","Investor"],1,"The clearing corporation of the exchange guarantees it."],
+["A trader who buys a futures contract takes a ________ position.",["Short","Long","Neutral","Calendar"],1,"Buyer = long; seller = short."],
+["In futures, the exchange decides all contract terms other than ________.",["Lot size","Price","Maturity","Tick size"],1,"Price is discovered by buyers and sellers."],
+["In futures, margins are payable by ________.",["Only the buyer","Only the seller","Both parties","Neither"],2,"Both sides have an obligation to perform."],
+["Which is a limitation of futures contracts?",["Counterparty default","Limited maturities and inflexible contract design","Low transparency","No price discovery"],1,"Also limited underlyings and MTM administrative costs."],
+["Nifty lot size 65 and price 24,894.25 give a contract value of ________.",["Rs 16,18,126.25","Rs 15,00,000","Rs 24,894.25","Rs 1,61,812.63"],0,"Contract value = price × lot size."],
+["Index derivatives must have a contract value of at least ________ at introduction.",["Rs 5 lakh","Rs 10 lakh","Rs 15 lakh","Rs 20 lakh"],2,"SEBI’s minimum for index derivatives is Rs 15 lakh."],
+["Index lot sizes are fixed so that contract value on review day lies between ________.",["Rs 5–10 lakh","Rs 15–20 lakh","Rs 10–15 lakh","Rs 20–25 lakh"],1,"The range is Rs 15 lakh to Rs 20 lakh."],
+["Index lot size must be a multiple of ________, not less than 10.",["2","5","10","25"],1,"Multiple of 5, minimum 10."],
+["Exchanges review lot size once every ________.",["Month","3 months","6 months","Year"],2,"Based on the last month’s average closing price."],
+["A lot size revision requires advance notice of at least ________.",["1 day","1 week","2 weeks","1 month"],2,"At least two weeks to the market."],
+["If the revised lot size is higher, it is effective for ________.",["All contracts","Only new contracts","Only expiring contracts","No contracts"],1,"Existing contracts keep the old lot size."],
+["Stock derivative contract value on review day lies between ________.",["Rs 5–10 lakh","Rs 15–20 lakh","Rs 2–5 lakh","Rs 10–15 lakh"],0,"Minimum Rs 5 lakh at introduction."],
+["Stock derivative lot size is generally a multiple of ________, not less than 50.",["5","10","25","50"],2,"Subject to the exceptions for high-value stocks."],
+["The contract size for futures and options on the same underlying is ________.",["Higher for options","Higher for futures","The same","Fixed by brokers"],2,"They are the same."],
+["Index and stock futures can have a maximum maturity of ________.",["3 months","6 months","12 months","24 months"],2,"Maturities range from 1 to 12 months."],
+["Exchanges generally offer a ________ trading cycle for futures.",["One-month","Two-month","Three-month","Six-month"],2,"Near, next and far month contracts."],
+["To continue a long position beyond expiry, one must ________.",["Do nothing","Sell the expiring contract and buy the next","Buy the expiring contract","Close the account"],1,"Both legs of the roll over should be executed together."],
+["As per SEBI’s May 2025 guidelines, equity derivatives expiries are limited to ________.",["Monday or Friday","Tuesday or Thursday","Wednesday only","Any weekday"],1,"This reduces concentration risk."],
+["Each exchange is allowed ________ weekly benchmark index options contract.",["No","One","Two","Five"],1,"On its chosen day."],
+["NSE index and stock futures expire on the ________ of the month.",["Last Thursday","Last Tuesday","First Tuesday","Last Friday"],1,"Previous day if it is a holiday."],
+["BSE index and stock futures expire on the ________ of the month.",["Last Tuesday","Last Thursday","Last Friday","First Thursday"],1,"Previous day if it is a trading holiday."],
+["Orders above the freeze quantity are ________.",["Executed partially","Rejected","Held for approval","Split by the broker"],1,"The system rejects them."],
+["Tick size is ________.",["The contract value","The minimum price move allowed","The lot size","The margin"],1,"Sensex futures tick size is Rs 0.05."],
+["The daily settlement price of a futures contract is based on ________.",["Last 30 minutes VWAP","Opening price","Previous close","High price"],0,"Weighted average price of the last half hour."],
+["If a contract does not trade in the last half hour, daily settlement uses ________.",["Zero","The theoretical futures price","The opening price","The spot price"],1,"As per the theoretical futures price model."],
+["The final settlement price of index futures is ________.",["The previous day’s futures close","The closing price of the underlying index on expiry day","The average of the month","The opening price"],1,"Settlement is in cash."],
+["The derivatives pre-open session runs from ________.",["8:45–9:00 am","9:00–9:15 am","9:15–9:30 am","9:30–9:45 am"],1,"A 15-minute call auction for near-month futures."],
+["Normal trading hours for equity futures are ________.",["9:00 am–3:30 pm","9:15 am–3:40 pm","10:00 am–4:00 pm","9:15 am–3:30 pm"],1,"Monday to Friday."],
+["BSE Sensex futures have a contract size of ________.",["10","20","50","100"],1,"As per the specification table."],
+["Basis is the difference between ________.",["Spot and futures price","Bid and ask","Open and close","Strike and spot"],0,"Basis = spot − futures."],
+["Spot 24,894.25 and futures 25,006.60: basis is ________.",["+112.35","−112.35","0","+25,006.60"],1,"Futures above spot gives negative basis."],
+["A negative basis corresponds to ________.",["Backwardation","Contango","No arbitrage","Zero carry"],1,"Contango has negative basis."],
+["At expiry, basis becomes ________.",["Positive","Negative","Zero","Double"],2,"Final settlement is at the underlying’s closing price."],
+["For equities, cost of carry is ________.",["Interest paid minus dividend earned","Storage plus insurance","Interest plus dividend","Dividend only"],0,"Storage costs apply to commodities."],
+["Share Rs 100, borrowing at 6%, dividend Rs 2 over a year: break-even futures price is ________.",["Rs 102","Rs 104","Rs 106","Rs 108"],1,"100 + (6 − 2) = Rs 104."],
+["Nifty futures at 22,250, lot 25, 10% initial margin: margin is ________.",["Rs 5,562.50","Rs 55,625","Rs 5,56,250","Rs 2,225"],1,"Contract value 5,56,250 × 10%."],
+["Extreme loss margin covers ________.",["Brokerage","Losses beyond those expected in initial margin","Daily MTM","Taxes"],1,"It is also paid upfront."],
+["A long Nifty position of 25 units rises 58.70 points. MTM gain is ________.",["Rs 58.70","Rs 1,468","Rs 14,675","Rs 2,350"],1,"58.70 × 25 = Rs 1,468."],
+["Open interest is ________.",["Total contracts outstanding, counting one side only","Contracts traded in a day","Total margin","Number of clients"],0,"Longs equal shorts."],
+["With a 10% price band and previous close Rs 100, the contract may trade between ________.",["Rs 80–120","Rs 90–110","Rs 95–105","Rs 100–110"],1,"±10% of the base price."],
+["A naked futures position means ________.",["No position in the underlying asset","Offsetting positions","A hedged position","A closed position"],0,"A long or short futures position without the underlying."],
+["A calendar spread is ________.",["Long and short on different maturities of the same underlying","Long on two underlyings","Short in two spots","A single long position"],0,"For example, short near month and long far month."],
+["Selling a contract previously bought is ________.",["Opening a position","Closing a position","Rolling over","A calendar spread"],1,"It reduces open position."],
+["In the cost of carry model, the fair futures price equals ________.",["Spot price plus carrying cost","Spot price minus carrying cost","Spot price only","Expected spot price"],0,"F = S + C."],
+["With S = Rs 100, r = 10% and T = 1 year, F = S(1+r)^T is ________.",["Rs 100","Rs 105","Rs 110","Rs 120"],2,"100 × 1.10 = Rs 110."],
+["If futures trade above the fair price, the arbitrage is ________.",["Reverse cash and carry","Cash and carry","Inter-exchange only","None"],1,"Buy spot, sell futures."],
+["If futures trade below the fair price, the arbitrage is ________.",["Cash and carry","Reverse cash and carry","Calendar spread","None"],1,"Buy futures, sell spot."],
+["Cash and carry arbitrage means ________.",["Long cash, short futures","Short cash, long futures","Long both","Short both"],0,"A long in the underlying with a short futures position."],
+["Reverse cash and carry arbitrage means ________.",["Long cash, short futures","Long futures, short cash","Short both","Long both"],1,"Long futures and short the underlying."],
+["Inter-exchange arbitrage involves ________.",["Two positions on the same contract on different exchanges","Different underlyings","Two maturities","Options only"],0,"It exploits price differences across exchanges."],
+["Stock Z futures are Rs 101 on NSE and Rs 100 on BSE. The arbitrageur should ________.",["Buy on NSE, sell on BSE","Buy on BSE, sell on NSE","Buy on both","Sell on both"],1,"Buy cheap, sell dear."],
+["An arbitrage is practical only if it gives ________.",["Net cash inflow after transaction costs","Any gross profit","A margin refund","A long position"],0,"Costs, brokerage and margins must be considered."],
+["Convenience yield arises mainly due to ________.",["Excess supply","Scarcity of a commodity and low inventory","High dividends","Rate cuts"],1,"It is seen in consumption assets."],
+["Convenience yield is NOT observed in ________.",["Wheat","Crude oil","Equities, bonds and currencies","Copper"],2,"It applies to consumption assets, not financial assets."],
+["High convenience yield can make futures trade ________.",["At a premium always","At a discount to cash","At a par to bonds","At zero"],1,"The cash and carry model then breaks down."],
+["The expectations hypothesis says the futures price is ________.",["The expected future spot price","Spot plus interest","Spot minus dividend","Always equal to spot"],0,"Participants price futures on their estimates of spot."],
+["If futures trade above spot, the expected market is called ________.",["Backwardation","Contango","Flat","Bearish"],1,"Participants expect spot to rise."],
+["If futures trade below spot, the market is in ________.",["Contango","Backwardation","Convergence","Arbitrage"],1,"Participants expect spot to fall."],
+["A May index futures at 22,308.70 on May 14 implies the market expects ________.",["Spot to settle there on the last trading day","Spot to be there tomorrow","A Nifty crash","No change in basis"],0,"Futures price is the expected spot at maturity."],
+["Futures and spot prices converge ________.",["On the first day","At maturity of the futures contract","At 12 months","Never"],1,"Contracts settle at the underlying price on expiry."],
+["A farmer who sells futures to lock in a price is a ________.",["Speculator","Hedger","Arbitrageur","Jobber"],1,"Hedgers reduce price risk."],
+["An investor with a diversified portfolio fearing a correction should ________.",["Buy index futures","Sell index futures","Buy more shares","Do nothing"],1,"A short index futures hedge protects the portfolio."],
+["Futures are attractive to speculators because ________.",["Creating a position is cheaper than trading the underlying","They carry no risk","Profits are guaranteed","They need no margin"],0,"Leverage gives greater potential returns."],
+["Leverage in futures is a ________.",["One-way benefit","Double-edged sword","Tax benefit","Free service"],1,"Losses can be large too."],
+["Compared with trading the underlying, futures positions are ________.",["Riskier","Safer","Risk free","The same"],0,"They are leveraged instruments."],
+["An arbitrage deal produces ________.",["Risk-free profit by exploiting mispricing","Large losses","Margin","Dividends"],0,"Mispricing is exploited."],
+["Cash Rs 100, futures Rs 110, lot 50: locked-in profit per lot is ________.",["Rs 250","Rs 500","Rs 1,000","Rs 5,500"],1,"10 × 50 = Rs 500."],
+["A key risk for arbitrageurs is ________.",["An illiquid leg leaving a naked exposure","Dividends","Lot sizes","Tick sizes"],0,"One leg may execute without the other."],
+["Traders in the derivatives market ________.",["Provide depth by acting as counterparties to hedgers","Eliminate hedgers","Only arbitrage","Set margins"],0,"Hedgers need traders to take the opposite side."],
+["Arbitrageurs mainly ________.",["Link different markets such as spot and derivatives","Take naked positions","Set lot sizes","Provide margins"],0,"They keep prices aligned."],
+["Total price risk equals ________.",["Systematic risk plus unsystematic risk","Systematic risk only","Unsystematic only","Interest rate risk"],0,"Market plus specific risk."],
+["Unsystematic risk can be reduced by ________.",["Diversification","Index futures only","Leverage","Higher beta"],0,"It is specific to a company or industry."],
+["Systematic risk ________.",["Can be eliminated by diversification","Is non-diversifiable and hedged with index derivatives","Is specific to a company","Is zero for index funds"],1,"It is market-wide risk."],
+["A factory workers’ strike affecting a company is ________.",["Systematic risk","Unsystematic risk","Interest rate risk","Settlement risk"],1,"It is company specific."],
+["A sudden change in monetary or fiscal policy is ________.",["Unsystematic risk","Systematic risk","Specific risk","Credit risk"],1,"It affects the whole market."],
+["Index futures are required to hedge ________.",["Specific risk of a stock","Systematic risk of a portfolio","Credit risk","Liquidity risk"],1,"Single stock futures hedge specific risk."],
+["Beta measures ________.",["Sensitivity of a stock or portfolio to index movement","Liquidity","Dividend yield","Tick size"],0,"It is based on historical prices."],
+["A stock with beta 2 moves ________ when the index moves 10%.",["5%","10%","20%","2%"],2,"Beta 2 means double the index move."],
+["Stocks with beta above 1 are called ________.",["Conservative","Aggressive","Neutral","Passive"],1,"They are more volatile than the index."],
+["Stocks with beta below 1 are called ________.",["Aggressive","Conservative","Volatile","Hedged"],1,"They are less volatile than the index."],
+["Stocks with betas 0.5, 1.1, 1.3, 0.9 and weights 35%, 15%, 20%, 30% give portfolio beta of ________.",["0.87","0.95","1.00","1.15"],0,"Weighted average of the betas."],
+["An investor holds 550 HDFC Bank shares and the futures lot is 550. She needs ________.",["1 contract","2 contracts","550 contracts","0.5 contract"],0,"A 1:1 hedge ratio applies to single stocks."],
+["Number of index futures contracts to hedge a portfolio = ________.",["Vp × βp ÷ Vi","Vp ÷ βp","Vi × βp","Vp − Vi"],0,"Portfolio value × beta ÷ index futures contract value."],
+["Portfolio Rs 1 crore, beta 1.2, index futures contract Rs 15 lakh: contracts needed ________.",["6","8","10","12"],1,"1,00,00,000 × 1.2 ÷ 15,00,000 = 8."],
+["Rs 50 lakh portfolio, beta 1.3, Nifty contract Rs 15,53,500: contracts needed ≈ ________.",["3.2","4.18","5.0","6.5"],1,"Rs 65,00,000 ÷ 15,53,500 = 4.18."],
+["Shorting 4 lots when 4.18 are needed leaves the portfolio ________.",["Over hedged","Under hedged","Perfectly hedged","Unhedged"],1,"Fractional lots cannot be traded."],
+["Going long futures to hedge a future investment is a ________.",["Short hedge","Long hedge","Cross hedge","Naked hedge"],1,"Used when expecting funds to invest later."],
+["Shorting index futures to protect a portfolio to be sold soon is a ________.",["Long hedge","Short hedge","Cross hedge","Spread"],1,"Futures profits offset the portfolio fall."],
+["Using crude oil futures to hedge jet fuel is a ________.",["Long hedge","Short hedge","Cross hedge","Calendar spread"],2,"No futures exist on jet fuel."],
+["To sell a portfolio on June 20, hedge using the ________ contract.",["May","June","July","Any"],1,"Select the contract expiring just after the unwind date."],
+["Which spreads can be traded in the equity derivatives segment at present?",["Calendar spreads only","Inter-commodity spreads","Both","None"],0,"Only calendar spreads are available."],
+["Short 3 near, long 2 next, long 3 far-month contracts: calendar spreads and naked contracts are ________.",["3 spreads, 0 naked","2 spreads next-near, 1 spread far-near, 2 far naked","5 spreads","0 spreads"],1,"Spreads are computed against the near month."],
+["You sold one XYZ futures at Rs 278 (lot 1,200) and bought it back at Rs 265. Result: ________.",["Profit Rs 15,600","Loss Rs 15,600","Profit Rs 16,600","Loss Rs 16,600"],0,"(278 − 265) × 1,200 = Rs 15,600."],
+["Short 1 June XYZ futures (multiplier 50) at Rs 3,400 and earned Rs 10,000. You must have ________.",["Sold at 3,600","Bought at 3,600","Bought at 3,200","Sold at 3,200"],2,"10,000 ÷ 50 = 200 points; buy at 3,200."],
+["A calendar spread in index futures attracts ________.",["Same margin as the sum of two legs","Lower margin than the sum of two legs","Zero margin","Double margin"],1,"Spreads are partly hedged."],
+["The payoff of a long futures position is a profit when the price at expiry is ________ the entry price.", ["Above", "Below", "Equal to", "Unrelated to"], 0, "A long gains as prices rise and loses as they fall."],
+["You short futures at Rs 100 and the price at expiry is Rs 60. Your payoff is ________.", ["−Rs 40", "+Rs 40", "+Rs 60", "−Rs 60"], 1, "Sold at 100, bought back at 60."],
+["The cost of carry model is also known as the ________ model.", ["Expectations", "No-arbitrage", "Convenience yield", "Beta"], 1, "It assumes arbitrage opportunities cannot persist."],
+["The fair price of a futures contract is ________.", ["Spot price plus cost of carry", "Spot price minus cost of carry", "Expected spot price only", "Previous close"], 0, "It equals the cost of a synthetic futures position."],
+["Spot gold is Rs 62,130 and 3-month carrying cost is Rs 100. The expected value after 3 months is ________.", ["Rs 62,030", "Rs 62,230", "Rs 62,330", "Rs 62,130"], 1, "62,130 + 100 = Rs 62,230."],
+["If 3-month gold futures trade at Rs 62,280 against a fair price of Rs 62,230, the arbitrage profit per 10 grams is ________.", ["Rs 25", "Rs 50", "Rs 100", "Rs 150"], 1, "Buy spot, sell futures: 62,280 − 62,230 = Rs 50."],
+["Cash and carry arbitrage tends to ________ spot prices and ________ futures prices.", ["Raise; lower", "Lower; raise", "Raise; raise", "Lower; lower"], 0, "Buying spot and selling futures narrows the gap."],
+["Reverse cash and carry arbitrage tends to ________ spot prices and ________ futures prices.", ["Raise; lower", "Lower; raise", "Raise; raise", "Lower; lower"], 1, "Selling spot and buying futures narrows the gap."],
+["Transaction costs and margins create ________ in the market.", ["No-arbitrage bounds", "Higher beta", "Lower lot sizes", "Zero basis"], 0, "Arbitrage occurs only outside these bounds."],
+["Wider no-arbitrage bounds mean markets are ________ from equilibrium.", ["Closer", "Farther", "Equal", "Unaffected"], 1, "Lower costs narrow the bounds and improve efficiency."],
+["For assets that generate inflows, fair futures price = ________.", ["Spot + carry − inflows", "Spot + carry + inflows", "Spot − carry", "Spot × inflows"], 0, "Dividends reduce the fair price."],
+["Index 17,500, financing 12%, index return 4%, 90 days: F = S(1+r−q)^(T/365) is about ________.", ["Rs 17,835.26", "Rs 17,848.63", "Rs 18,200", "Rs 17,500"], 0, "17,500 × (1.08)^(90/365)."],
+["Using the exponential form for that example gives ________.", ["Rs 17,835.26", "Rs 17,848.63", "Rs 17,900", "Rs 17,500"], 1, "17,500 × e^(0.08 × 90/365)."],
+["With known dividends, fair price is F = ________.", ["(S − PV of dividends) × e^(rT)", "S × e^(−rT)", "S + PV of dividends", "S − r"], 0, "Subtract the present value of known dividends first."],
+["S = Rs 200, T = 0.5, dividend Rs 5 at 0.25 years, r = 6%: F is about ________.", ["Rs 195.07", "Rs 201.01", "Rs 206.18", "Rs 212.00"], 1, "(200 − 4.93) × e^0.03 ≈ 201.01."],
+["Participants have different fair values of futures because ________.", ["Borrowing costs and return expectations differ", "Prices are fixed", "Exchanges set it", "Dividends are uniform"], 0, "This is what keeps trading going."],
+["A synthetic futures position is created by ________.", ["Buying the stock in cash and carrying it to the future date", "Selling an option", "Buying a bond", "Shorting the index"], 0, "Spot price plus cost of carry."],
+["Mark to market settlement means ________.", ["Profits and losses are settled daily", "Settlement only at expiry", "No margin is collected", "Premium is refunded"], 0, "The exchange collects from losers and pays gainers daily."],
+["On the first trading day, the base price of a futures contract is ________.", ["Previous close", "The theoretical price", "Zero", "Last year’s close"], 1, "Later days use the close or theoretical price."],
+["Open interest falls when ________.", ["New longs and shorts open", "Existing long and short positions are closed", "A short is replaced by another short", "Volume rises"], 1, "Closing out reduces outstanding contracts."],
+["Open interest is unchanged when ________.", ["A short position is replaced by another trader’s short", "Both sides close", "New positions open", "The contract expires"], 0, "The outstanding number stays the same."],
+["Trading volume measures ________.", ["Contracts outstanding", "Market activity over a period", "Margin collected", "Lot size"], 1, "It differs from open interest."],
+["A clearing holiday that is not a trading holiday means ________.", ["Exchanges are closed", "Trading happens but no clearing and settlement", "Nothing at all happens", "Settlement doubles"], 1, "Banks are closed that day."],
+["Pre-open for the next-month futures starts in the last ________ trading days before expiry.", ["2", "5", "10", "15"], 1, "It is extended to mid-month futures."],
+["A new far-month futures contract is introduced ________.", ["On expiry day", "On the trading day after the near-month expires", "Weekly", "At month start"], 1, "Contracts roll forward after expiry."],
+["Index futures in India are settled ________.", ["By physical delivery", "In cash", "In kind", "By barter"], 1, "Settlement is at the closing index value."],
+["Daily price ranges for futures are not applied; the dynamic band exists to ________.", ["Prevent erroneous order entry", "Fix prices", "Raise margins", "Cap profits"], 0, "It is kept at a percentage of the base price."],
+["Which statement about futures vs forwards is correct?", ["Futures have higher counterparty risk", "Futures are standardised and exchange traded with clearing corporation guarantee", "Forwards are exchange traded", "Forwards need daily MTM"], 1, "Futures remove counterparty risk."],
+["Spot is 15,600 and futures is 15,705. The basis (spot − futures) is ________.", ["+105", "−95", "−210", "−105"], 3, "Basis = spot − futures."],
+["A futures contract has value Rs 46,875 and initial margin is 10%. The margin to pay is ________.", ["Rs 46,875", "Rs 4,687.5", "Rs 2,343.75", "Rs 9,375"], 1, "46,875 × 10%."],
+["Spot is 6,100 and futures is 6,190. The basis (spot − futures) is ________.", ["−80", "−90", "−180", "+90"], 1, "Basis = spot − futures."],
+["Futures closed at Rs 1,015 yesterday and Rs 1,030 today. The daily MTM for a short position in one lot (50) is ________.", ["+1,500", "+15", "+750", "−750"], 3, "15 × 50, sign by position."],
+["A portfolio has weights 20%, 30%, 50% in stocks with betas 1.2, 1.3, 1.6. Portfolio beta is ________.", ["1.37", "1.53", "1.33", "1.43"], 3, "Weighted average of betas."],
+["A portfolio has weights 50%, 30%, 20% in stocks with betas 1.5, 0.8, 0.6. Portfolio beta is ________.", ["0.97", "1.21", "1.01", "1.11"], 3, "Weighted average of betas."],
+["Futures closed at Rs 855 yesterday and Rs 890 today. The daily MTM for a long position in one lot (250) is ________.", ["+8,750", "−8,750", "+35", "+17,500"], 0, "35 × 250, sign by position."],
+["Futures price is Rs 2,500 and lot size is 75. The contract value is ________.", ["Rs 2,575", "Rs 1,875,000", "Rs 187,500", "Rs 18,750"], 2, "Contract value = price × lot size."],
+["Futures closed at Rs 285 yesterday and Rs 290 today. The daily MTM for a long position in one lot (50) is ________.", ["+5", "−250", "+250", "+500"], 2, "5 × 50, sign by position."],
+["Spot is 12,425 and futures is 12,215. The basis (spot − futures) is ________.", ["−210", "+220", "+210", "+420"], 2, "Basis = spot − futures."],
+["Spot is 22,200 and futures is 22,105. The basis (spot − futures) is ________.", ["+105", "−95", "+190", "+95"], 3, "Basis = spot − futures."],
+["Spot is Rs 3,250, financing cost to expiry is Rs 295 and dividend is Rs 63. The fair futures price is ________.", ["Rs 3,482", "Rs 3,187", "Rs 3,608", "Rs 3,545"], 0, "Fair price = spot + interest − dividend."],
+["A futures contract has value Rs 625,000 and initial margin is 10%. The margin to pay is ________.", ["Rs 62,500", "Rs 625,000", "Rs 125,000", "Rs 31,250"], 0, "625,000 × 10%."],
+["A portfolio has weights 40%, 40%, 20% in stocks with betas 0.7, 1.2, 1.2. Portfolio beta is ________.", ["0.90", "1.00", "1.10", "1.03"], 1, "Weighted average of betas."],
+["Spot is Rs 1,850, financing cost to expiry is Rs 270 and dividend is Rs 45. The fair futures price is ________.", ["Rs 1,805", "Rs 2,120", "Rs 2,165", "Rs 2,075"], 3, "Fair price = spot + interest − dividend."],
+["You bought one futures contract (lot 25) at Rs 995 and sold at Rs 965. Profit or loss?", ["+750", "−30", "−750", "+875"], 2, "(965 − 995) × 25."],
+["Futures closed at Rs 1,430 yesterday and Rs 1,435 today. The daily MTM for a long position in one lot (100) is ________.", ["+1,000", "+5", "−500", "+500"], 3, "5 × 100, sign by position."],
+["Futures closed at Rs 2,085 yesterday and Rs 2,090 today. The daily MTM for a long position in one lot (75) is ________.", ["+750", "+375", "−375", "+5"], 1, "5 × 75, sign by position."],
+["Futures closed at Rs 1,950 yesterday and Rs 1,990 today. The daily MTM for a short position in one lot (50) is ________.", ["+40", "+2,000", "−2,000", "+4,000"], 2, "40 × 50, sign by position."],
+["Futures price is Rs 525 and lot size is 250. The contract value is ________.", ["Rs 131,250", "Rs 775", "Rs 1,312,500", "Rs 13,125"], 0, "Contract value = price × lot size."],
+["You sold one futures contract (lot 150) at Rs 2,410 and bought it back at Rs 2,345. Profit or loss?", ["−9,750", "+65", "+10,500", "+9,750"], 3, "(2,410 − 2,345) × 150."],
+["Spot is Rs 1,350, financing cost to expiry is Rs 210 and dividend is Rs 57. The fair futures price is ________.", ["Rs 1,560", "Rs 1,293", "Rs 1,503", "Rs 1,617"], 2, "Fair price = spot + interest − dividend."],
+["Portfolio value Rs 9,000,000, beta 1.5, index futures contract value Rs 2,000,000. Contracts to short for a hedge: ________.", ["13.50", "4.50", "3.38", "6.75"], 3, "Vp × βp ÷ Vi."],
+["Spot is Rs 4,400, financing cost to expiry is Rs 110 and dividend is Rs 47. The fair futures price is ________.", ["Rs 4,510", "Rs 4,463", "Rs 4,557", "Rs 4,353"], 1, "Fair price = spot + interest − dividend."],
+["You bought one futures contract (lot 50) at Rs 1,205 and sold at Rs 1,135. Profit or loss?", ["+3,500", "−70", "+3,750", "−3,500"], 3, "(1,135 − 1,205) × 50."],
+["You bought one futures contract (lot 150) at Rs 1,370 and sold at Rs 1,315. Profit or loss?", ["+8,250", "−8,250", "−55", "+9,000"], 1, "(1,315 − 1,370) × 150."],
+["You bought one futures contract (lot 500) at Rs 330 and sold at Rs 290. Profit or loss?", ["−40", "−20,000", "+20,000", "+22,500"], 1, "(290 − 330) × 500."],
+["Futures price is Rs 900 and lot size is 1200. The contract value is ________.", ["Rs 108,000", "Rs 1,080,000", "Rs 10,800,000", "Rs 2,100"], 1, "Contract value = price × lot size."],
+["A portfolio has weights 25%, 25%, 50% in stocks with betas 1.6, 0.8, 0.6. Portfolio beta is ________.", ["0.90", "1.00", "0.80", "1.60"], 0, "Weighted average of betas."],
+["Spot is Rs 4,400, financing cost to expiry is Rs 205 and dividend is Rs 27. The fair futures price is ________.", ["Rs 4,578", "Rs 4,605", "Rs 4,373", "Rs 4,632"], 0, "Fair price = spot + interest − dividend."],
+["Portfolio value Rs 9,000,000, beta 1.3, index futures contract value Rs 1,200,000. Contracts to short for a hedge: ________.", ["9.75", "4.88", "7.50", "19.50"], 0, "Vp × βp ÷ Vi."],
+["Portfolio value Rs 9,000,000, beta 1.2, index futures contract value Rs 1,500,000. Contracts to short for a hedge: ________.", ["7.20", "3.60", "14.40", "6.00"], 0, "Vp × βp ÷ Vi."],
+["You sold one futures contract (lot 50) at Rs 830 and bought it back at Rs 770. Profit or loss?", ["+60", "−3,000", "+3,250", "+3,000"], 3, "(830 − 770) × 50."],
+["You bought one futures contract (lot 50) at Rs 275 and sold at Rs 265. Profit or loss?", ["−10", "+500", "−500", "+750"], 2, "(265 − 275) × 50."],
+["Futures closed at Rs 1,325 yesterday and Rs 1,365 today. The daily MTM for a short position in one lot (50) is ________.", ["+40", "+4,000", "+2,000", "−2,000"], 3, "40 × 50, sign by position."],
+["You sold one futures contract (lot 50) at Rs 975 and bought it back at Rs 960. Profit or loss?", ["+1,000", "−750", "+15", "+750"], 3, "(975 − 960) × 50."],
+["Futures closed at Rs 1,755 yesterday and Rs 1,765 today. The daily MTM for a short position in one lot (50) is ________.", ["+500", "+1,000", "+10", "−500"], 3, "10 × 50, sign by position."],
+["Spot is Rs 3,250, financing cost to expiry is Rs 120 and dividend is Rs 55. The fair futures price is ________.", ["Rs 3,425", "Rs 3,195", "Rs 3,370", "Rs 3,315"], 3, "Fair price = spot + interest − dividend."],
+["You bought one futures contract (lot 75) at Rs 2,070 and sold at Rs 2,135. Profit or loss?", ["+4,875", "−4,875", "+65", "+5,250"], 0, "(2,135 − 2,070) × 75."],
+["You bought one futures contract (lot 1200) at Rs 670 and sold at Rs 605. Profit or loss?", ["−65", "+84,000", "−78,000", "+78,000"], 2, "(605 − 670) × 1200."],
+["Futures closed at Rs 1,665 yesterday and Rs 1,670 today. The daily MTM for a long position in one lot (500) is ________.", ["−2,500", "+2,500", "+5", "+5,000"], 1, "5 × 500, sign by position."],
+["Spot is 20,925 and futures is 20,665. The basis (spot − futures) is ________.", ["−260", "+270", "+520", "+260"], 3, "Basis = spot − futures."],
+["You bought one futures contract (lot 100) at Rs 1,645 and sold at Rs 1,700. Profit or loss?", ["+6,000", "+5,500", "−5,500", "+55"], 1, "(1,700 − 1,645) × 100."],
+["You sold one futures contract (lot 150) at Rs 1,525 and bought it back at Rs 1,505. Profit or loss?", ["−3,000", "+20", "+3,000", "+3,750"], 2, "(1,525 − 1,505) × 150."],
+["You bought one futures contract (lot 25) at Rs 1,330 and sold at Rs 1,355. Profit or loss?", ["+625", "+750", "−625", "+25"], 0, "(1,355 − 1,330) × 25."],
+["A futures contract has value Rs 193,750 and initial margin is 8%. The margin to pay is ________.", ["Rs 31,000", "Rs 15,500", "Rs 193,750", "Rs 7,750"], 1, "193,750 × 8%."],
+["Spot is 11,350 and futures is 11,420. The basis (spot − futures) is ________.", ["−140", "−60", "+70", "−70"], 3, "Basis = spot − futures."],
+["A futures contract has value Rs 45,625 and initial margin is 5%. The margin to pay is ________.", ["Rs 4,562.5", "Rs 45,625", "Rs 1,140.62", "Rs 2,281.25"], 3, "45,625 × 5%."],
+["Futures price is Rs 725 and lot size is 50. The contract value is ________.", ["Rs 775", "Rs 3,625", "Rs 362,500", "Rs 36,250"], 3, "Contract value = price × lot size."],
+["You bought one futures contract (lot 250) at Rs 2,010 and sold at Rs 2,035. Profit or loss?", ["+6,250", "+7,500", "+25", "−6,250"], 0, "(2,035 − 2,010) × 250."],
+["A futures contract has value Rs 105,000 and initial margin is 12%. The margin to pay is ________.", ["Rs 105,000", "Rs 25,200", "Rs 12,600", "Rs 6,300"], 2, "105,000 × 12%."],
+["A futures contract has value Rs 113,750 and initial margin is 10%. The margin to pay is ________.", ["Rs 5,687.5", "Rs 22,750", "Rs 11,375", "Rs 113,750"], 2, "113,750 × 10%."],
+["Portfolio value Rs 9,000,000, beta 1.5, index futures contract value Rs 1,200,000. Contracts to short for a hedge: ________.", ["7.50", "11.25", "22.50", "5.62"], 1, "Vp × βp ÷ Vi."],
+["You bought one futures contract (lot 500) at Rs 495 and sold at Rs 460. Profit or loss?", ["−35", "+20,000", "−17,500", "+17,500"], 2, "(460 − 495) × 500."],
+["Futures price is Rs 2,800 and lot size is 100. The contract value is ________.", ["Rs 2,800,000", "Rs 280,000", "Rs 28,000", "Rs 2,900"], 1, "Contract value = price × lot size."],
+["Portfolio value Rs 6,000,000, beta 0.8, index futures contract value Rs 1,000,000. Contracts to short for a hedge: ________.", ["4.80", "9.60", "6.00", "2.40"], 0, "Vp × βp ÷ Vi."],
+["Futures price is Rs 2,675 and lot size is 500. The contract value is ________.", ["Rs 3,175", "Rs 1,337,500", "Rs 133,750", "Rs 13,375,000"], 1, "Contract value = price × lot size."],
+["A futures contract has value Rs 106,875 and initial margin is 5%. The margin to pay is ________.", ["Rs 10,687.5", "Rs 2,671.88", "Rs 5,343.75", "Rs 106,875"], 2, "106,875 × 5%."],
+["A futures contract has value Rs 59,375 and initial margin is 5%. The margin to pay is ________.", ["Rs 2,968.75", "Rs 5,937.5", "Rs 59,375", "Rs 1,484.38"], 0, "59,375 × 5%."],
+["You bought one futures contract (lot 100) at Rs 350 and sold at Rs 355. Profit or loss?", ["+1,000", "+500", "+5", "−500"], 1, "(355 − 350) × 100."],
+["You sold one futures contract (lot 25) at Rs 1,185 and bought it back at Rs 1,175. Profit or loss?", ["−250", "+10", "+375", "+250"], 3, "(1,185 − 1,175) × 25."],
+["Spot is Rs 1,700, financing cost to expiry is Rs 295 and dividend is Rs 4. The fair futures price is ________.", ["Rs 1,696", "Rs 1,991", "Rs 1,999", "Rs 1,995"], 1, "Fair price = spot + interest − dividend."],
+["Portfolio value Rs 3,000,000, beta 1.2, index futures contract value Rs 1,500,000. Contracts to short for a hedge: ________.", ["4.80", "2.40", "1.20", "2.00"], 1, "Vp × βp ÷ Vi."],
+["A portfolio has weights 10%, 30%, 60% in stocks with betas 1.1, 1.3, 1.4. Portfolio beta is ________.", ["1.34", "1.24", "1.27", "1.44"], 0, "Weighted average of betas."],
+["You bought one futures contract (lot 75) at Rs 2,240 and sold at Rs 2,200. Profit or loss?", ["−40", "−3,000", "+3,375", "+3,000"], 1, "(2,200 − 2,240) × 75."],
+["Spot is Rs 1,850, financing cost to expiry is Rs 75 and dividend is Rs 28. The fair futures price is ________.", ["Rs 1,897", "Rs 1,953", "Rs 1,925", "Rs 1,822"], 0, "Fair price = spot + interest − dividend."],
+["Portfolio value Rs 6,000,000, beta 1.5, index futures contract value Rs 1,000,000. Contracts to short for a hedge: ________.", ["18.00", "4.50", "9.00", "6.00"], 2, "Vp × βp ÷ Vi."],
+["You bought one futures contract (lot 250) at Rs 2,190 and sold at Rs 2,150. Profit or loss?", ["+10,000", "−10,000", "−40", "+11,250"], 1, "(2,150 − 2,190) × 250."]
+];
+const ans=new Array(Q.length).fill(null),qs=document.getElementById("qs"),L="abcd";
+Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";
+d.innerHTML=`<h3><span>Q${i+1}.</span>${q[0]}</h3>`+q[1].map((o,j)=>`<button class="o" data-j="${j}"><b>(${L[j]})</b> ${o}</button>`).join("")+`<div class="fb"></div>`;
+d.querySelectorAll(".o").forEach(b=>b.onclick=()=>pick(i,+b.dataset.j,d));qs.appendChild(d)});
+function upd(){const n=ans.filter(a=>a!==null).length;document.getElementById("st").textContent=`Answered ${n}/${Q.length}`;document.getElementById("pb").style.width=n/Q.length*100+"%"}
+function pick(i,j,d){if(ans[i]!==null)return;ans[i]=j;const k=Q[i][2],bs=d.querySelectorAll(".o");
+bs.forEach((b,x)=>{b.disabled=true;if(x===k)b.classList.add("c");else if(x===j)b.classList.add("w")});
+const f=d.querySelector(".fb");f.classList.add("s");
+f.innerHTML=(j===k?`<b class="c">✓ Correct.</b> `:`<b class="w">✗ Wrong.</b> Correct answer: (${L[k]}). `)+Q[i][3];upd()}
+document.getElementById("fin").onclick=()=>{const un=ans.filter(a=>a===null).length;
+if(un&&!confirm(un+" question(s) unanswered. Finish anyway?"))return;
+let c=0,w=0;ans.forEach((a,i)=>{if(a===null)return;a===Q[i][2]?c++:w++});
+const sc=c-0.25*w,pct=sc/Q.length*100,ok=pct>=60,r=document.getElementById("res");
+r.style.display="block";r.innerHTML=`<h2>Result</h2><div class="big ${ok?"pass":"fail"}">${sc.toFixed(2)} / ${Q.length}</div><div>${pct.toFixed(1)}% · <b class="${ok?"pass":"fail"}">${ok?"PASS":"BELOW PASS MARK"}</b> (pass mark 60%)</div>
+<table><tr><td>Correct</td><td>${c}</td></tr><tr><td>Wrong (−0.25 each)</td><td>${w}</td></tr><tr><td>Unanswered</td><td>${un}</td></tr></table>
+<button class="btn g" onclick="location.reload()">Retake</button>`;r.scrollIntoView({behavior:"smooth"})};
+upd();
+</script></body></html>
